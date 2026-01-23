@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>BedrockPVP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      background: #fff;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    }
+
+    .welcome-title {
+      font-size: 40px;
+      font-weight: 900;
+      color: #6a0eff;
+    }
+
+    .welcome-text {
+      font-size: 20px;
+      font-weight: 900;
+      color: #320eff;
+    }
+
+    .custom-btn {
+      background: #234521;
+      color: #fff;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .custom-btn:hover {
+      opacity: 0.9;
+    }
+
+    .market-img {
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .market-img:hover {
+      transform: scale(1.03);
+    }
+
+    .year {
+      color: rgba(16, 204, 16, 1);
+    }
+
+    .owner {
+      color: rgba(204, 16, 16, 1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="container mt-3 sticky-header">
+    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+      <div class="container text-center">
+        <div class="row w-100">
+          <div class="col">
+            <a href="https://www.youtube.com/@turkmenminer" target="_blank">
+              <img src="src/youtube-logo.png" width="90" />
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://www.tiktok.com/@nk90miner" target="_blank">
+              <img src="src/tiktok-logo.png" width="90" />
+            </a>
+          </div>
+          <div class="col">
+            <a href="https://discord.gg/vNhAPKaYqK" target="_blank">
+              <img src="src/Discord-logo.png" width="90" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <!-- BODY -->
+  <div class="container mt-3">
+    <div class="shadow p-5 mb-5 bg-body-tertiary rounded" id="page-container"></div>
+
+    <!-- FOOTER -->
+    <div class="card text-center container">
+      <div class="card-footer text-body-secondary">
+        Telif Hakkı © <span class="year">2023</span>.
+        <span class="owner">TürkmenMiner</span>'a aittir.
+        <a href="https://www.youtube.com/@turkmenminer" target="_blank"> Design: NK</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById("page-container");
+
+    function welcomeComponent() {
+      return `
+        <div class="shadow p-2 mb-3 rounded text-center">
+          <span class="welcome-text">
+            <span class="welcome-title">BedrockPVP </span>
+            sitesine hoşgeldiniz
+          </span>
+        </div>
+      `;
+    }
+
+    function mainPage() {
+      container.innerHTML = `
+        ${welcomeComponent()}
+        <div class="row">
+          <div class="col-lg-7">
+            <div class="shadow p-2 mb-2 rounded">
+              <p style="color: purple">
+                Minecraft Bedrock Modları, Add-ons, Resource Packs ve daha fazlası...
+              </p>
+            </div>
+
+            <div class="shadow p-2 mb-5 rounded">
+              <p style="font-size: 40px; color: purple">
+                Site Tasarım aşamasında!
+              </p>
+
+              <button class="custom-btn" onclick="serverPage()">Sunucu Sayfası</button>
+              <button class="custom-btn ms-2" onclick="pluginsPage()">Pluginler</button>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <img
+              src="src/Kristal Market1.png"
+              class="market-img"
+              onclick="window.open('https://www.shopier.com/TurkmenMiner')"
+            />
+          </div>
+        </div>
+      `;
+    }
+
+    function serverPage() {
+      container.innerHTML = `
+        ${welcomeComponent()}
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="shadow p-2 mb-2 rounded">
+              <p style="color: purple">Server</p>
+            </div>
+
+            <div class="shadow p-2 mb-5 rounded">
+              <p>McFeed burada olacak</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="shadow p-2 rounded ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube.com/embed/tkgIB-w4XRw"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function pluginsPage() {
+      container.innerHTML = `
+        ${welcomeComponent()}
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="shadow p-2 mb-2 rounded">
+              <p style="color: purple">Plugins</p>
+            </div>
+
+            <button class="custom-btn" onclick="serverPage()">Server</button>
+            <button class="custom-btn ms-2" onclick="mainPage()">Main</button>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="shadow p-2 rounded ratio ratio-16x9">
+              <iframe
+                src="https://www.youtube.com/embed/tkgIB-w4XRw"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    mainPage();
+  </script>
+
+</body>
+</html>
