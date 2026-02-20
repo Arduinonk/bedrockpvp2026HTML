@@ -124,24 +124,15 @@
       container.innerHTML = `
         ${welcomeComponent()}
         <div class="row">
-          <div class="col-lg-7">
-            <div class="shadow p-2 mb-2 rounded">
-              <p style="color: purple">
-                Minecraft Bedrock Modları, Add-ons, Resource Packs ve daha fazlası...
-              </p>
-            </div>
-
-            <div class="shadow p-2 mb-5 rounded">
-              <p style="font-size: 40px; color: purple">
-                Site Tasarım aşamasında!
-              </p>
-
-              <button class="custom-btn" onclick="serverPage()">Sunucu Sayfası</button>
-              <button class="custom-btn ms-2" onclick="pluginsPage()">Pluginler</button>
-            </div>
+          <div class="col-lg-6">
+            <img
+              src="src/modsimage.png"
+              class="market-img"
+              onclick="window.open('https://arduinonk.github.io/nk90miner')"
+            />
           </div>
 
-          <div class="col-lg-5">
+          <div class="col-lg-6">
             <img
               src="src/Kristal Market1.png"
               class="market-img"
@@ -208,3 +199,4 @@
 
 </body>
 </html>
+
