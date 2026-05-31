@@ -1,0 +1,23 @@
+{
+    "id": "rulesaccept",
+    "name": "Kuralları Kabul Et Menüsü",
+    "description": "Yeni katılan oyunculardan Kuralları Kabul etmeklerini ister",
+    "version": "1.21.50+",
+    "image": "pack_icon.png",
+    "file_name": "Kurallari Onaylama Menusu.mcpack",
+    "features": [
+        "Bu mod özellikle sunucunuza yükleyip kullanabilirsiniz!",
+        "Bu mod sunucunuza ilk kez katılan oyunculardan önceden ayarladığınız Kuralları Gösterip Kabul etmeklerini ister :",
+        "Eğer Kuralları Kabul etmezseniz sunucuda oynamanıza izin vermeyecektir",
+        "Kurulum ve ayarlar:",
+        "Davranış paketini yükleyin",
+        "Dünya ayarlarından Denemeleri açmanıza gerek yok!",
+        "Ayarlar menüsünü açmak için kendinize kural tag verilmiş olması lazım!",
+        "Bu tagi sohbette hileler acıkken",
+        "/tag @s add kural",
+        "yazarak alabilirsin!",
+        "Sonra Elinizde Elmas ile boşluğa tıklayınız! Açılan menüdeki Kurallar menüsünde toplamda 21 Satır kural yazma yeri bulunur!",
+        "Bu satırlara sıra ile Kurallarını ister renkli ister olduğu gibi yazabilirsin!",
+        "Daha detaylı ögrenmek için Yukarıdaki Videoya tıkla!"
+    ]
+}

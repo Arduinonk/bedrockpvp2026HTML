@@ -1,0 +1,14 @@
+{
+    "id": "autototem",
+    "name": "Obsidiyen Kazma by NK",
+    "description": "Obsidyen kazmayı kullanarak Spawner veya End Portal Çerçevesini elde edebilirsin!",
+    "version": "1.21.60",
+    "image": "pack_icon.png",
+    "file_name": "Obsidiyen Kazma by NK[1.21.6x].mcaddon",
+    "features": [
+        "Obsidiyen kazma ile Hayatta Kalma modunda bile MOB Canlandırıcısını(MOB Spawnerini)",
+        "End Portal Çerçevesini kırabilirsin",
+        "NOT!!!",
+        "Kazma TEK KULLANIMLIKTIR!"
+    ]
+}

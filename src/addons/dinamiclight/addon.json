@@ -1,0 +1,12 @@
+{
+    "id": "dinamiclight",
+    "name": "Dinamik aydınlatma",
+    "description": "Işık saçan tüm bloklar elinizdeyken dinamik olarak ışık saçacaktır, Sol elinizde taşıya bilirsiniz!",
+    "version": "1.21.20",
+    "image": "pack_icon.png",
+    "file_name": "Dinamik Aydınlatma[1_21_2x].mcaddon",
+    "features": [
+        "Dinamik Aydınlatma özelliğini kullanabilmen için ışık saçan itemleri(bloklar dahil) envanterinizdeki 2*2 eşya yapma yerine yada Çalişma masasını kullanarak ışıklı hale getirmeniz gerekmektedir! ",
+        "Sonra o itemi ister sol elinizde istersenizde sağ elinizde tutduğunuzda çevrenize ışık saçacaktır!"
+    ]
+}

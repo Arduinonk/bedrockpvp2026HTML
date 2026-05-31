@@ -1,0 +1,14 @@
+{
+    "id": "oyuncuiskeleti",
+    "name": "Oyuncu İskeleti",
+    "description": "Öldüğünüz noktada iskeletiniz oluşacaktır",
+    "version": "1.21.0",
+    "image": "pack_icon.png",
+    "file_name": "Oldugun yerde Oyuncu Iskeleti olusuyor[1_21_0].mcaddon",
+    "features": [
+        "Oyuncu iskeleti paketi sayesinde öldüğünüz noktada iskeletiniz oluşacaktır ve envanterinizdeki tüm eşyalarınızı kendine alacaktır.",
+        "Onun sayesinde eşyalarınızı 5 dakika sonra kaybetme riski kalmaz!",
+        "Aynı anda Sohbet'te öldüğünüz yerin kordinatlarını görebileceksiniz!",
+        "Sohbetdeki kordinat sadece size gözükecektir!"
+    ]
+}

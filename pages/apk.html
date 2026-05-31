@@ -1,346 +1,451 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Minecraft APK</title>
+    <title>Minecraft APK</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-:root{
---bg:#08080b;
---border:rgba(255,255,255,.08);
---purple:#8b5cf6;
---purple-dark:#6d28d9;
---text:#fff;
---muted:#b4b4c7;
-}
+        :root {
+            --bg: #08080b;
+            --border: rgba(255, 255, 255, .08);
+            --purple: #8b5cf6;
+            --purple-dark: #6d28d9;
+            --text: #fff;
+            --muted: #b4b4c7;
+        }
 
-body{
-font-family:Inter,sans-serif;
-background:var(--bg);
-color:var(--text);
-min-height:100vh;
-overflow-x:hidden;
-}
+        body {
+            font-family: Inter, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-body::before{
-content:"";
-position:fixed;
-width:800px;
-height:800px;
-top:-350px;
-left:-300px;
-background:#7c3aed;
-border-radius:50%;
-filter:blur(220px);
-opacity:.18;
-pointer-events:none;
-}
+        body::before {
+            content: "";
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            top: -350px;
+            left: -300px;
+            background: #7c3aed;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .18;
+            pointer-events: none;
+        }
 
-body::after{
-content:"";
-position:fixed;
-width:700px;
-height:700px;
-right:-300px;
-bottom:-300px;
-background:#9333ea;
-border-radius:50%;
-filter:blur(220px);
-opacity:.12;
-pointer-events:none;
-}
+        body::after {
+            content: "";
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            right: -300px;
+            bottom: -300px;
+            background: #9333ea;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .12;
+            pointer-events: none;
+        }
 
-.container{
-width:min(1200px,92%);
-margin:auto;
-}
+        .container {
+            width: min(1200px, 92%);
+            margin: auto;
+        }
 
-header{
-border-bottom:1px solid var(--border);
-background:rgba(8,8,11,.85);
-backdrop-filter:blur(10px);
-}
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 8, 11, .85);
+            backdrop-filter: blur(10px);
+        }
 
-.nav{
-height:72px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
+        .nav {
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.logo{
-font-size:28px;
-font-weight:800;
-text-decoration:none;
-color:white;
-}
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
 
-.logo span{
-color:var(--purple);
-}
+        .logo span {
+            color: var(--purple);
+        }
 
-.back-btn{
-text-decoration:none;
-color:white;
-padding:10px 16px;
-border:1px solid var(--border);
-border-radius:12px;
-transition:.25s;
-}
+        .back-btn {
+            text-decoration: none;
+            color: white;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .25s;
+        }
 
-.back-btn:hover{
-background:var(--purple);
-border-color:var(--purple);
-}
+        .back-btn:hover {
+            background: var(--purple);
+            border-color: var(--purple);
+        }
 
-.hero{
-padding:60px 0 40px;
-text-align:center;
-}
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
 
-.hero h1{
-font-size:clamp(2.5rem,6vw,4rem);
-margin-bottom:10px;
-}
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 10px;
+        }
 
-.hero h1 span{
-color:var(--purple);
-}
+        .hero h1 span {
+            color: var(--purple);
+        }
 
-.hero p{
-max-width:700px;
-margin:auto;
-color:var(--muted);
-line-height:1.6;
-}
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: var(--muted);
+            line-height: 1.6;
+        }
 
-.apk-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:16px;
-padding-bottom:40px;
-}
+        .apk-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+            padding-bottom: 40px;
+        }
 
-.apk-card{
-background:rgba(255,255,255,.04);
-border:1px solid var(--border);
-border-radius:20px;
-padding:20px;
-transition:.25s;
-display:flex;
-flex-direction:column;
-}
+        .apk-card {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            transition: .25s;
+            display: flex;
+            flex-direction: column;
+        }
 
-.apk-card:hover{
-transform:translateY(-4px);
-border-color:var(--purple);
-box-shadow:0 0 35px rgba(139,92,246,.15);
-}
+        .apk-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--purple);
+            box-shadow: 0 0 35px rgba(139, 92, 246, .15);
+        }
 
-.icon{
-font-size:42px;
-margin-bottom:12px;
-}
+        .icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
 
-.apk-card h2{
-margin-bottom:8px;
-}
+        .apk-card h2 {
+            margin-bottom: 8px;
+        }
 
-.apk-card p{
-color:var(--muted);
-line-height:1.5;
-margin-bottom:14px;
-flex:1;
-}
+        .apk-card p {
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 14px;
+            flex: 1;
+        }
 
-.version{
-display:inline-block;
-padding:6px 10px;
-border-radius:8px;
-background:rgba(139,92,246,.15);
-border:1px solid rgba(139,92,246,.25);
-margin-bottom:12px;
-font-size:.9rem;
-font-weight:600;
-}
+        .version {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(139, 92, 246, .15);
+            border: 1px solid rgba(139, 92, 246, .25);
+            margin-bottom: 12px;
+            font-size: .9rem;
+            font-weight: 600;
+        }
 
-.btn{
-display:inline-block;
-text-decoration:none;
-background:var(--purple);
-color:white;
-padding:10px 14px;
-border-radius:10px;
-font-weight:600;
-text-align:center;
-}
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--purple);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
 
-.btn:hover{
-background:var(--purple-dark);
-}
+        .btn:hover {
+            background: var(--purple-dark);
+        }
 
-.info-box{
-margin-top:20px;
-padding:20px;
-border-radius:20px;
-background:rgba(255,255,255,.03);
-border:1px solid var(--border);
-color:var(--muted);
-line-height:1.7;
-}
+        .info-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            line-height: 1.7;
+        }
 
-footer{
-border-top:1px solid var(--border);
-margin-top:40px;
-}
+        .status {
+            margin-bottom: 12px;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
 
-.footer{
-padding:16px;
-text-align:center;
-color:#8f8fa1;
-line-height:1.6;
-font-size:.9rem;
-}
+        .latest {
+            background: rgba(34, 197, 94, .15);
+            border: 1px solid rgba(34, 197, 94, .3);
+            color: #22c55e;
+        }
 
-@media(max-width:768px){
+        .old {
+            background: rgba(239, 68, 68, .15);
+            border: 1px solid rgba(239, 68, 68, .3);
+            color: #ef4444;
+        }
 
-.nav{
-height:auto;
-padding:12px 0;
-flex-direction:column;
-gap:10px;
-}
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
 
-.hero{
-padding:35px 0 25px;
-}
+        .footer {
+            padding: 16px;
+            text-align: center;
+            color: #8f8fa1;
+            line-height: 1.6;
+            font-size: .9rem;
+        }
 
-.hero h1{
-font-size:2rem;
-}
+        @media(max-width:768px) {
 
-.apk-card{
-padding:15px;
-border-radius:16px;
-}
-}
-</style>
+            .nav {
+                height: auto;
+                padding: 12px 0;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 35px 0 25px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .apk-card {
+                padding: 15px;
+                border-radius: 16px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-<div class="container nav">
+    <header>
+        <div class="container nav">
 
-<a href="../index.html" class="logo">
-Bedrock<span>PVP</span>
-</a>
+            <a href="../index.html" class="logo">
+                Bedrock<span>PVP</span>
+            </a>
 
-<a href="../index.html" class="back-btn">
-← Ana Sayfa
-</a>
+            <a href="../index.html" class="back-btn">
+                ← Ana Sayfa
+            </a>
 
-</div>
-</header>
+        </div>
+    </header>
 
-<section class="hero container">
+    <section class="hero container">
 
-<h1>Minecraft <span>APK</span></h1>
+        <h1>Minecraft <span>APK</span></h1>
 
-<p>
-Minecraft Bedrock APK sürümlerini görüntüleyin ve en güncel bilgilere ulaşın.
-</p>
+        <p>
+            Minecraft Bedrock APK sürümlerini görüntüleyin ve en güncel bilgilere ulaşın.
+        </p>
 
-</section>
+    </section>
 
-<section class="container">
+    <section class="container">
 
-<div class="apk-grid">
+        <div class="apk-grid" id="apkGrid">
 
-<div class="apk-card">
+            <div style="grid-column:1/-1;text-align:center;color:#b4b4c7;">
+                APK'ler yükleniyor...
+            </div>
 
-<div class="icon">📱</div>
+        </div>
 
-<h2>Minecraft Bedrock</h2>
+        <div class="info-box">
+            <strong>Bilgilendirme:</strong><br><br>
+            APK bağlantıları ve sürüm bilgileri düzenli olarak güncellenecektir. Her zaman güvenilir kaynaklardan dosya
+            indirmeniz önerilir.
+        </div>
 
-<div class="version">
-Sürüm: 1.21.x
-</div>
+    </section>
 
-<p>
-En güncel Minecraft Bedrock sürümü hakkında bilgiler.
-</p>
+    <footer>
+        <div class="footer">
+            © 2026 BedrockPVP • Minecraft Bedrock Addons, Sunucu<br>
+            Unofficial Minecraft Bedrock Portal • Kurucu TürkmenMiner
+        </div>
+    </footer>
+    <script>
+        async function getLatestMinecraftVersion() {
 
-<a href="#" class="btn">
-İndir
-</a>
+            try {
 
-</div>
+                const response = await fetch(
+                    "https://raw.githubusercontent.com/PrismarineJS/minecraft-data/master/data/bedrock/common/protocolVersions.json"
+                );
 
-<div class="apk-card">
+                const data = await response.json();
 
-<div class="icon">🧱</div>
+                return data[0].minecraftVersion;
 
-<h2>Önceki Sürümler</h2>
+            } catch {
 
-<div class="version">
-Arşiv
-</div>
+                return null;
 
-<p>
-Eski Minecraft Bedrock APK sürümlerine erişin.
-</p>
+            }
 
-<a href="#" class="btn">
-Görüntüle
-</a>
+        }
+        function isCurrentRelease(apkVersion, latestVersion) {
 
-</div>
+            const apk = apkVersion.split('.');
+            const latest = latestVersion.split('.');
 
-<div class="apk-card">
+            return (
+                apk[0] === latest[0] &&
+                apk[1] === latest[1] &&
+                Math.floor(Number(apk[2]) / 10) ===
+                Math.floor(Number(latest[2]) / 10)
+            );
 
-<div class="icon">⚠️</div>
+        }
+    </script>
+    <script>
 
-<h2>Kurulum Rehberi</h2>
+        async function loadApks() {
 
-<div class="version">
-Yardım
-</div>
+            const grid = document.getElementById("apkGrid");
 
-<p>
-APK kurulumuyla ilgili temel bilgiler ve rehber.
-</p>
+            try {
 
-<a href="#" class="btn">
-Oku
-</a>
+                const latestMinecraftVersion =
+                    await getLatestMinecraftVersion();
 
-</div>
+                const response =
+                    await fetch("../data/apk-list.json");
 
-</div>
+                const apks =
+                    await response.json();
 
-<div class="info-box">
-<strong>Bilgilendirme:</strong><br><br>
-APK bağlantıları ve sürüm bilgileri düzenli olarak güncellenecektir. Her zaman güvenilir kaynaklardan dosya indirmeniz önerilir.
-</div>
+                grid.innerHTML = "";
 
-</section>
+                apks.sort((a, b) => {
 
-<footer>
-<div class="footer">
-© 2026 BedrockPVP • Minecraft Bedrock Addons, Sunucu<br>
-Unofficial Minecraft Bedrock Portal • Kurucu TürkmenMiner
-</div>
-</footer>
+                    const va = a.version.split('.').map(Number);
+                    const vb = b.version.split('.').map(Number);
 
+                    for (let i = 0; i < Math.max(va.length, vb.length); i++) {
+
+                        const na = va[i] || 0;
+                        const nb = vb[i] || 0;
+
+                        if (na !== nb) {
+                            return nb - na;
+                        }
+
+                    }
+
+                    return 0;
+
+                });
+
+                apks.forEach(apk => {
+                    const isLatestVersion =
+                        isCurrentRelease(
+                            apk.version,
+                            latestMinecraftVersion
+                        );
+                    const statusBadge = isLatestVersion
+
+                        ? `
+                <div class="status latest">
+                    ✅ En Güncel Sürüm
+                </div>
+                `
+
+                        : `
+                <div class="status old">
+                    ⚠️ Yeni Sürüm Mevcut
+                    <br>
+                    ${latestMinecraftVersion}
+                </div>
+                `;
+
+                    const card = document.createElement("div");
+
+                    card.className = "apk-card";
+
+                    card.innerHTML = `
+                <div class="icon">📱</div>
+
+                <h2>${apk.name}</h2>
+
+                ${statusBadge}
+
+                <div class="version">
+                    Sürüm: ${apk.version}
+                </div>
+
+                <p>${apk.description}</p>
+
+                <a href="${apk.url}"
+                   target="_blank"
+                   class="btn">
+                    İndir
+                </a>
+            `;
+
+                    grid.appendChild(card);
+
+                });
+
+            } catch (error) {
+
+                grid.innerHTML = `
+            <div style="grid-column:1/-1;text-align:center;color:#ff7777;">
+                APK listesi yüklenemedi.
+            </div>
+        `;
+
+                console.error(error);
+
+            }
+
+        }
+        loadApks();
+    </script>
 </body>
+
 </html>

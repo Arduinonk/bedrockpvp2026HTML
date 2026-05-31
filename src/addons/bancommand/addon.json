@@ -1,0 +1,14 @@
+{
+    "id": "autototem",
+    "name": "Oyuncuları banlama ve sessize alma",
+    "description": "Sunucudaki istenmeyen kişileri cezalandıra bilirsin!",
+    "version": "1.21.60",
+    "image": "pack_icon.png",
+    "file_name": "Ban ve Mute Komutlari [1_21_6x][Gelistirilmis modeli].mcpack",
+    "features": [
+        "Bu paket sayesinde oyuncuları banlaya bilir ve sessize alabilirsiniz.",
+        "Komutlar hakkında bilgi edinmek için Kendinize 'admin' etiketi vermelisiniz!",
+        "Sonra sohbete -? yazarak komutları görebilirsiniz!",
+        "AMA SESSİZE ALİNAN OYUNCULAR YİNEDE \n/w, /msg, /tell \nKOMUTLARINI KULLANARAK İSTEDİĞİ KİŞİLERE ÖZEL MESAJLAR YAZABİLİRLER."
+    ]
+}
