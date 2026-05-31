@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sunucu Marketi</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #08080b;
+            --border: rgba(255, 255, 255, .08);
+            --purple: #8b5cf6;
+            --purple-dark: #6d28d9;
+            --text: #fff;
+            --muted: #b4b4c7;
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            top: -350px;
+            left: -300px;
+            background: #7c3aed;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .18;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            right: -300px;
+            bottom: -300px;
+            background: #9333ea;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .12;
+            pointer-events: none;
+        }
+
+        .container {
+            width: min(1200px, 92%);
+            margin: auto;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 8, 11, .85);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--purple);
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: white;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .25s;
+        }
+
+        .back-btn:hover {
+            background: var(--purple);
+            border-color: var(--purple);
+        }
+
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: var(--purple);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 16px;
+            padding-bottom: 40px;
+        }
+
+        .shop-card {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+            transition: .25s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--purple);
+            box-shadow: 0 0 35px rgba(139, 92, 246, .15);
+        }
+
+        .product-image {
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 16px;
+        }
+
+        .shop-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .shop-card p {
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 14px;
+            flex: 1;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: rgba(139, 92, 246, .15);
+            border: 1px solid rgba(139, 92, 246, .25);
+            margin-bottom: 12px;
+            font-size: .9rem;
+            font-weight: 600;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            background: var(--purple);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background: var(--purple-dark);
+        }
+
+        .info-box {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .highlight {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: rgba(2, 71, 88, 0.15);
+            border: 1px solid rgba(194, 197, 34, 0.3);
+            color: #c55022;
+            font-weight: 600;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 40px;
+        }
+
+        .footer {
+            padding: 16px;
+            text-align: center;
+            color: #8f8fa1;
+            line-height: 1.6;
+            font-size: .9rem;
+        }
+
+        @media(max-width:768px) {
+            .nav {
+                height: auto;
+                padding: 12px 0;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 35px 0 25px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .shop-card {
+                padding: 15px;
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav">
+
+            <a href="../index.html" class="logo">
+                Bedrock<span>PVP</span>
+            </a>
+
+            <a href="../index.html" class="back-btn">
+                ← Ana Sayfa
+            </a>
+
+        </div>
+    </header>
+
+    <section class="hero container">
+
+        <h1>Sunucu <span>Marketi</span></h1>
+
+        <p>
+            BedrockPVP sunucusunda kullanabileceğiniz ürünleri satın alabilirsiniz.
+        </p>
+
+    </section>
+
+    <section class="container">
+
+        <div class="shop-grid">
+
+            <div class="shop-card">
+
+                <img src="../src/images/bedrockPVPplus.png" alt="BedrockPVP+" class="product-image">
+
+                <h2>BedrockPVP+</h2>
+
+                <div class="tag">
+                    Destekçi Paketi
+                </div>
+
+                <p>
+                    Sunucuyu destekleyin ve özel avantajlara erişin.
+                </p>
+
+                <a href="https://www.shopier.com/TurkmenMiner/42517524" target="_blank" class="btn">
+                    İncele
+                </a>
+
+            </div>
+
+            <div class="shop-card">
+
+                <img src="https://cdn.shopier.app/scaledoriginal/TurkmenMiner_434f97c622fc9bb52f3bfa99e624fa2a.png"
+                    alt="Tunel kazma" class="product-image">
+
+                <h2>Tunel Kazma</h2>
+
+                <div class="tag">
+                    Özel kazma
+                </div>
+
+                <p>
+                    3x3x3 alanı tek tıklamada kazabilir.
+                </p>
+
+                <a href="https://www.shopier.com/TurkmenMiner/43098232" target="_blank" class="btn">
+                    İncele
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="info-box">
+            <strong>Bilgilendirme:</strong><br><br>
+            Tüm ödemeler güvenli şekilde Shopier üzerinden gerçekleştirilmektedir.<br>
+            <span class="highlight">
+                Satın alım sonrası ürünler 1 ile 24 saat içerisinde teslim edilir.
+            </span>
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer">
+            © 2026 BedrockPVP • Minecraft Bedrock Addons, Sunucu<br>
+            Unofficial Minecraft Bedrock Portal • Kurucu TürkmenMiner
+        </div>
+    </footer>
+
+</body>
+
+</html>
