@@ -1,205 +1,435 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
-  <meta charset="UTF-8" />
-  <title>Bedrock PVP</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BedrockPVP - Minecraft Bedrock Topluluk Merkezi</title>
 
-  <!-- Bootstrap -->
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <style>
-    .sticky-header {
-      position: sticky;
-      top: 0;
-      z-index: 2000;
-      background: #fff;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .welcome-title {
-      font-size: 40px;
-      font-weight: 900;
-      color: #6a0eff;
-    }
+        :root {
+            --bg: #08080b;
+            --border: rgba(255, 255, 255, .08);
+            --purple: #8b5cf6;
+            --purple-dark: #6d28d9;
+            --text: #ffffff;
+            --muted: #b4b4c7;
+        }
 
-    .welcome-text {
-      font-size: 20px;
-      font-weight: 900;
-      color: #320eff;
-    }
+        html {
+            height: 100%;
+        }
 
-    .custom-btn {
-      background: #234521;
-      color: #fff;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+        body {
+            min-height: 100vh;
+            font-family: Inter, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .custom-btn:hover {
-      opacity: 0.9;
-    }
+        body::before {
+            content: "";
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            top: -350px;
+            left: -300px;
+            background: #7c3aed;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .18;
+            pointer-events: none;
+        }
 
-    .market-img {
-      width: 100%;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
+        body::after {
+            content: "";
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            right: -300px;
+            bottom: -300px;
+            background: #9333ea;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .12;
+            pointer-events: none;
+        }
 
-    .market-img:hover {
-      transform: scale(1.03);
-    }
+        .container {
+            width: min(1200px, 92%);
+            margin: auto;
+        }
 
-    .year {
-      color: rgba(16, 204, 16, 1);
-    }
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 8, 11, .85);
+            backdrop-filter: blur(10px);
+        }
 
-    .owner {
-      color: rgba(204, 16, 16, 1);
-    }
-  </style>
+        .nav {
+            min-height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: var(--purple);
+        }
+
+        .socials {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .socials a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .25s;
+        }
+
+        .socials a:hover {
+            background: var(--purple);
+            border-color: var(--purple);
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 0;
+        }
+
+        .hero {
+            width: 100%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            margin-bottom: 8px;
+        }
+
+        .hero h1 span {
+            color: var(--purple);
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 18px;
+            transition: .25s;
+            display: block;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--purple);
+            box-shadow: 0 0 40px rgba(139, 92, 246, .15);
+        }
+
+        .icon {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .card h2 {
+            font-size: 1.15rem;
+            margin-bottom: 6px;
+        }
+
+        .card p {
+            color: var(--muted);
+            line-height: 1.45;
+            margin-bottom: 12px;
+            font-size: .95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--purple);
+            color: white;
+            padding: 9px 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: .88rem;
+        }
+
+        .card:hover .btn {
+            background: var(--purple-dark);
+        }
+
+        .market-items {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+
+        .market-icon-crystal {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        .market-icon-plus {
+            height: 24px;
+            width: auto;
+            max-width: 100px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: auto;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 16px;
+            color: #8f8fa1;
+            line-height: 1.6;
+            font-size: .9rem;
+        }
+
+        @media(max-width:900px) {
+
+            main {
+                align-items: flex-start;
+            }
+
+            .hero {
+                padding-top: 8px;
+            }
+        }
+
+        @media(max-width:768px) {
+
+            .nav {
+                flex-direction: column;
+                gap: 8px;
+                min-height: auto;
+                padding: 10px 0;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .socials {
+                justify-content: center;
+                gap: 8px;
+            }
+
+            .socials a {
+                padding: 7px 11px;
+                font-size: 13px;
+                border-radius: 10px;
+            }
+
+            main {
+                padding: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+                margin-bottom: 4px;
+            }
+
+            .hero p {
+                font-size: .85rem;
+                line-height: 1.35;
+                margin-bottom: 10px;
+            }
+
+            .cards {
+                gap: 8px;
+            }
+
+            .card {
+                padding: 12px;
+                border-radius: 14px;
+            }
+
+            .icon {
+                font-size: 22px;
+                margin-bottom: 4px;
+            }
+
+            .card h2 {
+                font-size: .95rem;
+                margin-bottom: 2px;
+            }
+
+            .card p {
+                font-size: .76rem;
+                line-height: 1.25;
+                margin-bottom: 7px;
+            }
+
+            .btn {
+                padding: 6px 10px;
+                font-size: .72rem;
+                border-radius: 8px;
+            }
+
+            .footer {
+                padding: 10px;
+                font-size: .75rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- HEADER -->
-  <div class="container mt-3 sticky-header">
-    <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
-      <div class="container text-center">
-        <div class="row w-100">
-          <div class="col">
-            <a href="https://www.youtube.com/@turkmenminer" target="_blank">
-              <img src="src/youtube-logo.png" width="90" />
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://www.tiktok.com/@nk90miner" target="_blank">
-              <img src="src/tiktok-logo.png" width="90" />
-            </a>
-          </div>
-          <div class="col">
-            <a href="https://discord.gg/vNhAPKaYqK" target="_blank">
-              <img src="src/Discord-logo.png" width="90" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
+    <header>
+        <div class="container nav">
 
-  <!-- BODY -->
-  <div class="container mt-3">
-    <div class="shadow p-5 mb-5 bg-body-tertiary rounded" id="page-container"></div>
-
-    <!-- FOOTER -->
-    <div class="card text-center container">
-      <div class="card-footer text-body-secondary">
-        Telif Hakkı © <span class="year">2023</span>.
-        <span class="owner">TürkmenMiner</span>'a aittir.
-        <a href="https://www.youtube.com/@turkmenminer" target="_blank"> Design: NK</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    const container = document.getElementById("page-container");
-
-    function welcomeComponent() {
-      return `
-        <div class="shadow p-2 mb-3 rounded text-center">
-          <span class="welcome-text">
-            <span class="welcome-title">BedrockPVP </span>
-            sitesine hoşgeldiniz
-          </span>
-        </div>
-      `;
-    }
-
-    function mainPage() {
-      container.innerHTML = `
-        ${welcomeComponent()}
-        <div class="row">
-          <div class="col-lg-6">
-            <img
-              src="src/modsimage.png"
-              class="market-img"
-              onclick="window.open('https://arduinonk.github.io/nk90miner')"
-            />
-          </div>
-
-          <div class="col-lg-6">
-            <img
-              src="src/Kristal Market1.png"
-              class="market-img"
-              onclick="window.open('https://www.shopier.com/TurkmenMiner')"
-            />
-          </div>
-        </div>
-      `;
-    }
-
-    function serverPage() {
-      container.innerHTML = `
-        ${welcomeComponent()}
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="shadow p-2 mb-2 rounded">
-              <p style="color: purple">Server</p>
+            <div class="logo">
+                Bedrock<span>PVP</span>
             </div>
 
-            <div class="shadow p-2 mb-5 rounded">
-              <p>McFeed burada olacak</p>
+            <div class="socials">
+                <a href="https://www.tiktok.com/@nk90miner" target="_blank">TikTok</a>
+                <a href="https://www.youtube.com/@turkmenminer" target="_blank">YouTube</a>
+                <a href="https://t.me/bedrockpvp" target="_blank">Telegram</a>
+                <a href="https://discord.gg/vNhAPKaYqK" target="_blank">Discord</a>
             </div>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="shadow p-2 rounded ratio ratio-16x9">
-              <iframe
-                src="https://www.youtube.com/embed/tkgIB-w4XRw"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
         </div>
-      `;
-    }
+    </header>
 
-    function pluginsPage() {
-      container.innerHTML = `
-        ${welcomeComponent()}
-        <div class="row">
-          <div class="col-lg-8">
-            <div class="shadow p-2 mb-2 rounded">
-              <p style="color: purple">Plugins</p>
+    <main>
+
+        <section class="container hero">
+
+            <h1>Bedrock<span>PVP</span></h1>
+
+            <p>
+                Minecraft Bedrock topluluğu için hazırlanmış eklentiler,
+                kaynaklar ve sunucu içerikleri.
+            </p>
+
+            <div class="cards">
+
+                <a href="./pages/server.html" class="card">
+                    <div class="icon">🎮</div>
+
+                    <h2>BedrockPVP Sunucusu</h2>
+
+                    <p>
+                        Sunucu bilgileri, IP adresi ve duyurular.
+                    </p>
+
+                    <span class="btn">
+                        Sunucuyu İncele
+                    </span>
+                </a>
+
+                <a href="https://www.shopier.com/TurkmenMiner" target="_blank" class="card">
+                    <div class="icon">🛒</div>
+
+                    <h2>Sunucu Marketi</h2>
+
+                    <p>
+                        Sunucu Marketi'nden<br>
+                        <img src="./src/images/bedrockPVPplus.png" class="market-icon-plus" alt="BedrockPVP+"> veya <img
+                            src="./src/images/kristal.png" class="market-icon-crystal" alt="Kristal"><br>
+                        satın alabilirsiniz.
+                    </p>
+
+                    <span class="btn">
+                        Markete Git
+                    </span>
+                </a>
+
+                <a href="./pages/addons.html" class="card">
+                    <div class="icon">📦</div>
+
+                    <h2>Eklentiler (Modlar)</h2>
+
+                    <p>
+                        Bedrock için hazırlanmış eklentileri ve modları keşfedin.
+                    </p>
+
+                    <span class="btn">
+                        Eklentilere Git
+                    </span>
+                </a>
+
+                <a href="./pages/apk.html" class="card">
+                    <div class="icon">📱</div>
+
+                    <h2>Minecraft APK</h2>
+
+                    <p>
+                        APK sürümlerini ve bilgilerini görüntüleyin.
+                    </p>
+
+                    <span class="btn">
+                        APK Sayfası
+                    </span>
+                </a>
+
             </div>
 
-            <button class="custom-btn" onclick="serverPage()">Server</button>
-            <button class="custom-btn ms-2" onclick="mainPage()">Main</button>
-          </div>
+        </section>
 
-          <div class="col-lg-4">
-            <div class="shadow p-2 rounded ratio ratio-16x9">
-              <iframe
-                src="https://www.youtube.com/embed/tkgIB-w4XRw"
-                allowfullscreen
-              ></iframe>
-            </div>
-          </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            © 2026 BedrockPVP • Minecraft Bedrock Addons, Sunucu<br>
+            Unofficial Minecraft Bedrock Portal • Kurucu TürkmenMiner
         </div>
-      `;
-    }
-
-    mainPage();
-  </script>
+    </footer>
 
 </body>
+
 </html>
-
-
-
-

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BedrockPVP Sunucusu</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #08080b;
+            --border: rgba(255, 255, 255, .08);
+            --purple: #8b5cf6;
+            --purple-dark: #6d28d9;
+            --text: #fff;
+            --muted: #b4b4c7;
+            --green: #22c55e;
+            --red: #ef4444;
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            top: -350px;
+            left: -300px;
+            background: #7c3aed;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .18;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            right: -300px;
+            bottom: -300px;
+            background: #9333ea;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .12;
+            pointer-events: none;
+        }
+
+        .container {
+            width: min(1200px, 92%);
+            margin: auto;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 8, 11, .85);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--purple);
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: white;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .25s;
+        }
+
+        .back-btn:hover {
+            background: var(--purple);
+            border-color: var(--purple);
+        }
+
+        .hero {
+            padding: 70px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.8rem, 7vw, 5rem);
+            margin-bottom: 12px;
+        }
+
+        .hero h1 span {
+            color: var(--purple);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 18px;
+            padding-bottom: 50px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 22px;
+        }
+
+        .card h2 {
+            margin-bottom: 14px;
+            font-size: 1.25rem;
+        }
+
+        .card p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .ip-box {
+            margin-top: 15px;
+            padding: 16px;
+            border-radius: 14px;
+            background: rgba(139, 92, 246, .12);
+            border: 1px solid rgba(139, 92, 246, .3);
+            font-weight: 700;
+            line-height: 1.8;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 11px 16px;
+            background: var(--purple);
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .25s;
+        }
+
+        .btn:hover {
+            background: var(--purple-dark);
+        }
+
+        .rules {
+            display: grid;
+            gap: 10px;
+        }
+
+        .rule {
+            padding: 12px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .03);
+            line-height: 1.6;
+        }
+
+        .rule.green {
+            border-left: 4px solid var(--green);
+        }
+
+        .rule.red {
+            border-left: 4px solid var(--red);
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+            margin-top: 20px;
+        }
+
+        .footer {
+            padding: 16px;
+            text-align: center;
+            color: #8f8fa1;
+            line-height: 1.6;
+            font-size: .9rem;
+        }
+
+        .market-items {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 12px;
+            margin-bottom: 16px;
+        }
+
+        .market-icon-crystal {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        .market-icon-plus {
+            height: 24px;
+            width: auto;
+            max-width: 100px;
+            object-fit: contain;
+            vertical-align: middle;
+        }
+
+        @media(max-width:768px) {
+
+            .nav {
+                height: auto;
+                padding: 12px 0;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 40px 0 25px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 16px;
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav">
+
+            <a href="../index.html" class="logo">
+                Bedrock<span>PVP</span>
+            </a>
+
+            <a href="../index.html" class="back-btn">
+                ← Ana Sayfa
+            </a>
+
+        </div>
+    </header>
+
+    <section class="hero container">
+
+        <h1>Bedrock<span>PVP</span></h1>
+        <h2>6<span> sezon</span></h2>
+
+        <p>
+            Survival, PvP, baskınlar, yağmalama ve tamamen özgür oynanış.
+            Sunucuya katıl ve rekabete başla.
+        </p>
+
+    </section>
+
+    <section class="container">
+
+        <div class="grid">
+
+            <div class="card">
+
+                <h2>🎮 Sunucu Bilgileri</h2>
+
+                <p>
+                    Minecraft Bedrock oyuncuları için hazırlanmış Survival PvP sunucusu.
+                </p>
+
+                <!-- <div class="ip-box">
+IP: play.bedrockpvp.com<br>
+Port: 19132<br>
+Sürüm: En Son Minecraft Bedrock Sürümü
+<a
+href="https://feedback.minecraft.net/hc/en-us/sections/360001186971-Release-Changelogs"
+target="_blank"
+class="btn">
+Güncel sürümü öğren!
+</a>
+</div> -->
+                <div class="ip-box">
+                    IP: play.bedrockpvp.com<br>
+                    Port: 19132<br>
+                    <span id="version">Sürüm yükleniyor...</span>
+                </div>
+
+                <div class="buttons">
+
+                    <a href="minecraft://?addExternalServer=BedrockPVP 6.sezon|play.bedrockpvp.com:19132" class="btn">
+                        Sunucuyu Minecraft'a Ekle
+                    </a>
+                    <button class="btn" onclick="copyIP()">
+                        IP'yi Kopyala
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- <div class="card">
+
+                <h2>🛒 Sunucu Marketi</h2>
+
+                <p>
+                    Sunucuda satılan özel eşyalar ve kristal satın almak için sunucu marketini ziyaret edebilirsiniz.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="https://www.shopier.com/TurkmenMiner" target="_blank" class="btn">
+                        Markete Git
+                    </a>
+
+                </div>
+
+            </div> -->
+            <div class="card">
+
+                <h2>🛒 Sunucu Marketi</h2>
+
+                <p>
+                    Sunucu Marketi'nden<br>
+                    BedrockPVP+: <img src="../src/images/bedrockPVPplus.png" class="market-icon-plus"
+                        alt="BedrockPVP+"><br>
+                    Kristal: <img src="../src/images/kristal.png" class="market-icon-crystal" alt="Kristal"><br>
+                    satın alabilirsiniz.
+                </p>
+
+                <div class="buttons">
+
+                    <a href="https://www.shopier.com/TurkmenMiner" target="_blank" class="btn">
+                        Markete Git
+                    </a>
+
+                </div>
+
+            </div>
+            <div class="card">
+
+                <h2>⚔️ Sunucuda Serbest</h2>
+
+                <div class="rules">
+                    <div class="rule green">Yağmalama</div>
+                    <div class="rule green">Base Patlatma</div>
+                    <div class="rule green">PvP</div>
+                    <div class="rule green">Tuzak Kurma</div>
+                    <div class="rule green">Dolandırma</div>
+                    <div class="rule green">Raid Yapma</div>
+                </div>
+
+            </div>
+
+            <div class="card">
+
+                <h2>🚫 Yasaklar</h2>
+
+                <div class="rules">
+
+                    <div class="rule red">
+                        Her türlü hile yasaktır.<br>
+                        Eşya çoğaltmak = Hile
+                    </div>
+
+                    <div class="rule red">
+                        Spam yapmak ve sohbeti kirletmek yasaktır.
+                    </div>
+
+                    <div class="rule red">
+                        Ağır küfür, hakaret ve oyuncuları rahatsız etmek yasaktır.
+                    </div>
+
+                    <div class="rule red">
+                        Irkçılık, siyaset ve dini ayrımcılık yasaktır.
+                    </div>
+
+                    <div class="rule red">
+                        Başka sunucuların reklamını yapmak yasaktır.
+                    </div>
+
+                    <div class="rule red">
+                        Sunucuya zarar verecek sistemler kurmak yasaktır.
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="card">
+                <h2>⛔ Ban Sistemi</h2>
+
+                <p>
+                    Hile nedeniyle banlanan oyuncuların banı açılmaz.
+                    Farklı hesaplarla giriş yapan oyuncular da banlanır.
+                    Hile kullanan oyuncuların baseleri kaldırılabilir.<br><br>
+                </p>
+
+
+                <h2>🔇 Sessize Alma</h2>
+
+                <p>
+                    Sessize alınan oyuncuların sesi tekrar açılmaz.
+                    Oyuncularla iletişim için <b>/msg</b> komutunu kullanabilirsiniz.<br><br>
+
+                </p>
+
+                <h2>🛡️ Yetkili Kuralları</h2>
+
+                <p>
+                    Oyunculara zarar vermek yasaktır.
+                    Yetki kötüye kullanılamaz.
+                    Tarafsız davranılmalıdır.
+                    Denetimler izleyici modunda yapılmalıdır.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h2>⚔️ PvP Sistemi</h2>
+
+                <p>
+                    PvP sırasında TP kullanamazsınız.<br><br>
+                    Oyundan çıkarsanız geri giriş yaptığınızda ölebilirsiniz.<br><br>
+                    Scoreboard üzerinde:
+                    <b>PVP'desin: EVET</b>
+                    yazısı görünür.<br><br>
+                </p>
+
+                <h2>📍 Koordinatlar</h2>
+
+                <p>
+                    Koordinatları açmak veya kapatmak için:<br><br>
+
+                    Video Ayarları → Kağıt Bebeği Gizle<br><br>
+
+                    Klavye kullanıyorsanız F8 tuşunu kullanabilirsiniz.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer">
+            © 2026 BedrockPVP • Minecraft Bedrock Addons, Sunucu<br>
+            Unofficial Minecraft Bedrock Portal • Kurucu TürkmenMiner
+        </div>
+    </footer>
+
+    <script>
+        function copyIP() {
+            navigator.clipboard.writeText("play.bedrockpvp.com");
+            alert("IP kopyalandı!");
+        }
+    </script>
+    <script>
+        setTimeout(() => {
+
+            fetch("https://raw.githubusercontent.com/PrismarineJS/minecraft-data/master/data/bedrock/common/protocolVersions.json")
+                .then(response => response.json())
+                .then(data => {
+
+                    const latest = data[0];
+
+                    document.getElementById("version").innerText =
+                        "Sürüm: " + latest.minecraftVersion;
+
+                })
+                .catch(() => {
+
+                    document.getElementById("version").innerText =
+                        "Sürüm alınamadı";
+
+                });
+
+        }, 1500);
+    </script>
+
+
+</body>
+
+</html>

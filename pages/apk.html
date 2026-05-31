@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Minecraft APK</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--bg:#08080b;
+--border:rgba(255,255,255,.08);
+--purple:#8b5cf6;
+--purple-dark:#6d28d9;
+--text:#fff;
+--muted:#b4b4c7;
+}
+
+body{
+font-family:Inter,sans-serif;
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
+overflow-x:hidden;
+}
+
+body::before{
+content:"";
+position:fixed;
+width:800px;
+height:800px;
+top:-350px;
+left:-300px;
+background:#7c3aed;
+border-radius:50%;
+filter:blur(220px);
+opacity:.18;
+pointer-events:none;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:700px;
+height:700px;
+right:-300px;
+bottom:-300px;
+background:#9333ea;
+border-radius:50%;
+filter:blur(220px);
+opacity:.12;
+pointer-events:none;
+}
+
+.container{
+width:min(1200px,92%);
+margin:auto;
+}
+
+header{
+border-bottom:1px solid var(--border);
+background:rgba(8,8,11,.85);
+backdrop-filter:blur(10px);
+}
+
+.nav{
+height:72px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:28px;
+font-weight:800;
+text-decoration:none;
+color:white;
+}
+
+.logo span{
+color:var(--purple);
+}
+
+.back-btn{
+text-decoration:none;
+color:white;
+padding:10px 16px;
+border:1px solid var(--border);
+border-radius:12px;
+transition:.25s;
+}
+
+.back-btn:hover{
+background:var(--purple);
+border-color:var(--purple);
+}
+
+.hero{
+padding:60px 0 40px;
+text-align:center;
+}
+
+.hero h1{
+font-size:clamp(2.5rem,6vw,4rem);
+margin-bottom:10px;
+}
+
+.hero h1 span{
+color:var(--purple);
+}
+
+.hero p{
+max-width:700px;
+margin:auto;
+color:var(--muted);
+line-height:1.6;
+}
+
+.apk-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:16px;
+padding-bottom:40px;
+}
+
+.apk-card{
+background:rgba(255,255,255,.04);
+border:1px solid var(--border);
+border-radius:20px;
+padding:20px;
+transition:.25s;
+display:flex;
+flex-direction:column;
+}
+
+.apk-card:hover{
+transform:translateY(-4px);
+border-color:var(--purple);
+box-shadow:0 0 35px rgba(139,92,246,.15);
+}
+
+.icon{
+font-size:42px;
+margin-bottom:12px;
+}
+
+.apk-card h2{
+margin-bottom:8px;
+}
+
+.apk-card p{
+color:var(--muted);
+line-height:1.5;
+margin-bottom:14px;
+flex:1;
+}
+
+.version{
+display:inline-block;
+padding:6px 10px;
+border-radius:8px;
+background:rgba(139,92,246,.15);
+border:1px solid rgba(139,92,246,.25);
+margin-bottom:12px;
+font-size:.9rem;
+font-weight:600;
+}
+
+.btn{
+display:inline-block;
+text-decoration:none;
+background:var(--purple);
+color:white;
+padding:10px 14px;
+border-radius:10px;
+font-weight:600;
+text-align:center;
+}
+
+.btn:hover{
+background:var(--purple-dark);
+}
+
+.info-box{
+margin-top:20px;
+padding:20px;
+border-radius:20px;
+background:rgba(255,255,255,.03);
+border:1px solid var(--border);
+color:var(--muted);
+line-height:1.7;
+}
+
+footer{
+border-top:1px solid var(--border);
+margin-top:40px;
+}
+
+.footer{
+padding:16px;
+text-align:center;
+color:#8f8fa1;
+line-height:1.6;
+font-size:.9rem;
+}
+
+@media(max-width:768px){
+
+.nav{
+height:auto;
+padding:12px 0;
+flex-direction:column;
+gap:10px;
+}
+
+.hero{
+padding:35px 0 25px;
+}
+
+.hero h1{
+font-size:2rem;
+}
+
+.apk-card{
+padding:15px;
+border-radius:16px;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="container nav">
+
+<a href="../index.html" class="logo">
+Bedrock<span>PVP</span>
+</a>
+
+<a href="../index.html" class="back-btn">
+← Ana Sayfa
+</a>
+
+</div>
+</header>
+
+<section class="hero container">
+
+<h1>Minecraft <span>APK</span></h1>
+
+<p>
+Minecraft Bedrock APK sürümlerini görüntüleyin ve en güncel bilgilere ulaşın.
+</p>
+
+</section>
+
+<section class="container">
+
+<div class="apk-grid">
+
+<div class="apk-card">
+
+<div class="icon">📱</div>
+
+<h2>Minecraft Bedrock</h2>
+
+<div class="version">
+Sürüm: 1.21.x
+</div>
+
+<p>
+En güncel Minecraft Bedrock sürümü hakkında bilgiler.
+</p>
+
+<a href="#" class="btn">
+İndir
+</a>
+
+</div>
+
+<div class="apk-card">
+
+<div class="icon">🧱</div>
+
+<h2>Önceki Sürümler</h2>
+
+<div class="version">
+Arşiv
+</div>
+
+<p>
+Eski Minecraft Bedrock APK sürümlerine erişin.
+</p>
+
+<a href="#" class="btn">
+Görüntüle
+</a>
+
+</div>
+
+<div class="apk-card">
+
+<div class="icon">⚠️</div>
+
+<h2>Kurulum Rehberi</h2>
+
+<div class="version">
+Yardım
+</div>
+
+<p>
+APK kurulumuyla ilgili temel bilgiler ve rehber.
+</p>
+
+<a href="#" class="btn">
+Oku
+</a>
+
+</div>
+
+</div>
+
+<div class="info-box">
+<strong>Bilgilendirme:</strong><br><br>
+APK bağlantıları ve sürüm bilgileri düzenli olarak güncellenecektir. Her zaman güvenilir kaynaklardan dosya indirmeniz önerilir.
+</div>
+
+</section>
+
+<footer>
+<div class="footer">
+© 2026 BedrockPVP • Minecraft Bedrock Addons, Sunucu<br>
+Unofficial Minecraft Bedrock Portal • Kurucu TürkmenMiner
+</div>
+</footer>
+
+</body>
+</html>

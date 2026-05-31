@@ -1,0 +1,17 @@
+{
+    "id": "deathcoordinates",
+    "name": "Öldüğün Yerin Konumu",
+    "description": "Öldüğünüzde koordinatlarınızı yalnızca size gösteren davranış paketi.",
+    "version": "1.21.50+",
+    "image": "pack_icon.png",
+    "file_name": "Oldugun yerin konumu[1.21.50+].mcpack",
+
+    "features": [
+        "Öldüğünüz zaman koordinatlar sohbet mesajı olarak gönderilir.",
+        "Mesajı diğer oyuncular göremez.",
+        "Deneysel özellik gerektirmez.",
+        "Ayarlar menüsü bulunmaktadır.",
+        "Sopa ile eğilip tıklayarak açılır.",
+        "Yeni sürümlerde güncelleme gerektirmez."
+    ]
+}

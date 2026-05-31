@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BedrockPVP Addons</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #08080b;
+            --border: rgba(255, 255, 255, .08);
+            --purple: #8b5cf6;
+            --purple-dark: #6d28d9;
+            --text: #fff;
+            --muted: #b4b4c7;
+        }
+
+        body {
+            font-family: Inter, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            top: -350px;
+            left: -300px;
+            background: #7c3aed;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .18;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 700px;
+            height: 700px;
+            right: -300px;
+            bottom: -300px;
+            background: #9333ea;
+            border-radius: 50%;
+            filter: blur(220px);
+            opacity: .12;
+            pointer-events: none;
+        }
+
+        .container {
+            width: min(1200px, 92%);
+            margin: auto;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(8, 8, 11, .85);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo span {
+            color: var(--purple);
+        }
+
+        .back-btn {
+            text-decoration: none;
+            color: white;
+            padding: 10px 16px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: .25s;
+        }
+
+        .back-btn:hover {
+            background: var(--purple);
+            border-color: var(--purple);
+        }
+
+        .hero {
+            padding: 60px 0 40px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 10px;
+        }
+
+        .hero h1 span {
+            color: var(--purple);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: auto;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 280px));
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .addon-card {
+            width: 280px;
+            min-height: 360px;
+
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 20px;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        .addon-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--purple);
+            box-shadow: 0 0 35px rgba(139, 92, 246, .15);
+        }
+
+        .addon-icon {
+            width: 96px;
+            height: 96px;
+            object-fit: contain;
+            border-radius: 18px;
+            margin-bottom: 16px;
+        }
+
+        .addon-card h2 {
+            margin-bottom: 8px;
+        }
+
+        .addon-card p {
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+            flex: 1;
+        }
+
+        .version {
+            font-size: .9rem;
+            color: #9ca3af;
+            margin-bottom: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            width: auto;
+            align-self: flex-start;
+        }
+
+        .btn:hover {
+            background: var(--purple-dark);
+        }
+
+        .empty {
+            text-align: center;
+            padding: 40px;
+            border: 1px dashed rgba(139, 92, 246, .3);
+            border-radius: 20px;
+            color: var(--muted);
+        }
+
+        .addon-icon-placeholder {
+            width: 96px;
+            height: 96px;
+            border-radius: 18px;
+            background: rgba(139, 92, 246, .12);
+            border: 1px solid rgba(139, 92, 246, .2);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 42px;
+            margin-bottom: 16px;
+        }
+
+        .disabled {
+            background: #3f3f46;
+            color: white;
+            pointer-events: none;
+        }
+
+        .addon-card-link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .addon-card-link:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        footer {
+            border-top: 1px solid var(--border);
+        }
+
+        .footer {
+            padding: 16px;
+            text-align: center;
+            color: #8f8fa1;
+            line-height: 1.6;
+            font-size: .9rem;
+        }
+
+        @media(max-width:768px) {
+
+            .nav {
+                height: auto;
+                padding: 12px 0;
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .hero {
+                padding: 35px 0 25px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .addon-card {
+                padding: 15px;
+                border-radius: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav">
+
+            <a href="../index.html" class="logo">
+                Bedrock<span>PVP</span>
+            </a>
+
+            <a href="../index.html" class="back-btn">
+                ← Ana Sayfa
+            </a>
+
+        </div>
+    </header>
+
+    <section class="hero container">
+
+        <h1>Eklenti <span>Merkezi</span></h1>
+
+        <p>
+            Minecraft Bedrock için hazırlanmış eklentileri keşfedin.
+        </p>
+
+    </section>
+
+    <section class="container">
+
+        <div class="addons-grid" id="addonsGrid">
+
+
+        </div>
+
+    </section>
+
+    <footer>
+        <div class="footer">
+            © 2026 BedrockPVP • Minecraft Bedrock Addons, Sunucu<br>
+            Unofficial Minecraft Bedrock Portal • Kurucu TürkmenMiner
+        </div>
+    </footer>
+
+    <script>
+
+        const addons = [
+            "deathcoordinates",
+            "autototem",
+        ];
+
+        const grid = document.getElementById("addonsGrid");
+
+        async function loadAddons() {
+
+            for (const addonId of addons) {
+
+                try {
+
+                    const response =
+                        await fetch(`../src/addons/${addonId}/addon.json`);
+
+                    const addon = await response.json();
+
+                    const card = document.createElement("a");
+
+                    card.className = "addon-card addon-card-link"; 
+                    card.href = `./addon.html?id=${addonId}`;
+
+                    card.innerHTML = `
+                        <img
+                            class="addon-icon"
+                            src="../src/addons/${addonId}/${addon.image}"
+                            alt="${addon.name}"
+                        >
+                        <h2>${addon.name}</h2>
+
+                        <p>${addon.description}</p>
+
+                        <div class="version">
+                            Sürüm: ${addon.version}
+                        </div>
+                    
+                        <span class="btn">
+                            Detayları görmek için tıkla
+                        </span>
+                    `;
+
+                    grid.appendChild(card);
+
+                } catch (error) {
+
+                    console.error(
+                        "Addon yüklenemedi:",
+                        addonId,
+                        error
+                    );
+
+                }
+
+            }
+            const comingSoon = document.createElement("div");
+
+            comingSoon.className = "addon-card coming-soon";
+
+            comingSoon.innerHTML = `
+    <div class="addon-icon-placeholder">
+        🚀
+    </div>
+
+    <h2>Yakında</h2>
+
+    <p>
+        Yeni eklentiler yakında eklenecek.
+    </p>
+
+`;
+
+            grid.appendChild(comingSoon);
+        }
+
+        loadAddons();
+
+    </script>
+
+</body>
+
+</html>

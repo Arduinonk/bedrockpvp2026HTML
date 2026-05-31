@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Addon</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--bg:#08080b;
+--border:rgba(255,255,255,.08);
+--purple:#8b5cf6;
+--purple-dark:#6d28d9;
+--text:#fff;
+--muted:#b4b4c7;
+}
+
+body{
+font-family:Inter,sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+min-height:100vh;
+}
+
+body::before{
+content:"";
+position:fixed;
+width:800px;
+height:800px;
+top:-350px;
+left:-300px;
+background:#7c3aed;
+border-radius:50%;
+filter:blur(220px);
+opacity:.18;
+pointer-events:none;
+}
+
+body::after{
+content:"";
+position:fixed;
+width:700px;
+height:700px;
+right:-300px;
+bottom:-300px;
+background:#9333ea;
+border-radius:50%;
+filter:blur(220px);
+opacity:.12;
+pointer-events:none;
+}
+
+.container{
+width:min(1200px,92%);
+margin:auto;
+}
+
+header{
+border-bottom:1px solid var(--border);
+background:rgba(8,8,11,.85);
+backdrop-filter:blur(10px);
+}
+
+.nav{
+height:72px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:28px;
+font-weight:800;
+text-decoration:none;
+color:white;
+}
+
+.logo span{
+color:var(--purple);
+}
+
+.back-btn{
+text-decoration:none;
+color:white;
+padding:10px 16px;
+border:1px solid var(--border);
+border-radius:12px;
+}
+
+.hero{
+padding:60px 0 30px;
+text-align:center;
+}
+
+.hero img{
+width:128px;
+height:128px;
+object-fit:contain;
+border-radius:24px;
+margin-bottom:20px;
+}
+
+.hero h1{
+font-size:clamp(2.5rem,6vw,4rem);
+margin-bottom:10px;
+}
+
+.hero p{
+max-width:700px;
+margin:auto;
+color:var(--muted);
+line-height:1.7;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:18px;
+padding-bottom:50px;
+}
+
+.card{
+background:rgba(255,255,255,.04);
+border:1px solid var(--border);
+border-radius:20px;
+padding:22px;
+}
+
+.feature{
+padding:12px;
+background:rgba(255,255,255,.03);
+border-radius:12px;
+margin-bottom:10px;
+}
+
+.version{
+display:inline-block;
+padding:8px 12px;
+margin-bottom:15px;
+border-radius:10px;
+background:rgba(139,92,246,.15);
+border:1px solid rgba(139,92,246,.25);
+}
+
+.compatibility{
+padding:12px;
+margin-bottom:15px;
+border-radius:12px;
+background:rgba(34,197,94,.12);
+border:1px solid rgba(34,197,94,.25);
+color:#86efac;
+line-height:1.6;
+}
+
+.btn{
+display:inline-block;
+text-decoration:none;
+background:var(--purple);
+color:white;
+padding:12px 18px;
+border-radius:12px;
+font-weight:600;
+}
+
+footer{
+border-top:1px solid var(--border);
+}
+
+.footer{
+padding:16px;
+text-align:center;
+color:#8f8fa1;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<div class="container nav">
+
+<a href="../index.html" class="logo">
+Bedrock<span>PVP</span>
+</a>
+
+<a href="./addons.html" class="back-btn">
+← Eklentiler
+</a>
+
+</div>
+</header>
+
+<section class="hero container">
+
+<img id="icon">
+
+<h1 id="title"></h1>
+
+<p id="description"></p>
+
+</section>
+
+<section class="container">
+
+<div class="grid">
+
+<div class="card">
+
+<h2>📦 Özellikler</h2>
+
+<div id="features"></div>
+
+</div>
+
+<div class="card">
+
+<h2>⬇️ İndir</h2>
+
+<div class="version" id="version"></div>
+
+<div id="compatibility"></div>
+
+<p>
+Modu indirip doğrudan dünyanıza yükleyebilirsiniz.
+</p>
+
+<a id="downloadBtn" class="btn">
+İndir
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer>
+<div class="footer">
+© 2026 BedrockPVP
+</div>
+</footer>
+
+<script>
+
+async function loadAddon(){
+
+    const params =
+        new URLSearchParams(window.location.search);
+
+    const addonId =
+        params.get("id");
+
+    if(!addonId){
+        return;
+    }
+
+    const addon =
+        await fetch(`../src/addons/${addonId}/addon.json`)
+        .then(r => r.json());
+
+    document.title = addon.name;
+
+    document.getElementById("title").innerText =
+        addon.name;
+
+    document.getElementById("description").innerText =
+        addon.description;
+
+    document.getElementById("icon").src =
+        `../src/addons/${addonId}/${addon.image}`;
+
+    document.getElementById("version").innerText =
+        `Minecraft Bedrock ${addon.version}`;
+
+    if(addon.version.endsWith("+")){
+
+        const version =
+            addon.version.slice(0,-1);
+
+        document.getElementById("compatibility").innerHTML =
+            `
+            <div class="compatibility">
+            ✓ Bu eklenti ${version} ve sonraki tüm Minecraft Bedrock sürümleriyle uyumludur.
+            </div>
+            `;
+    }
+
+    document.getElementById("downloadBtn").href =
+        `../src/addons/${addonId}/versions/${addon.file_name}`;
+
+    const features =
+        document.getElementById("features");
+
+    addon.features.forEach(feature => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "feature";
+
+        div.innerText = feature;
+
+        features.appendChild(div);
+
+    });
+
+}
+
+loadAddon();
+
+</script>
+
+</body>
+</html>

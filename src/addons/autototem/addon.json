@@ -1,0 +1,23 @@
+{
+    "id": "autototem",
+    "name": "Totem ve Ender Kristal",
+    "description": "Totem oto aliniyor.",
+    "version": "1.21.50+",
+    "image": "pack_icon.png",
+    "file_name": "Krystal PVP Optimasyonu 12150.mcpack",
+    "features": [
+        "Bu modu ister kendi sunucunuzda ister tekli dünyanıza yükleyip kullanabilirsiniz!",
+        "Bu modda 2 özellık var:",
+        "1. Envanterinizdeki totemleri otomatik olarak sol elinize geçirir!",
+        "2. End Kristalleri (vurmanıza gerek kalmadan) otomatik patlar",
+        "Modu yüklediğinizde bu özellikler otomatik açıktır!",
+        "Ayar menüsünü kullanarak bu özellikleri istediğiniz zaman kapatabilirsiniz!",
+        "Kurulum ve ayarlar:",
+        "Davranış paketini yükleyin",
+        "Dünya ayarlarından Denemeleri açmanıza gerek yok!",
+        "Ayarlar menüsünü açmak için kendinize admin tag verilmiş olması lazım!",
+        "Bu tagi sohbette hileler acıkken",
+        "/tag @s add admin\nyazarak alabilirsin!",
+        "Sonra Elinizde Ölümsüzlük Totemi ile boşluğa tıklayınız! Açılan menüdeki Oto Totem ve Oto End_Kristal seçeneklerini kullanınız!"
+    ]
+}
