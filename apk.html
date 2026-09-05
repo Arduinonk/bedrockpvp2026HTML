@@ -216,8 +216,8 @@
 
         .old {
             background: rgba(239, 68, 68, .15);
-            border: 1px solid rgba(239, 68, 68, .3);
-            color: #ef4444;
+            border: 1px solid rgba(239, 230, 68, 0.785);
+            color: #efcd44;
         }
 
         footer {
@@ -343,7 +343,6 @@
         }
     </script>
     <script>
-
         async function loadApks() {
 
             const grid = document.getElementById("apkGrid");
@@ -378,30 +377,33 @@
                     }
 
                     return 0;
-
                 });
 
                 apks.forEach(apk => {
+
                     const isLatestVersion =
                         isCurrentRelease(
                             apk.version,
                             latestMinecraftVersion
                         );
+
                     const statusBadge = isLatestVersion
-
                         ? `
-                <div class="status latest">
-                    ✅ En Güncel Sürüm
-                </div>
+                    <div class="status latest">
+                        ✅ En Güncel Sürüm
+                    </div>
                 `
-
                         : `
-                <div class="status old">
-                    ⚠️ Yeni Sürüm Mevcut
-                    <br>
-                    ${latestMinecraftVersion}
-                </div>
+                    <div class="status old">
+                        ⚠️ Yeni Sürüm Mevcut
+                        <br>
+                        ${latestMinecraftVersion}
+                    </div>
                 `;
+
+                    // Google Drive indirme linkini ID'den oluştur
+                    const downloadUrl =
+                        `https://drive.google.com/uc?export=download&id=${apk.id}`;
 
                     const card = document.createElement("div");
 
@@ -420,7 +422,7 @@
 
                 <p>${apk.description}</p>
 
-                <a href="${apk.url}"
+                <a href="${downloadUrl}"
                    target="_blank"
                    class="btn">
                     İndir
@@ -428,22 +430,24 @@
             `;
 
                     grid.appendChild(card);
-
                 });
 
             } catch (error) {
 
                 grid.innerHTML = `
-            <div style="grid-column:1/-1;text-align:center;color:#ff7777;">
+            <div style="
+                grid-column:1/-1;
+                text-align:center;
+                color:#ff7777;
+            ">
                 APK listesi yüklenemedi.
             </div>
         `;
 
                 console.error(error);
-
             }
-
         }
+
         loadApks();
     </script>
 </body>
