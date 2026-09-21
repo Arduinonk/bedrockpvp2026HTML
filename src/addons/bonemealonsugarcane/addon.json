@@ -1,0 +1,25 @@
+{
+  "id": "bonemealonsugarcane",
+  "name": "Şeker Kamışına Kemik Tozu",
+  "description": "Java Minecraft'ta şeker kamışına Bedrock Edition'daki gibi kemik tozu kullanmanızı sağlar.",
+  "version": "1.26.3+",
+  "image": "pack_icon.png",
+  "file_name": "Bedrock_Sugar_Cane_Parity_Java_26.3_plus_v1.1.zip",
+  "features": [
+    "Bu datapack'i ister kendi sunucunuzda ister tek oyunculu dünyanızda kullanabilirsiniz!",
+    "Java Minecraft'taki şeker kamışı büyüme sistemini Bedrock Edition'a benzer hale getirir.",
+    "Bu datapack'te 2 ana özellik vardır:",
+    "1. Elinizde kemik tozu varken şeker kamışına sağ tıklayarak büyütebilirsiniz.",
+    "2. Dispenser içindeki kemik tozu ile şeker kamışını otomatik olarak büyütebilirsiniz.",
+    "Bir kemik tozu kullanıldığında, üstünde yeterli boşluk varsa şeker kamışı maksimum 3 blok yüksekliğe kadar büyür.",
+    "Şeker kamışı zaten 3 blok yüksekliğindeyse kemik tozu boşa harcanmaz.",
+    "Creative modunda oyuncunun kemik tozu tüketilmez.",
+    "Deneysel özellikleri veya mod yükleyicisini açmanıza gerek yoktur.",
+    "Kurulum:",
+    "İndirdiğiniz ZIP dosyasını açmadan dünyanızın datapacks klasörüne yerleştirin.",
+    "Klasör yolu: saves/DünyaAdı/datapacks/",
+    "Dünyaya girdikten sonra /reload komutunu kullanın.",
+    "Datapack'in aktif olup olmadığını /datapack list komutuyla kontrol edebilirsiniz.",
+    "Kurulum tamamlandıktan sonra özellikler otomatik olarak aktif olur."
+  ]
+}
