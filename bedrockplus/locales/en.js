@@ -1,0 +1,28 @@
+window.BedrockPlusI18n.registerLocale("en", {
+  nativeName: "English",
+  dir: "ltr",
+  messages: {
+    "ui.language": "Language",
+    "ui.languageLabel": "Documentation language",
+    "ui.pluginLanguage": "Plugin programming language",
+    "ui.search": "Search the API…",
+    "ui.skip": "Skip to documentation",
+    "ui.openNav": "Open navigation",
+    "ui.home": "BedrockPlus documentation home",
+    "ui.brandSub": "Developer Docs · API v1",
+    "ui.theme": "Switch color theme",
+    "ui.sections": "Documentation sections",
+    "ui.current": "Current development API",
+    "ui.noResults": "No matching documentation sections.",
+    "ui.footer": "Created by Turkmen · Preview documentation",
+    "ui.copy": "Copy",
+    "ui.copied": "Copied",
+    "ui.selectText": "Select text",
+    "group.start": "Start",
+    "group.python": "Python",
+    "group.c++": "C++",
+    "group.packages": "Packages",
+    "group.api-reference": "API reference",
+    "group.operate": "Operate"
+  }
+});
