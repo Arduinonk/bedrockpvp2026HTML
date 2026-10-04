@@ -44,6 +44,9 @@ code { padding: .12em .34em; color: var(--accent-2); background: var(--accent-so
 }
 .brand strong, .brand small { display: block; line-height: 1.15; }
 .brand small { margin-top: 4px; color: var(--muted); font-size: 11px; }
+.bedrockpvp-link { display: inline-flex; min-height: 38px; align-items: center; justify-content: center; gap: 7px; padding: 0 12px; color: var(--text); border: 1px solid var(--line); background: var(--surface); border-radius: 10px; white-space: nowrap; font-size: 26px; font-weight: 800; }
+.bedrockpvp-link:hover { color: var(--text); border-color: var(--accent); background: var(--accent-soft); }
+.bedrockpvp-label > span { color: var(--accent-2); }
 .top-actions { display: flex; align-items: center; gap: 10px; margin-left: auto; }
 .api-language-switch { display: flex; padding: 3px; border: 1px solid var(--line); background: var(--surface); border-radius: 10px; }
 .api-language-switch button { min-height: 30px; padding: 0 10px; color: var(--muted); border: 0; background: transparent; border-radius: 7px; cursor: pointer; font: 700 13px/1 Inter, sans-serif; }
@@ -167,6 +170,10 @@ li { margin: 7px 0; }
 .boundary-list strong { color: var(--text); }
 footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 25px; color: var(--muted); border-top: 1px solid var(--line); font-size: 12px; }
 .search-empty { position: fixed; left: calc(var(--sidebar) + 70px); top: calc(var(--topbar) + 60px); color: var(--muted); }
+@media (max-width: 1100px) {
+  .bedrockpvp-link { width: 38px; padding: 0; font-size: 18px; }
+  .bedrockpvp-label { display: none; }
+}
 @media (max-width: 900px) {
   .menu-button { display: grid; }
   .brand { min-width: 0; }
@@ -180,9 +187,10 @@ footer { display: flex; justify-content: space-between; gap: 20px; padding-top: 
 }
 @media (max-width: 650px) {
   :root { --topbar: 116px; }
-  .topbar { display: grid; height: var(--topbar); grid-template-columns: 38px 1fr; grid-template-rows: 52px 52px; padding: 6px 12px; gap: 0 9px; }
+  .topbar { display: grid; height: var(--topbar); grid-template-columns: 38px 38px 1fr; grid-template-rows: 52px 52px; padding: 6px 12px; gap: 0 9px; }
   .menu-button { grid-column: 1; grid-row: 1; }
   .brand { grid-column: 2; grid-row: 1; }
+  .bedrockpvp-link { grid-column: 3; grid-row: 1; justify-self: end; }
   .brand > span:last-child { display: none; }
   .brand-mark { width: 34px; height: 34px; }
   .top-actions { grid-column: 1 / -1; grid-row: 2; min-width: 0; margin-left: 0; gap: 8px; justify-content: flex-start; }

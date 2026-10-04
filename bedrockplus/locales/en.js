@@ -9,6 +9,7 @@ window.BedrockPlusI18n.registerLocale("en", {
     "ui.skip": "Skip to documentation",
     "ui.openNav": "Open navigation",
     "ui.home": "BedrockPlus documentation home",
+    "ui.backToBedrockPvp": "Back to BedrockPVP",
     "ui.brandSub": "Developer Docs · API v1",
     "ui.theme": "Switch color theme",
     "ui.sections": "Documentation sections",

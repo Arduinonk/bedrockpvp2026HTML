@@ -4,7 +4,7 @@ window.BedrockPlusI18n.registerLocale("tr", {
   messages: {
     "ui.language": "Dil", "ui.languageLabel": "Dokümantasyon dili", "ui.pluginLanguage": "Eklenti programlama dili",
     "ui.search": "API içinde ara…", "ui.skip": "Dokümantasyona geç", "ui.openNav": "Gezinmeyi aç",
-    "ui.home": "BedrockPlus dokümantasyon ana sayfası", "ui.brandSub": "Geliştirici Belgeleri · API v1",
+    "ui.home": "BedrockPlus dokümantasyon ana sayfası", "ui.backToBedrockPvp": "BedrockPVP'ye dön", "ui.brandSub": "Geliştirici Belgeleri · API v1",
     "ui.theme": "Renk temasını değiştir", "ui.sections": "Dokümantasyon bölümleri", "ui.current": "Güncel geliştirme API'si",
     "ui.noResults": "Eşleşen dokümantasyon bölümü yok.", "ui.footer": "Turkmen tarafından oluşturuldu · Önizleme dokümantasyonu",
     "ui.copy": "Kopyala", "ui.copied": "Kopyalandı", "ui.selectText": "Metni seç",

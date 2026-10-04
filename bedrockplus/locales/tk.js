@@ -4,7 +4,7 @@ window.BedrockPlusI18n.registerLocale("tk", {
   messages: {
     "ui.language": "Dil", "ui.languageLabel": "Resminamanyň dili", "ui.pluginLanguage": "Plaginiň programmirleme dili",
     "ui.search": "API-den gözle…", "ui.skip": "Resminama geç", "ui.openNav": "Nawigasiýany aç",
-    "ui.home": "BedrockPlus resminamasynyň baş sahypasy", "ui.brandSub": "Dörediji resminamasy · API v1",
+    "ui.home": "BedrockPlus resminamasynyň baş sahypasy", "ui.backToBedrockPvp": "BedrockPVP-ä dolan", "ui.brandSub": "Dörediji resminamasy · API v1",
     "ui.theme": "Reňk temasyny çalyş", "ui.sections": "Resminama bölümleri", "ui.current": "Häzirki ösüş API-si",
     "ui.noResults": "Gabat gelýän bölüm tapylmady.", "ui.footer": "Turkmen tarapyndan döredildi · Deslapky resminama",
     "ui.copy": "Göçür", "ui.copied": "Göçürildi", "ui.selectText": "Teksti saýla",

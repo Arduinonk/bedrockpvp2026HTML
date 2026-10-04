@@ -4,7 +4,7 @@ window.BedrockPlusI18n.registerLocale("ru", {
   messages: {
     "ui.language": "Язык", "ui.languageLabel": "Язык документации", "ui.pluginLanguage": "Язык программирования плагина",
     "ui.search": "Поиск по API…", "ui.skip": "Перейти к документации", "ui.openNav": "Открыть навигацию",
-    "ui.home": "Главная документации BedrockPlus", "ui.brandSub": "Документация разработчика · API v1",
+    "ui.home": "Главная документации BedrockPlus", "ui.backToBedrockPvp": "Вернуться на BedrockPVP", "ui.brandSub": "Документация разработчика · API v1",
     "ui.theme": "Переключить цветовую тему", "ui.sections": "Разделы документации", "ui.current": "Текущий API разработки",
     "ui.noResults": "Подходящие разделы не найдены.", "ui.footer": "Создано Turkmen · Предварительная документация",
     "ui.copy": "Копировать", "ui.copied": "Скопировано", "ui.selectText": "Выделить текст",
