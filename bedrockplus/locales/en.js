@@ -20,6 +20,7 @@ window.BedrockPlusI18n.registerLocale("en", {
     "ui.copied": "Copied",
     "ui.selectText": "Select text",
     "group.start": "Start",
+    "group.server-owners": "Server owners",
     "group.python": "Python",
     "group.c++": "C++",
     "group.packages": "Packages",

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="BedrockPlus plugin development and API v1 documentation for Python and C++.">
-  <title>BedrockPlus Developer Documentation</title>
+  <meta name="description" content="BedrockPlus server installation, plugin development, and API v1 documentation for Python and C++.">
+  <title>BedrockPlus Documentation</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b5cf6'/%3E%3Cpath d='M14 16h20c10 0 16 4 16 12 0 5-3 8-7 10 6 1 9 5 9 10H39c0-4-2-6-7-6h-5v8H14V16zm13 10v7h6c3 0 5-1 5-4s-2-3-5-3h-6z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/styles.css">
   <script defer src="assets/i18n.js"></script>
@@ -55,6 +55,45 @@
           <article class="metric-card"><span data-i18n="overview.runtimes">Runtimes</span><strong>Python 3.13 · C++20</strong><small>Windows x64 · API/ABI v1</small></article>
           <article class="metric-card"><span data-i18n="overview.bds">Current BDS profile</span><strong>1.26.51.1</strong><small data-i18n="overview.bdsSub">Exact-build integration</small></article>
         </div>
+      </section>
+
+      <section id="server-install" data-title="Install server" data-group="Server owners">
+        <div class="eyebrow" data-i18n="serverInstall.eyebrow">Server owner quickstart · Windows x64</div>
+        <h2 data-i18n="serverInstall.title">Install and start BedrockPlus</h2>
+        <p data-i18n="serverInstall.intro">Install the BedrockPlus command once, initialize one empty server folder, and use that same folder for every later start. The current preview supports Python 3.13 and BDS 1.26.51.1.</p>
+        <div class="callout warning"><strong data-i18n="serverInstall.previewTitle">Preview installation</strong><p data-i18n="serverInstall.preview">The preview package is currently hosted on TestPyPI. The shorter production PyPI command will be documented after the public release is published.</p></div>
+
+        <h3 data-i18n="serverInstall.installTitle">1. Install the BedrockPlus command once</h3>
+        <p data-i18n="serverInstall.installText">Open Command Prompt or PowerShell and install the current preview package. This makes the bedrockplus command available on the computer.</p>
+        <pre><code>py -3.13 -m pip install --index-url https://test.pypi.org/simple/ --no-deps bedrockplus</code></pre>
+
+        <h3 data-i18n="serverInstall.firstTitle">2. First use: create a fresh server</h3>
+        <p data-i18n="serverInstall.firstText">Create or open an empty folder and run bedrockplus inside it. The folder must be empty except for a reusable Downloads cache.</p>
+        <pre><code>mkdir MyBedrockPlusServer
+cd MyBedrockPlusServer
+bedrockplus</code></pre>
+        <ol class="steps">
+          <li><span>1</span><div><strong data-i18n="serverInstall.confirmTitle">Confirm the official BDS download</strong><p data-i18n="serverInstall.confirm">Press Enter to accept Yes. BedrockPlus downloads the supported official server archive, or reuses a verified matching archive from Downloads.</p></div></li>
+          <li><span>2</span><div><strong data-i18n="serverInstall.filesTitle">Let BedrockPlus prepare the folder</strong><p data-i18n="serverInstall.files">It verifies the archive and creates server.properties, BedrockPlus.ini, plugins, logs, worlds, and private runtime data.</p></div></li>
+          <li><span>3</span><div><strong data-i18n="serverInstall.readyTitle">Wait for the server to become ready</strong><p data-i18n="serverInstall.ready">The same command starts BDS with BedrockPlus and enabled plugins. Enter stop in the server console for a graceful shutdown.</p></div></li>
+        </ol>
+        <div class="callout info"><strong data-i18n="serverInstall.emptyTitle">Your files are protected</strong><p data-i18n="serverInstall.empty">If the selected folder contains unrelated files, initialization stops with a warning and does not overwrite them.</p></div>
+
+        <h3 data-i18n="serverInstall.laterTitle">3. Every later start</h3>
+        <p data-i18n="serverInstall.laterText">Return to the initialized server folder and run the same command. BedrockPlus uses the existing configuration, world, BDS installation, and plugins.</p>
+        <pre><code>cd C:\Servers\MyBedrockPlusServer
+bedrockplus</code></pre>
+        <p data-i18n="serverInstall.plugins">To install a plugin, stop the server, place its .bppack file or development folder in plugins beside server.properties, and start BedrockPlus again.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th data-i18n="serverInstall.command">Command</th><th data-i18n="serverInstall.purpose">Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>bedrockplus</code></td><td data-i18n="serverInstall.commandDefault">Initialize an empty folder when needed, then start the server.</td></tr>
+            <tr><td><code>bedrockplus init</code></td><td data-i18n="serverInstall.commandInit">Initialize the current empty folder without starting BDS.</td></tr>
+            <tr><td><code>bedrockplus start</code></td><td data-i18n="serverInstall.commandStart">Start an already initialized server.</td></tr>
+            <tr><td><code>bedrockplus doctor</code></td><td data-i18n="serverInstall.commandDoctor">Run read-only checks when the server does not start correctly.</td></tr>
+            <tr><td><code>bedrockplus list-versions</code></td><td data-i18n="serverInstall.commandVersions">Show the BDS versions supported by this BedrockPlus build.</td></tr>
+          </tbody>
+        </table></div>
       </section>
 
       <section id="five-minute-path" data-title="Five-minute path" data-group="Start">
