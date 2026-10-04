@@ -60,12 +60,11 @@
       <section id="server-install" data-title="Install server" data-group="Server owners">
         <div class="eyebrow" data-i18n="serverInstall.eyebrow">Server owner quickstart · Windows x64</div>
         <h2 data-i18n="serverInstall.title">Install and start BedrockPlus</h2>
-        <p data-i18n="serverInstall.intro">Install the BedrockPlus command once, initialize one empty server folder, and use that same folder for every later start. The current preview supports Python 3.13 and BDS 1.26.51.1.</p>
-        <div class="callout warning"><strong data-i18n="serverInstall.previewTitle">Preview installation</strong><p data-i18n="serverInstall.preview">The preview package is currently hosted on TestPyPI. The shorter production PyPI command will be documented after the public release is published.</p></div>
+        <p data-i18n="serverInstall.intro">Install the BedrockPlus command once, initialize one empty server folder, and use that same folder for every later start. BedrockPlus currently supports Python 3.13 and BDS 1.26.51.1.</p>
 
         <h3 data-i18n="serverInstall.installTitle">1. Install the BedrockPlus command once</h3>
-        <p data-i18n="serverInstall.installText">Open Command Prompt or PowerShell and install the current preview package. This makes the bedrockplus command available on the computer.</p>
-        <pre><code>py -3.13 -m pip install --index-url https://test.pypi.org/simple/ --no-deps bedrockplus</code></pre>
+        <p data-i18n="serverInstall.installText">Open Command Prompt or PowerShell and install the public BedrockPlus package. This makes the bedrockplus command available on the computer.</p>
+        <pre><code>pip install bedrockplus</code></pre>
 
         <h3 data-i18n="serverInstall.firstTitle">2. First use: create a fresh server</h3>
         <p data-i18n="serverInstall.firstText">Create or open an empty folder and run bedrockplus inside it. The folder must be empty except for a reusable Downloads cache.</p>
