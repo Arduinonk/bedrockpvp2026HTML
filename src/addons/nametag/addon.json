@@ -1,0 +1,17 @@
+{
+    "id": "nametag",
+    "name": "Ad etiketine isim ver",
+    "description": "Ad etiketine Örs kullanmadan isim ver",
+    "version": "1.26.52+",
+    "image": "pack_icon.png",
+    "file_name": "Nametag.mcpack",
+    "features": [
+        "Bu modu ister kendi sunucunuzda ister tekli dünyanıza yükleyip kullanabilirsiniz!",
+        "Bu davranış paketinin nasıl yapıldığını merak ediyorsanızö bu ve daha fazla bunun gibi modların yapım videoları https://www.youtube.com/@turkmenminer kanalimda mevcuttur",
+        "Her isim kaydetmek için 1 seviye harcanır!",
+        "Kurulum ve ayarlar:",
+        "Davranış paketini yükleyin",
+        "Dünya ayarlarından Denemeleri açmanıza gerek yok!",
+        "Elinizde Ad etiketi ile boşluğa tıklayınız! Açılan menüde isim girebilirsiniz!"
+    ]
+}
