@@ -1,109 +1,541 @@
-window.BedrockPlusI18n.registerLocale("tk", {
-  nativeName: "Türkmençe",
-  dir: "ltr",
-  messages: {
-    "ui.language": "Dil", "ui.languageLabel": "Resminamanyň dili", "ui.pluginLanguage": "Plaginiň programmirleme dili",
-    "ui.search": "API-den gözle…", "ui.skip": "Resminama geç", "ui.openNav": "Nawigasiýany aç",
-    "ui.home": "BedrockPlus resminamasynyň baş sahypasy", "ui.backToBedrockPvp": "BedrockPVP-ä dolan", "ui.brandSub": "Dörediji resminamasy · API v1",
-    "ui.theme": "Reňk temasyny çalyş", "ui.sections": "Resminama bölümleri", "ui.current": "BedrockPlus 0.1.0 Beta 1 API",
-    "ui.noResults": "Gabat gelýän bölüm tapylmady.", "ui.footer": "Turkmen tarapyndan döredildi · Beta 1 resminamasy",
-    "ui.copy": "Göçür", "ui.copied": "Göçürildi", "ui.selectText": "Teksti saýla",
-    "group.start": "Başla", "group.server-owners": "Serwer eýeleri", "group.python": "Python", "group.c++": "C++", "group.packages": "Paketler",
-    "group.api-reference": "API maglumatnamasy", "group.operate": "Dolandyryş",
-    "overview.eyebrow": "Plagin döretmek · API v1", "overview.title": "BedrockPlus plaginini dörediň",
-    "overview.lead": "Tipleri görkezilen Python ýa-da C++ plaginini dörediň, ony bir barlanan .bppack arhiwine gaplaň, plugins bukjasyna salyň we serweri işe giriziň.",
-    "overview.start": "Döretmäge başla", "overview.download": "Doly mysaly ýükle", "overview.worksTitle": "Bu ýygyndyda işleýän zatlar",
-    "overview.works": "Barlanan Python we C++ plaginleri, alty ýaşaýyş döwri çagyryşy, gurluşly loglar, şahsy maglumat, meýilleşdirilen işler, tipli slash buýruklary, serwer buýrugyny ýerine ýetirmek, buýrugy ýatyrmak we üýtgetmek, vanilla buýruk syýasatlary hem-de on üç janly ýerli waka görnüşi.",
-    "overview.package": "Paket", "overview.packageSub": "Faýl heşleri bolan barlanan ZIP", "overview.runtimes": "Iş gurşawlary",
-    "overview.bds": "Häzirki BDS profili", "overview.bdsSub": "Takyk ýygynda niýetlenen integrasiýa",
-    "serverInstall.eyebrow": "Serwer eýesi üçin çalt başlangyç · Windows x64", "serverInstall.title": "BedrockPlus-y gurnaň we işe giriziň",
-    "serverInstall.intro": "BedrockPlus buýrugyny bir gezek gurnaň, bir boş serwer bukjasyny taýýarlaň we indiki her başlangyçda şol bukjany ulanyň. BedrockPlus häzirki wagtda Python 3.13-i we BDS 1.26.51.1-i goldaýar.",
-    "serverInstall.installTitle": "1. BedrockPlus buýrugyny bir gezek gurnaň", "serverInstall.installText": "Command Prompt ýa-da PowerShell açyň we açyk BedrockPlus paketini gurnaň. Şondan soň bedrockplus buýrugy kompýuterde elýeterli bolar.",
-    "serverInstall.firstTitle": "2. Ilkinji ulanyş: täze serwer dörediň", "serverInstall.firstText": "Boş bukja dörediň ýa-da açyň we onuň içinde bedrockplus buýrugyny işlediň. Gaýtadan ulanylýan Downloads keşinden başga bukja boş bolmaly.",
-    "serverInstall.confirmTitle": "Resmi BDS ýüklemesini tassyklaň", "serverInstall.confirm": "Yes saýlawyny kabul etmek üçin Enter basyň. BedrockPlus goldanylýan resmi serwer arhiwini ýüklär ýa-da Downloads-daky barlanan gabat gelýän arhiwi gaýtadan ulanar.",
-    "serverInstall.filesTitle": "Bukjany BedrockPlus taýýarlasyn", "serverInstall.files": "Ol arhiwi barlaýar we server.properties, BedrockPlus.ini, plugins, logs, worlds hem-de şahsy runtime maglumatlaryny döredýär.",
-    "serverInstall.readyTitle": "Serweriň taýýar bolmagyna garaşyň", "serverInstall.ready": "Şol bir buýruk BDS-ni BedrockPlus we işjeň plaginler bilen işe girizýär. Dogry ýapmak üçin serwer konsolynda stop ýazyň.",
-    "serverInstall.emptyTitle": "Faýllaryňyz goralýar", "serverInstall.empty": "Saýlanan bukjada baglanyşyksyz faýllar bar bolsa, taýýarlamak duýduryş bilen durar we olaryň üstünden ýazmaz.",
-    "serverInstall.laterTitle": "3. Her indiki başlangyç", "serverInstall.laterText": "Taýýarlanan serwer bukjasyna dolanyň we şol bir buýrugy işlediň. BedrockPlus bar bolan sazlamany, dünýäni, BDS gurnamasyny we plaginleri ulanar.",
-    "serverInstall.plugins": "Plagin gurnamak üçin serweri duruzyň, .bppack faýlyny ýa-da ösüş bukjasyny server.properties-iň ýanyndaky plugins bukjasyna ýerleşdiriň we BedrockPlus-y täzeden işe giriziň.",
-    "serverInstall.command": "Buýruk", "serverInstall.purpose": "Maksat", "serverInstall.commandDefault": "Gerek bolsa boş bukjany taýýarlaýar, soňra serweri işe girizýär.",
-    "serverInstall.commandInit": "BDS-ni işe girizmezden häzirki boş bukjany taýýarlaýar.", "serverInstall.commandStart": "Öň taýýarlanan serweri işe girizýär.",
-    "serverInstall.commandDoctor": "Serwer dogry açylmasa, diňe okalýan barlaglary geçirýär.", "serverInstall.commandVersions": "Şu BedrockPlus ýygyndysynyň goldaýan BDS wersiýalaryny görkezýär.",
-    "path.title": "Boş bukjadan işleýän plagine çenli", "path.oneTitle": "Plagini dörediň",
-    "path.one": "Python üçin BedrockPlus buýrugyny ulanyň ýa-da C++ mysal taslamasyndan başlaň.", "path.twoTitle": "Ýazyň we synag ediň",
-    "path.two": "Ýaşaýyş döwri çagyryşlaryny durmuşa geçiriň we serwer taýýar bolanda buýruklary, diňleýjileri hem-de işleri hasaba alyň.",
-    "path.threeTitle": "Bir paket düzüň", "path.three": "manifest.json-yň ýanynda gaplama buýrugyny işlediň. Python garaşlylyklary diňe şu açyk ýygnama wagtynda taýýarlanýar.",
-    "path.fourTitle": "Gurnaň we işe giriziň", "path.four": ".bppack faýlyny server.properties-iň ýanyndaky plugins bukjasyna göçüriň, soňra serwer bukjasynda bedrockplus buýrugyny işlediň.",
-    "files.title": "Faýllar we bukjalar", "files.intro": "Manifest we çeşme kody plagin döredijisine degişlidir. BedrockPlus bitewülik maglumatyny we taýýar arhiwi döredýär. Serwer eýesi diňe .bppack faýlyny gurnaýar.",
-    "files.ruleTitle": "Bir gurnama görnüşi", "files.rule": "Şol bir plagin ID-si bolan açylan bukjany we .bppack faýlyny bile gurnamaň. BedrockPlus gaýtalanýan ID-leri kabul etmeýär.",
-    "quick.title": "Iň kiçi tipli plagin", "quick.intro": "Ýokardaky umumy saýlaýjy bu sahypadaky ähli kod mysallaryny çalyşýar. Ýaşaýyş döwrüni hasaba almak we host çagyryşlary iki gurşawda-da açyk görkezilýär.",
-    "python.title": "Python ösüşi we awtomatiki doldurma", "python.intro": "Açyk BedrockPlus paketini VS Code-da saýlanan şol bir Python gurşawyna gurnaň. Paket tipli interfeýsleri we py.typed belgisini öz içine alýar; Pylance klaslary, metodlary, meýdanlary, buýruk görnüşlerini we waka tiplerini teklip edýär.",
-    "python.vscode": "VS Code-da Python: Select Interpreter buýrugyny saýlap, .venv gurşawyny görkeziň. Şondan soň from bedrockplus import PluginHost, Player, Server ýaly importlar awtomatiki doldurylýar.",
-    "cpp.title": "C++20 ösüşi", "cpp.intro": "Visual Studio 2022-ni Desktop development with C++, CMake gurallary we Windows SDK bilen ulanyň. Ýapyk hereketlendiriji kitaphanasyny baglamaň; açyk header-leri goşuň we ABI v1 deskriptoryny BEDROCKPLUS_PLUGIN arkaly eksport ediň.",
-    "cpp.runtimeTitle": "Iş gurşawyny saýlamak", "cpp.runtime": "Ulanyja aýratyn redistributable gerek bolmaz ýaly statik MSVC runtime bilen ýygnalyň. Doly mysalyň CMake taslamasy eýýäm şeýle sazlanan.",
-    "example.title": "Doly işleýän salgylanma plagini", "example.intro": "Her paket häzirki açyk API-de bar bolan ähli mümkinçilikleri görkezýär we geljek üçin goýlan waka atlaryny işleýän ýaly görkezmeýär.",
-    "example.downloadPython": "Python .bppack ýükle", "example.downloadCpp": "C++ .bppack ýükle", "example.source": "Çeşmäni ýükle",
-    "manifest.title": "manifest.json", "manifest.intro": "Kök manifest paketiň şahsyýetini we iş gurşawynyň şertnamasyny kesgitleýär. Plagin ID-si we wersiýasy eksport edilýän klas ýa-da ýerli deskriptor bilen gabat gelmeli.",
-    "lifecycle.title": "Ýaşaýyş döwri çagyryşlary", "lifecycle.intro": "Load host-y saklaýar, enable maglumatlary taýýarlaýar, server ready runtime hyzmatlaryny hasaba alýar, server stopping olary boşadýar, disable ýagdaýy saklaýar, unload bolsa soňky ýerli arassalamany edýär. Unload gutarandan soň host-y çagyrmaň.",
-    "lifecycle.load": "Plagine degişli ýagdaýy başladyň. Buýruklar, wakalar we meýilleşdiriji entek taýýar bolman biler.",
-    "lifecycle.ready": "BDS runtime hyzmatlary elýeterli wagty buýruklary, diňleýjileri we işleri hasaba alyň hem-de açyk boşadyň.",
-    "lifecycle.unload": "Soňky ýagdaýy saklaň we ýerli serişdeleri boşadyň. Ýalňyşlyklar ýerli ABI serhedinden geçmeli däl.",
-    "host.title": "Host API kartasy", "host.intro": "Şol bir hyzmatlar tipli Python metodlary we C++ wrapper-lary arkaly elýeterlidir. Elýeterlilik barlaglary has täze host mümkinçiligini talap edýän plaginiň düşnükli ýalňyşlyk bilen durmagyny üpjün edýär.",
-    "api.member": "Agza", "api.returns": "Görnüş / netije", "api.meaning": "Manysy", "api.properties": "Häsiýetler",
-    "api.plugin.desc": "Giriş klasy alty lifecycle callback-y ýerine ýetirýär. Runtime ony bir gezek döredýär, ýüklenende host-y berýär we serwer callback-laryny diňe BDS hyzmatlary elýeterli wagty çagyrýar.",
-    "api.plugin.load": "Host-y saklaň we plagine degişli ýagdaýy dörediň. Runtime hyzmatlary entek taýýar bolman biler.", "api.plugin.enable": "Sazlamany ýükläň we ýerli serişdeleri taýýarlaň.",
-    "api.plugin.ready": "Bu ýerde buýruklary, wakalary we meýilleşdirilen işleri hasaba alyň.", "api.plugin.stopping": "BDS durmazdan öň runtime hyzmatlaryny aýryň we işleri ýatyryň.",
-    "api.plugin.disable": "Ýagdaýy saklaň, ýerli serişdeleri ýapyň we unload-dan soň host-y ulanmaň.",
-    "api.host.desc": "BedrockPlus bu obýekti on_load-a berýär; özüňiz döretmäň. Boolean netije islegiň kabul edilendigini görkezýär, buýrugyň BDS tarapyndan tamamlanandygyny däl.",
-    "api.host.log": "Strukturalaýyn plagin log ýazgysyny ýazyň. Meýdan açarlary we bahalary setirdir.", "api.host.data": "Şu plaginiň şahsy hemişelik bukjasyny gaýtaryň.",
-    "api.host.available": "Goşmaça host aýratynlygyny ulanmazdan öň hyzmatyň bardygyny barlaň.", "api.host.schedule": "Serwer thread işini dörediň ýa-da ýatyryň; gaýdan iş ID-sini saklaň.",
-    "api.host.events": "Waka diňleýjisini goşuň ýa-da aýryň; gaýdan subscription ID-sini saklaň.", "api.host.commands": "Tipli ýerli slash buýrugyny goşuň ýa-da aýryň.",
-    "api.host.dispatch": "Bir buýrugy serwer hökmünde nobata goýuň. Başynda slash ýa-da täze setir goýmaň.", "api.host.policy": "Bir vanilla buýrugynyň oýunça görünmegini we elýeterliligini üýtgediň; konsol täsirlenmeýär.",
-    "api.cpp.services": "Bu goralan Plugin accessor-lary host ABI-siniň eýeçiliksiz wrapper-laryny gaýtarýar. Dürli API wersiýalarynda available() çagyryň we arassalamak üçin iş ýa-da subscription ID-lerini saklaň.",
-    "api.server.desc": "Amatly obýekt fabrigi we howpsuz buýruk fasady. PluginHost alnandan soň dörediň we plaginde saklaň.",
-    "api.server.properties": "Serwer şahsyýeti, açyk API wersiýasy we şu plaginiň şahsy maglumat ýoly.", "api.server.actions": "Serwer buýrugyny nobata goýuň ýa-da ähli oýunçylara habar iberiň. Ampersand reňk kodlary kabul edilýär.",
-    "api.server.player": "Oýunçy fasadyny el bilen dörediň ýa-da lifecycle waka meýdanlaryndan dolduryň.", "api.server.factories": "Tipli obýekt", "api.server.factoryDesc": "Plagin logikasy üçin üýtgemeýän baha obýektlerini dörediň. Bu fabrikler BDS obýektini döretmeýär ýa-da üýtgetmeýär.",
-    "api.pythonBehavior": "Python we C++-da hereketli", "api.player.desc": "Ýeňil oýunçy snapshot-y we buýruk arkaly howpsuz hereketler. Ol çig native oýunçy pointer-ini saklamaýar, şonuň üçin saklanmagy BDS obýektini diri tutmaýar.",
-    "api.player.identity": "Göçürilen şahsyýet meýdanlary. Elýeterli däl bahalar boş bolup biler.", "api.player.connection": "Tassyklanan birikme snapshot-y ýa-da işjeň waka bermedik bolsa None.",
-    "api.player.forwarded": "Geçirilen häsiýetler", "api.player.forwardedDesc": "Birikme meýdanlaryna amatly giriş. Ýok setirler boş, optional bahalar None bolýar.",
-    "api.player.selector": "Şu atdaky oýunçy üçin howpsuz escape edilen target selector.", "api.player.actions": "Habar, oýunçy çeşmeli buýruk, oýunçyny çykarmak ýa-da item işlerini nobata goýuň. True ibermek üçin kabul edilendigini aňladýar.",
-    "api.player.movement": "Barlanan pozisiýa, spawn nokady we ugrukdyryş işleri.", "api.player.progression": "Oýun režimi, ösüş we scoreboard tag işleri.", "api.player.effects": "Barlanan effekt we zeper işleri. Maksimum health üýtgetmek entek berilmeýär.", "api.player.media": "Ses, entity wakasy we animasiýa işleri.",
-    "api.connection.desc": "ConnectionInfo adres, ping, enjam, giriş, wersiýa, dil we optional client FPS snapshot-laryny öz içine alýar. SocketAddress host bilen porty bölýär. Her bahany hemişelik şahsyýet däl-de, optional iş maglumatlary hökmünde görüň.",
-    "api.location.desc": "Vector3 x, y we z koordinatalaryny saklaýar. Location level adyny, dimension ID-sini, yaw we pitch goşýar. Level bir level we dimension-y görkezýär, ýöne chunk ýüklemeýär ýa-da dünýäni üýtgetmeýär.",
-    "api.entity.desc": "Entity runtime ID, type ID we optional location saklaýar. ItemStack type ID, mukdar, aux baha we ýörite at saklaýar. API v1-de bular düşündiriş bahalarydyr: obýekti döretmek entity spawn etmeýär ýa-da inventory üýtgetmeýär.",
-    "api.command.type": "Görnüş", "api.command.members": "Möhüm agzalar", "api.command.argument": "Bir tipli awtodoldurma argumentini kesgitleýär. Choices enum argumentlerinde ulanylýar.",
-    "api.command.invocation": "Buýrugy kimiň işletendigini düşündirýär we parse edilen bahalary overload tertibinde saklaýar.", "api.command.result": "Üstünlik ýagdaýyny we optional ulanyjy habaryny gaýtarýar. Python callback None, bool ýa-da str hem gaýtaryp biler.",
-    "api.command.source": "Handler-e buýruk çeşmesine görä başgaça hereket etmäge mümkinçilik berýär.", "api.event.type": "Klas / meýdan", "api.event.base": "Waka şahsyýeti we yzygiderli artýan san. Anyk klaslar açyk sözlügiň ýerine tipli häsiýetleri berýär.",
-    "api.event.cancel": "BDS hereketi ýerine ýetirmezden öň goldawy barlaň we ýatyrmagy soraň.", "api.event.priority": "LOWEST/earliest ilki işleýär; MONITOR iň soňky bolup diňe syn etmeli.",
-    "api.event.lifecycle": "event.player göni elýeterli; Server.player_from_event(event) şol bir tipli Player obýektini berýär.", "api.event.commands": "Janly ýatyrylyp bilinýän buýruk wakalary. Buýrugy üýtgetmek üçin event.command bahasyny belläň.",
-    "api.event.tick": "Ýatyrylyp bilinýän hereketi bolmadyk ýeňil janly impuls.",
-    "objects.title": "Tipli obýektler we birikme suratlary", "objects.intro": "Obýektler çig BDS pointer-lerini açmagyň ýerine durnukly maglumatlary göçürýär. Boş goşmaça baha işjeň BDS profiliniň ony bermändigini aňladýar; BedrockPlus birikme maglumatyny toslamaýar.",
-    "objects.privacyTitle": "Birikme ID-lerini seresap ulanyň", "objects.privacy": "IP salgylary we enjam ID-leri dolandyryş üçin peýdaly bolup biler, emma plagin diňe serwer eýesine hakykatdan gerek maglumatlary ýygnamaly, loglamaly we saklamaly.",
-    "commands.title": "Tipli slash buýruklary we vanilla dolandyryşy", "commands.intro": "Hasaba alnan buýruklar çat awtodoldurmasy bilen birlikde ýerli BDS buýruk registrine goşulýar. Overload-lar integer, real, string, galan text we enum argumentlerini goldaýar. Enum saýlawlary anyk teklipleri berýär.",
-    "commands.policy": "Oýunçy we serwer buýruk wakalary BDS vanilla ýa-da BedrockPlus buýrugyny ýerine ýetirmezden öň işleýär. Diňleýji ýerine ýetirişi ýatyryp ýa-da buýruk setirini çalşyp biler. Gizlenen vanilla buýruklary oýunçy tekliplerinden aýrylýar we el bilen ýazylsa kabul edilmeýär; serwer konsoly täsirlenmeýär.",
-    "events.title": "Wakalar, ileri tutulma, ýatyrmak we üýtgetmek", "events.intro": "Serwer taýýar bolandan soň ýazylyň we arassalamak üçin gaýtarylan ID-ni saklaň. Ileri tutulmalar earliest-den monitor-a çenli işleýär. Monitor diňleýjileri üýtgetmeli däl, diňe synlamaly.",
-    "events.event": "Waka", "events.status": "Ýagdaý", "events.data": "Maglumat we dolandyryş", "events.live": "Işleýär", "events.reserved": "Goýlan",
-    "events.tick": "Yzygiderlilik belgisi; diňe okalýar.", "events.players": "Durnukly at we sessiýa, elýeterli bolsa tassyklanan birikme suraty.",
-    "events.command": "Ýerine ýetmezden öň ýatyrylyp bilner; buýruk üýtgedilip bilner.", "events.noProducer": "Atlar we tipli waka klaslary bar, ýöne entek BDS öndürijisi ýok.", "events.gameplay": "Tipli häsiýetler, barlanan üýtgetmeler we BDS hereketi rugsat berýän ýerde ýatyrmak.",
-    "scheduler.title": "Serwer akymynyň meýilleşdirijisi", "scheduler.intro": "Millisekunt boýunça bir gezeklik ýa-da çäkli gaýtalanýan çagyryşlary meýilleşdiriň. Iş ID-lerini saklaň we serwer duranda garaşýan işleri ýatyryň. API v1-de bir plagin nusgasy iň köp 1024 çagyryşy kabul edýär.",
-    "logging.title": "Gurluşly loglar we şahsy maglumat", "logging.intro": "Log derejeleri, durnukly waka kodlary we setir meýdanlary BedrockPlus.ini sazlamalaryna görä konsolda we seneli faýllarda görünýär. Her plagin gizlin BedrockPlus ýagdaý ýolunda şahsy hemişelik bukja alýar.",
-    "logging.color": "Plagin teksti &a ýaly ampersand reňk kodlaryny ulanyp biler; BedrockPlus goldanýan kodlary ugratmazdan öň Minecraft bölüm belgisi görnüşine geçirýär.",
-    "deps.title": "Öz-özüne ýeterlik garaşlylyklar", "deps.python": "Göni we takyk wersiýalary requirements.txt faýlyna her setirde bir paket görnüşinde ýazyň. Goşmaça requirements.lock ileri tutulýar we synagdan geçen doly toplumy öz içine almaly. bedrockplus plugin pack olary wagtlaýyn taýýarlyk nusgasynyň python/vendor bukjasyna gurnaýar; serwer işe girende pip hiç wagt işledilmeýär.",
-    "deps.cpp": "Statik runtime we kitaphana baglanyşygyny saýlaň ýa-da ygtyýarnamasy belli DLL garaşlylyklaryny native/windows-x64 içine goşuň. Plagin döredijiniň kompýuterindäki PATH-a ýa-da debug runtime-a bagly bolmaly däl.",
-    "deps.securityTitle": "Ugradýan zatlaryňyzy barlaň", "deps.security": "Garaşlylyklar serwer bilen birmeňzeş operasion ulgam ygtyýary bilen işleýär. Wersiýalary berkidiň, zerur bildirişleri saklaň we howpsuzlyk täzelenmesinden soň täzeden ýygnalyň.",
-    "pack.title": "Ýygnaň, barlaň we gurnaň", "pack.intro": "Buýrugy manifest.json bolan bukjada işlediň. Ol ýollary, şahsyýeti, runtime metadata-syny we döredilen heşleri barlaýar, soňra çykýan ýol berilmedik bolsa taýýar arhiwi manifestiň ýanyna ýazýar.",
-    "pack.install": "Üýtgedilmedik netijäni serweriň plugins bukjasyna göçüriň. Ony açmaň we ýygnamadan soň içerki faýllaryň adyny çalyşmaň.",
-    "folder.title": "Açylan ösüş plaginleri", "folder.body": "Ösüş wagtynda plagin göni plugins içinde adaty bukja bolup biler. Python vendor garaşlylyklary iki görnüşde-de işleýär. Gaýtalanýan gurnama, geçirmek we reliz üçin .bppack ulanyň.",
-    "packs.title": "Içine goşulan vanilla paketleri", "packs.body": ".bppack behavior_packs we resource_packs bukjalaryny öz içine alyp biler. BedrockPlus olary barlaýar we asyl plagin arhiwini üýtgetmän dünýä gurnamasyny dolandyrýar.",
-    "diag.title": "Barlag we köp duşýan meseleler", "diag.noLoadTitle": "Plagin ýüklenmeýär", "diag.noLoad": "Konsolda we loglarda ilkinji barlag ýalňyşlygyny okaň. Manifest ýollaryny, API we runtime wersiýasyny, gaýtalanýan ID-leri hem-de paketiň bitewüligini barlaň.",
-    "diag.noEventTitle": "Waka çagyryşy işlemeýär", "diag.noEvent": "Janly tablisadaky takyk waka adyny barlaň we server ready wagtynda ýazylyň. Ýalňyşlyk çykaran diňleýji howpsuzlyk üçin loga ýazylýar we aýrylýar.",
-    "diag.noImportTitle": "Python import şowsuz", "diag.noImport": "Takyk paketi requirements.txt-de görkeziň we täzeden ýygnalyň. Garaşlylyklary global gurnamaň we serwer başlanda pip işletmäň.",
-    "diag.noCommandTitle": "Buýrukda awtodoldurma ýok", "diag.noCommand": "Server ready-den soň tipli overload-lary hasaba alyň. connect, disconnect we status ýaly belli sözler üçin enum saýlawlaryny ulanyň.",
-    "support.title": "Ygtyýarnama, howpsuzlyk we goldaw", "support.body": "BedrockPlus Turkmen tarapyndan döredilen eýeçilik programma üpjünçiligidir. Gurnamazdan öň ygtyýarnamany okaň. Ýalňyşlyk habarynda BedrockPlus we BDS wersiýasyny, transport görnüşini, ilkinji degişli ýalňyşlygy we gaýtalama ädimlerini görkeziň; loglary paýlaşmazdan öň IP salgylaryny, Device ID, XUID we gizlin maglumatlary aýyryň.", "support.license": "BedrockPlus ygtyýarnamasyny oka", "support.contact": "BedrockPVP habarlaşmak",
-    "limits.title": "Häzirki Beta 1 çäkleri", "limits.windows": "Runtime häzirki wagtda 64-bit Windows, BDS 1.26.51.1, Python 3.13 we C++ ABI v1 üçin niýetlenendir.",
-    "limits.interpreter": "Python plaginleri bir içerki interpreter-i paýlaşýar. Garaşlylyk bukjalary aýry, ýöne bu proses derejesindäki howpsuzlyk izolýasiýasy däl.",
-    "limits.events": "Resminamalaşdyrylan on üç waka görnüşi işleýär; inventar, entity, chunk, NBT, scoreboard, forma we çig paket API-lary geljekki tapgyrlardyr.",
-    "limits.compat": "Plaginler resminamalaşdyrylan BedrockPlus API-sini nyşana almaly. Başga host üçin öň ýygnalan plaginler binary taýdan gabat gelmeýär.",
-    "limits.snapshots": "Oýun şahsyýeti we birikme maglumatlary göçürilen snapshot-lardyr; Python we C++ Player hereketleri native BDS pointerleriniň ýerine barlanan buýruklary ulanýar."
+<!doctype html>
+<html lang="en" data-theme="dark" data-api-language="python">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BedrockPlus server installation, plugin development, and API v1 documentation for Python and C++.">
+  <title>BedrockPlus Documentation</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b5cf6'/%3E%3Cpath d='M14 16h20c10 0 16 4 16 12 0 5-3 8-7 10 6 1 9 5 9 10H39c0-4-2-6-7-6h-5v8H14V16zm13 10v7h6c3 0 5-1 5-4s-2-3-5-3h-6z' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="assets/styles.css">
+  <script defer src="assets/i18n.js"></script>
+  <script defer src="locales/en.js?v=20261008.1"></script>
+  <script defer src="locales/tr.js?v=20261008.1"></script>
+  <script defer src="locales/ru.js?v=20261008.1"></script>
+  <script defer src="locales/tk.js?v=20261008.1"></script>
+  <script defer src="assets/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#content" data-i18n="ui.skip">Skip to documentation</a>
+  <header class="topbar">
+    <button class="icon-button menu-button" id="menu-button" aria-label="Open navigation" data-i18n-aria-label="ui.openNav" aria-expanded="false">☰</button>
+    <a class="brand" href="#overview" aria-label="BedrockPlus documentation home" data-i18n-aria-label="ui.home">
+      <span class="brand-mark">B+</span>
+      <span><strong>BedrockPlus</strong><small data-i18n="ui.brandSub">Developer Docs · API v1</small></span>
+    </a>
+    <a class="bedrockpvp-link" href="https://bedrockpvp.com/" aria-label="Back to BedrockPVP" data-i18n-aria-label="ui.backToBedrockPvp">
+      <span aria-hidden="true">←</span><span class="bedrockpvp-label">Bedrock<span>PVP</span>.com</span>
+    </a>
+    <div class="top-actions">
+      <div class="api-language-switch" role="group" aria-label="Plugin language" data-i18n-aria-label="ui.pluginLanguage">
+        <button type="button" data-api-language-select="python" class="active">Python</button>
+        <button type="button" data-api-language-select="cpp">C++</button>
+      </div>
+      <label class="language-picker"><span data-i18n="ui.language">Language</span><select id="language-select" aria-label="Documentation language" data-i18n-aria-label="ui.languageLabel"></select></label>
+      <label class="search"><span aria-hidden="true">⌕</span><input id="doc-search" type="search" placeholder="Search the API…" data-i18n-placeholder="ui.search" autocomplete="off"><kbd>/</kbd></label>
+      <button class="icon-button" id="theme-button" aria-label="Switch color theme" data-i18n-aria-label="ui.theme">◐</button>
+    </div>
+  </header>
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <nav id="doc-navigation" aria-label="Documentation sections" data-i18n-aria-label="ui.sections"></nav>
+      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 1 API</span></div>
+    </aside>
+    <main id="content">
+      <section id="overview" data-title="Overview" data-group="Start">
+        <div class="eyebrow" data-i18n="overview.eyebrow">Plugin development · API v1</div>
+        <h1 data-i18n="overview.title">Build a BedrockPlus plugin</h1>
+        <p class="lead" data-i18n="overview.lead">Create a typed Python or C++ plugin, package it as one validated .bppack archive, place it in plugins, and start the server.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#quickstart" data-i18n="overview.start">Start building</a>
+          <a class="button secondary" href="#full-example" data-i18n="overview.download">Download full example</a>
+        </div>
+        <div class="callout success"><strong data-i18n="overview.worksTitle">Working in this build</strong><p data-i18n="overview.works">Validated Python and C++ plugins, six lifecycle callbacks, structured logs, private data, scheduled tasks, typed slash commands, server command dispatch, command cancellation and rewriting, vanilla command policies, and thirteen live native event types.</p></div>
+        <div class="card-grid three">
+          <article class="metric-card"><span data-i18n="overview.package">Package</span><strong>.bppack</strong><small data-i18n="overview.packageSub">Validated ZIP with file hashes</small></article>
+          <article class="metric-card"><span data-i18n="overview.runtimes">Runtimes</span><strong>Python 3.13 · C++20</strong><small>Windows x64 · API/ABI v1</small></article>
+          <article class="metric-card"><span data-i18n="overview.bds">Current BDS profile</span><strong>1.26.51.1</strong><small data-i18n="overview.bdsSub">Exact-build integration</small></article>
+        </div>
+      </section>
+
+      <section id="server-install" data-title="Install server" data-group="Server owners">
+        <div class="eyebrow" data-i18n="serverInstall.eyebrow">Server owner quickstart · Windows x64</div>
+        <h2 data-i18n="serverInstall.title">Install and start BedrockPlus</h2>
+        <p data-i18n="serverInstall.intro">Install the BedrockPlus command once, initialize one empty server folder, and use that same folder for every later start. BedrockPlus currently supports Python 3.13 and BDS 1.26.51.1.</p>
+
+        <h3 data-i18n="serverInstall.installTitle">1. Install the BedrockPlus command once</h3>
+        <p data-i18n="serverInstall.installText">Open Command Prompt or PowerShell and install the public BedrockPlus package. This makes the bedrockplus command available on the computer.</p>
+        <pre><code>pip install bedrockplus</code></pre>
+
+        <h3 data-i18n="serverInstall.firstTitle">2. First use: create a fresh server</h3>
+        <p data-i18n="serverInstall.firstText">Create or open an empty folder and run bedrockplus inside it. The folder must be empty except for a reusable Downloads cache.</p>
+        <pre><code>mkdir MyBedrockPlusServer
+cd MyBedrockPlusServer
+bedrockplus</code></pre>
+        <ol class="steps">
+          <li><span>1</span><div><strong data-i18n="serverInstall.confirmTitle">Confirm the official BDS download</strong><p data-i18n="serverInstall.confirm">Press Enter to accept Yes. BedrockPlus downloads the supported official server archive, or reuses a verified matching archive from Downloads.</p></div></li>
+          <li><span>2</span><div><strong data-i18n="serverInstall.filesTitle">Let BedrockPlus prepare the folder</strong><p data-i18n="serverInstall.files">It verifies the archive and creates server.properties, BedrockPlus.ini, plugins, logs, worlds, and private runtime data.</p></div></li>
+          <li><span>3</span><div><strong data-i18n="serverInstall.readyTitle">Wait for the server to become ready</strong><p data-i18n="serverInstall.ready">The same command starts BDS with BedrockPlus and enabled plugins. Enter stop in the server console for a graceful shutdown.</p></div></li>
+        </ol>
+        <div class="callout info"><strong data-i18n="serverInstall.emptyTitle">Your files are protected</strong><p data-i18n="serverInstall.empty">If the selected folder contains unrelated files, initialization stops with a warning and does not overwrite them.</p></div>
+
+        <h3 data-i18n="serverInstall.laterTitle">3. Every later start</h3>
+        <p data-i18n="serverInstall.laterText">Return to the initialized server folder and run the same command. BedrockPlus uses the existing configuration, world, BDS installation, and plugins.</p>
+        <pre><code>cd C:\Servers\MyBedrockPlusServer
+bedrockplus</code></pre>
+        <p data-i18n="serverInstall.plugins">To install a plugin, stop the server, place its .bppack file or development folder in plugins beside server.properties, and start BedrockPlus again.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th data-i18n="serverInstall.command">Command</th><th data-i18n="serverInstall.purpose">Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>bedrockplus</code></td><td data-i18n="serverInstall.commandDefault">Initialize an empty folder when needed, then start the server.</td></tr>
+            <tr><td><code>bedrockplus init</code></td><td data-i18n="serverInstall.commandInit">Initialize the current empty folder without starting BDS.</td></tr>
+            <tr><td><code>bedrockplus start</code></td><td data-i18n="serverInstall.commandStart">Start an already initialized server.</td></tr>
+            <tr><td><code>bedrockplus doctor</code></td><td data-i18n="serverInstall.commandDoctor">Run read-only checks when the server does not start correctly.</td></tr>
+            <tr><td><code>bedrockplus list-versions</code></td><td data-i18n="serverInstall.commandVersions">Show the BDS versions supported by this BedrockPlus build.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="five-minute-path" data-title="Five-minute path" data-group="Start">
+        <h2 data-i18n="path.title">From an empty folder to a running plugin</h2>
+        <ol class="steps">
+          <li><span>1</span><div><strong data-i18n="path.oneTitle">Create the plugin</strong><p data-i18n="path.one">Use the BedrockPlus command for Python, or start from the C++ example project.</p></div></li>
+          <li><span>2</span><div><strong data-i18n="path.twoTitle">Write and test</strong><p data-i18n="path.two">Implement lifecycle callbacks and register commands, listeners, and tasks when the server is ready.</p></div></li>
+          <li><span>3</span><div><strong data-i18n="path.threeTitle">Build one package</strong><p data-i18n="path.three">Run the pack command beside manifest.json. Python dependencies are prepared only during this explicit build.</p></div></li>
+          <li><span>4</span><div><strong data-i18n="path.fourTitle">Install and start</strong><p data-i18n="path.four">Copy the .bppack into plugins beside server.properties, then run bedrockplus in that server folder.</p></div></li>
+        </ol>
+        <div data-api-language="python"><pre><code>bedrockplus plugin python init "My First Plugin"
+cd my-first-plugin
+bedrockplus plugin pack</code></pre></div>
+        <div data-api-language="cpp"><pre><code>cmake -S . -B build -G "Visual Studio 17 2022" -A x64
+cmake --build build --config Release
+bedrockplus plugin pack package</code></pre></div>
+      </section>
+
+      <section id="plugin-files" data-title="Plugin files explained" data-group="Start">
+        <h2 data-i18n="files.title">Files and folders</h2>
+        <p data-i18n="files.intro">The plugin creator owns the manifest and source. BedrockPlus creates integrity metadata and the finished archive. Server owners install only the .bppack file.</p>
+        <div data-api-language="python"><pre><code>my-plugin/
+├── manifest.json
+├── requirements.txt        # optional, exact third-party versions
+└── python/
+    └── plugin.py</code></pre></div>
+        <div data-api-language="cpp"><pre><code>my-plugin/
+├── CMakeLists.txt
+├── src/
+│   └── plugin.cpp
+└── package/
+    ├── manifest.json
+    └── native/windows-x64/my_plugin.dll</code></pre></div>
+        <div class="callout info"><strong data-i18n="files.ruleTitle">One installed form</strong><p data-i18n="files.rule">Do not install an unpacked folder and a .bppack with the same plugin ID together. BedrockPlus rejects duplicate identities.</p></div>
+      </section>
+
+      <section id="quickstart" data-title="Quickstart" data-group="Start">
+        <h2 data-i18n="quick.title">Minimal typed plugin</h2>
+        <p data-i18n="quick.intro">The global switch changes every code sample on this page. Lifecycle registration and host calls remain explicit in both runtimes.</p>
+        <div data-api-language="python"><pre><code>from bedrockplus import PluginHost
+
+class MyFirstPlugin:
+    id = "example.my-first-plugin"
+    name = "My First Plugin"
+    version = "0.1.0"
+
+    def on_load(self, host: PluginHost) -&gt; None:
+        self.host = host
+
+    def on_server_ready(self) -&gt; None:
+        self.host.log("info", "MY_PLUGIN.READY", "Plugin is ready")</code></pre></div>
+        <div data-api-language="cpp"><pre><code>#include &lt;bedrockplus/sdk/plugin.hpp&gt;
+
+class MyFirstPlugin final : public bedrockplus::sdk::Plugin {
+public:
+    using Plugin::Plugin;
+    void on_server_ready() override {
+        logger().log(BP_LOG_INFO, "Plugin is ready", "MY_PLUGIN.READY");
+    }
+};
+
+BEDROCKPLUS_PLUGIN(MyFirstPlugin, "example.my-first-plugin",
+                   "My First Plugin", "0.1.0")</code></pre></div>
+      </section>
+
+      <section id="python-quickstart" data-title="Python setup" data-group="Python" data-api-language="python">
+        <h2 data-i18n="python.title">Python development and autocomplete</h2>
+        <p data-i18n="python.intro">Install the public BedrockPlus package into the same Python environment selected by VS Code. The package contains typed interfaces and a py.typed marker, so Pylance can suggest classes, methods, fields, command shapes, and event types.</p>
+        <pre><code>py -3.13 -m venv .venv
+.venv\Scripts\activate
+python -m pip install bedrockplus</code></pre>
+        <p data-i18n="python.vscode">In VS Code choose Python: Select Interpreter and select .venv. Imports such as from bedrockplus import PluginHost, Player, Server will then autocomplete.</p>
+      </section>
+
+      <section id="cpp-quickstart" data-title="C++ setup" data-group="C++" data-api-language="cpp">
+        <h2 data-i18n="cpp.title">C++20 development</h2>
+        <p data-i18n="cpp.intro">Use Visual Studio 2022 with Desktop development with C++, CMake tools, and the Windows SDK. Link no private engine library: include the public headers and export the ABI v1 descriptor with BEDROCKPLUS_PLUGIN.</p>
+        <pre><code>cmake -S . -B build -G "Visual Studio 17 2022" -A x64 \
+  -DBEDROCKPLUS_ROOT=D:\path\to\BedrockPlusServerSoftware
+cmake --build build --config Release</code></pre>
+        <div class="callout warning"><strong data-i18n="cpp.runtimeTitle">Runtime choice</strong><p data-i18n="cpp.runtime">Build with the static MSVC runtime so users do not need a separately installed redistributable. The full example CMake project already configures this.</p></div>
+      </section>
+
+      <section id="full-example" data-title="Full examples" data-group="Start">
+        <h2 data-i18n="example.title">Complete working reference plugin</h2>
+        <p data-i18n="example.intro">Each package demonstrates every feature currently exposed by its public API and deliberately avoids pretending that reserved future event names are live.</p>
+        <div data-api-language="python">
+          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-api-example-1.7.0.bppack" download data-i18n="example.downloadPython">Download Python .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-api-example-1.7.0-source.zip" download data-i18n="example.source">Download source</a></div>
+          <pre><code>bedrockplus-full-api-example-1.7.0.bppack</code></pre>
+        </div>
+        <div data-api-language="cpp">
+          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-cpp-example-1.4.0.bppack" download data-i18n="example.downloadCpp">Download C++ .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-cpp-example-1.4.0-source.zip" download data-i18n="example.source">Download source</a></div>
+          <pre><code>bedrockplus-full-cpp-example-1.4.0.bppack</code></pre>
+        </div>
+      </section>
+
+      <section id="manifest" data-title="Manifest reference" data-group="Packages">
+        <h2 data-i18n="manifest.title">manifest.json</h2>
+        <p data-i18n="manifest.intro">The root manifest is the package identity and runtime contract. Plugin ID and version must match the exported class or native descriptor.</p>
+        <div data-api-language="python"><pre><code>{
+  "format_version": 1,
+  "id": "example.my-plugin",
+  "name": "My Plugin",
+  "version": "0.1.0",
+  "api_version": 1,
+  "runtime": {
+    "type": "python",
+    "entrypoint": "python/plugin.py",
+    "entry_class": "MyPlugin",
+    "python": "3.13"
   }
-});
+}</code></pre></div>
+        <div data-api-language="cpp"><pre><code>{
+  "format_version": 1,
+  "id": "example.my-plugin",
+  "name": "My Plugin",
+  "version": "0.1.0",
+  "api_version": 1,
+  "runtime": {
+    "type": "cpp",
+    "entrypoint": "native/windows-x64/my_plugin.dll",
+    "platform": "windows-x64",
+    "abi": 1
+  }
+}</code></pre></div>
+      </section>
+
+      <section id="lifecycle" data-title="Lifecycle" data-group="API reference">
+        <h2 data-i18n="lifecycle.title">Lifecycle callbacks</h2>
+        <p data-i18n="lifecycle.intro">Load stores the host, enable prepares data, server ready registers runtime services, server stopping releases them, disable saves state, and unload performs final local cleanup. Never call the host after unload returns.</p>
+        <div class="api-list">
+          <article class="api-entry"><h3>on_load · on_enable</h3><p data-i18n="lifecycle.load">Initialize plugin-owned state. Commands, events, and scheduling may not be ready yet.</p></article>
+          <article class="api-entry"><h3>on_server_ready · on_server_stopping</h3><p data-i18n="lifecycle.ready">Register and explicitly release commands, listeners, and tasks while BDS runtime services are available.</p></article>
+          <article class="api-entry"><h3>on_disable · on_unload</h3><p data-i18n="lifecycle.unload">Persist final state and release local resources. Exceptions must not cross the native ABI boundary.</p></article>
+        </div>
+      </section>
+
+      <section id="python-api" data-title="Host API" data-group="API reference">
+        <h2 data-i18n="host.title">Host API map</h2>
+        <p data-i18n="host.intro">The same services are available through typed Python methods and C++ wrappers. Availability checks let a plugin fail clearly when it targets a newer host feature.</p>
+        <article class="api-class">
+          <h3><code>Plugin</code></h3>
+          <p data-i18n="api.plugin.desc">Your entry class implements six lifecycle callbacks. The runtime constructs it once, passes the host during load, and calls server callbacks only while BDS services are usable.</p>
+          <div class="member-table table-wrap"><table>
+            <thead><tr><th data-i18n="api.member">Member</th><th data-i18n="api.returns">Returns</th><th data-i18n="api.meaning">Meaning</th></tr></thead>
+            <tbody>
+              <tr><td><code>on_load(host)</code></td><td><code>None</code> / <code>bp_status</code></td><td data-i18n="api.plugin.load">Store the host and create plugin-owned state. Runtime services may not be ready.</td></tr>
+              <tr><td><code>on_enable()</code></td><td><code>None</code> / <code>bp_status</code></td><td data-i18n="api.plugin.enable">Load configuration and prepare local resources.</td></tr>
+              <tr><td><code>on_server_ready()</code></td><td><code>None</code></td><td data-i18n="api.plugin.ready">Register commands, events, and scheduled tasks here.</td></tr>
+              <tr><td><code>on_server_stopping()</code></td><td><code>None</code></td><td data-i18n="api.plugin.stopping">Unregister runtime services and cancel tasks before BDS stops.</td></tr>
+              <tr><td><code>on_disable()</code> · <code>on_unload()</code></td><td><code>None</code></td><td data-i18n="api.plugin.disable">Save state, close local resources, and stop using the host after unload.</td></tr>
+            </tbody>
+          </table></div>
+          <div data-api-language="python"><pre><code>class MyPlugin:
+    def on_load(self, host: PluginHost) -&gt; None:
+        self.host = host
+
+    def on_server_ready(self) -&gt; None:
+        self.host.log("info", "MY.READY", "Runtime services are ready")</code></pre></div>
+          <div data-api-language="cpp"><pre><code>class MyPlugin final : public bedrockplus::sdk::Plugin {
+public:
+    using Plugin::Plugin;
+    void on_server_ready() override {
+        logger().info("Runtime services are ready");
+    }
+};</code></pre></div>
+        </article>
+
+        <article class="api-class">
+          <h3><code>PluginHost</code> <span class="runtime-note">Python</span></h3>
+          <p data-i18n="api.host.desc">BedrockPlus supplies this object to on_load. Do not construct it yourself. Boolean results report whether a request was accepted; command acceptance does not prove that BDS completed the command.</p>
+          <div class="member-table table-wrap"><table>
+            <thead><tr><th data-i18n="api.member">Method</th><th data-i18n="api.returns">Returns</th><th data-i18n="api.meaning">Meaning</th></tr></thead>
+            <tbody>
+              <tr><td><code>log(level, event_code, message, fields=None)</code></td><td><code>None</code></td><td data-i18n="api.host.log">Write a structured plugin log record. Field keys and values are strings.</td></tr>
+              <tr><td><code>data_directory()</code></td><td><code>str</code></td><td data-i18n="api.host.data">Return this plugin's private persistent directory.</td></tr>
+              <tr><td><code>scheduler_available()</code> · <code>events_available()</code> · <code>commands_available()</code></td><td><code>bool</code></td><td data-i18n="api.host.available">Check whether a service exists before using an optional host feature.</td></tr>
+              <tr><td><code>schedule(...)</code> · <code>cancel_task(id)</code></td><td><code>int</code> · <code>bool</code></td><td data-i18n="api.host.schedule">Create or cancel server-thread work. Keep the returned task ID.</td></tr>
+              <tr><td><code>subscribe_event(...)</code> · <code>unsubscribe_event(id)</code></td><td><code>int</code> · <code>bool</code></td><td data-i18n="api.host.events">Attach or remove an event listener. Keep the returned subscription ID.</td></tr>
+              <tr><td><code>register_command(...)</code> · <code>unregister_command(name)</code></td><td><code>None</code> · <code>bool</code></td><td data-i18n="api.host.commands">Add a typed native slash command or remove it.</td></tr>
+              <tr><td><code>dispatch_server_command(command)</code></td><td><code>bool</code></td><td data-i18n="api.host.dispatch">Queue one command as the server. Do not include a leading slash or newline.</td></tr>
+              <tr><td><code>hide_vanilla_command(name)</code> · <code>restore_vanilla_command(name)</code></td><td><code>bool</code></td><td data-i18n="api.host.policy">Change player visibility and access for one vanilla command; the console remains unaffected.</td></tr>
+            </tbody>
+          </table></div>
+          <div data-api-language="python"><pre><code>from pathlib import Path
+
+data_file = Path(self.host.data_directory()) / "state.json"
+accepted = self.host.dispatch_server_command("say Hello from plugin")</code></pre></div>
+          <div data-api-language="cpp"><pre><code>// C++ exposes focused wrappers instead of PluginHost directly.
+auto data_file = data_directory() / "state.json";
+bool accepted = commands().dispatch_server_command("say Hello from plugin");</code></pre></div>
+        </article>
+
+        <article class="api-class" data-api-language="cpp">
+          <h3><code>Logger</code> · <code>Scheduler</code> · <code>Events</code> · <code>Commands</code></h3>
+          <p data-i18n="api.cpp.services">These protected Plugin accessors return non-owning wrappers around the host ABI. Call available() when a plugin may run on different API revisions, and retain task or subscription IDs for cleanup.</p>
+          <pre><code>if (events().available()) {
+    join_subscription_ = events().subscribe("player.join", on_join);
+}
+logger().log(BP_LOG_INFO, "Loaded", "MY.LOAD", {{"mode", "safe"}});</code></pre>
+        </article>
+      </section>
+
+      <section id="object-api" data-title="Gameplay objects" data-group="API reference">
+        <h2 data-i18n="objects.title">Typed objects and connection snapshots</h2>
+        <p data-i18n="objects.intro">Objects copy stable data instead of exposing raw BDS pointers. Missing optional values mean the active BDS profile did not provide them; BedrockPlus never invents connection data.</p>
+        <article class="api-class" data-api-language="python">
+          <h3><code>Server(host)</code></h3>
+          <p data-i18n="api.server.desc">A convenient object factory and safe command façade. Create one after receiving PluginHost and keep it on your plugin.</p>
+          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
+            <tr><td><code>name</code> · <code>api_version</code> · <code>data_directory</code></td><td><code>str</code> · <code>int</code> · <code>Path</code></td><td data-i18n="api.server.properties">Server identity, public API version, and this plugin's private data path.</td></tr>
+            <tr><td><code>dispatch_command(command)</code> · <code>broadcast(message)</code></td><td><code>bool</code></td><td data-i18n="api.server.actions">Queue a server command or send a message to all players. Ampersand color codes are accepted.</td></tr>
+            <tr><td><code>player(...)</code> · <code>player_from_event(event)</code></td><td><code>Player</code></td><td data-i18n="api.server.player">Create a player façade manually or populate it from lifecycle event fields.</td></tr>
+            <tr><td><code>world(...)</code> · <code>level(...)</code> · <code>block(...)</code> · <code>entity(...)</code> · <code>item_stack(...)</code></td><td data-i18n="api.server.factories">Typed object</td><td data-i18n="api.server.factoryDesc">Create typed references or immutable values for plugin logic. Construction alone does not spawn or modify BDS objects.</td></tr>
+          </tbody></table></div>
+          <pre><code>self.server = Server(host)
+self.server.broadcast("&amp;aPlugin enabled")
+diamond = self.server.item_stack("minecraft:diamond", amount=3)</code></pre>
+        </article>
+
+        <article class="api-class">
+          <h3><code>Player</code> <span class="runtime-note" data-i18n="api.pythonBehavior">behavioral in Python and C++</span></h3>
+          <p data-i18n="api.player.desc">A lightweight player snapshot plus safe command-backed actions. It does not retain a raw native player pointer, so storing it cannot keep a BDS object alive.</p>
+          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
+            <tr><td><code>name</code> · <code>display_name</code> · <code>session_id</code> · <code>unique_id</code> · <code>xuid</code></td><td><code>str</code></td><td data-i18n="api.player.identity">Copied identity fields. Some values may be empty when unavailable.</td></tr>
+            <tr><td><code>connection</code></td><td><code>ConnectionInfo | None</code></td><td data-i18n="api.player.connection">Authenticated connection snapshot, or None if the active event did not provide it.</td></tr>
+            <tr><td><code>address</code> · <code>ping_ms</code> · <code>device_id</code> · <code>device_model</code> · <code>device_os</code> · <code>input_mode</code> · <code>game_version</code> · <code>locale</code></td><td data-i18n="api.player.forwarded">Forwarded properties</td><td data-i18n="api.player.forwardedDesc">Convenient access to connection fields. Missing strings are empty; optional values are None.</td></tr>
+            <tr><td><code>selector</code></td><td><code>str</code></td><td data-i18n="api.player.selector">A safely escaped target selector for this named player.</td></tr>
+            <tr><td><code>send_message(text)</code> · <code>run_command(command)</code> · <code>kick(reason)</code> · <code>give(item)</code></td><td><code>bool</code></td><td data-i18n="api.player.actions">Queue messaging, player-origin command, removal, or item operations. True means accepted for dispatch.</td></tr>
+            <tr><td><code>teleport()</code> · <code>set_spawn_point()</code> · <code>set_rotation()</code> · <code>look_at()</code></td><td><code>bool</code></td><td data-i18n="api.player.movement">Validated position, spawn, and orientation operations.</td></tr>
+            <tr><td><code>set_game_mode()</code> · <code>add_experience()</code> · <code>add_levels()</code> · <code>add_tag()</code> · <code>remove_tag()</code></td><td><code>bool</code></td><td data-i18n="api.player.progression">Game mode, progression, and scoreboard-tag operations.</td></tr>
+            <tr><td><code>add_effect()</code> · <code>remove_effect()</code> · <code>apply_damage()</code> · <code>kill()</code></td><td><code>bool</code></td><td data-i18n="api.player.effects">Validated effect and damage operations. Health maximum mutation is not exposed yet.</td></tr>
+            <tr><td><code>play_sound()</code> · <code>stop_sound()</code> · <code>trigger_event()</code> · <code>play_animation()</code></td><td><code>bool</code></td><td data-i18n="api.player.media">Sound, entity-event, and animation operations.</td></tr>
+          </tbody></table></div>
+          <div data-api-language="python"><pre><code>player = self.server.player_from_event(joined)
+player.send_message("&amp;aWelcome, &amp;f" + player.display_name)
+if player.ping_ms is not None:
+    self.host.log("info", "MY.PING", "Ping sampled", {"ms": str(player.ping_ms)})</code></pre></div>
+          <div data-api-language="cpp"><pre><code>Player player{commands(), authenticated_player};
+player.send_message("&amp;aWelcome, &amp;f" + player.display_name());
+if (const auto ping = player.get_ping()) {
+    logger().log(BP_LOG_INFO, "Ping sampled", "MY.PING",
+                 {{"ms", std::to_string(*ping)}});
+}</code></pre></div>
+        </article>
+
+        <article class="api-class">
+          <h3><code>ConnectionInfo</code> · <code>SocketAddress</code></h3>
+          <p data-i18n="api.connection.desc">ConnectionInfo contains address, ping, device, input, version, locale, and optional client FPS snapshots. SocketAddress separates host and port. Treat every value as optional operational data, not a permanent identity.</p>
+          <p class="member-line"><strong data-i18n="api.properties">Properties</strong>: <code>address</code>, <code>ping_ms</code>, <code>device_id</code>, <code>device_model</code>, <code>device_os</code>, <code>input_mode</code>, <code>game_version</code>, <code>locale</code>, <code>client_fps</code>; <code>host</code>, <code>port</code>.</p>
+          <div data-api-language="python"><pre><code>connection = player.connection
+if connection and connection.address:
+    host = connection.address.host
+    port = connection.address.port</code></pre></div>
+          <div data-api-language="cpp"><pre><code>if (player.connection &amp;&amp; player.connection-&gt;address) {
+    const auto&amp; host = player.connection-&gt;address-&gt;host;
+    auto port = player.connection-&gt;address-&gt;port;
+}</code></pre></div>
+        </article>
+
+        <article class="api-class">
+          <h3><code>Vector3</code> · <code>Location</code> · <code>Level</code>/<code>LevelSnapshot</code></h3>
+          <p data-i18n="api.location.desc">Vector3 stores x, y, and z coordinates. Location adds level name, dimension identifier, yaw, and pitch. Level identifies a level and dimension but does not load chunks or change the world.</p>
+          <p class="member-line"><strong data-i18n="api.properties">Properties</strong>: <code>x</code>, <code>y</code>, <code>z</code>; <code>level_name</code>, <code>dimension_id</code>, <code>position</code>, <code>yaw</code>, <code>pitch</code>; <code>name</code>.</p>
+          <div data-api-language="python"><pre><code>position = Vector3(12.5, 64.0, -8.0)
+place = Location("BedrockPlus", "minecraft:overworld", position, yaw=90.0)
+level = self.server.level(place.level_name, place.dimension_id)</code></pre></div>
+          <div data-api-language="cpp"><pre><code>Location place{"BedrockPlus", "minecraft:overworld",
+               Vector3{12.5, 64.0, -8.0}, 90.0F, 0.0F};
+LevelSnapshot level{place.level_name, place.dimension_id};</code></pre></div>
+        </article>
+
+        <article class="api-class">
+          <h3><code>Entity</code>/<code>EntitySnapshot</code> · <code>ItemStack</code></h3>
+          <p data-i18n="api.entity.desc">Entity stores a runtime ID, type ID, and optional location. ItemStack stores type ID, amount, auxiliary value, and custom name. In API v1 these are descriptive values: constructing one does not spawn an entity or edit inventory.</p>
+          <p class="member-line"><strong data-i18n="api.properties">Properties</strong>: <code>runtime_id</code>, <code>type_id</code>, <code>location</code>; <code>amount</code>, <code>aux_value</code>, <code>custom_name</code>.</p>
+          <div data-api-language="python"><pre><code>zombie = self.server.entity(42, "minecraft:zombie", place)
+reward = ItemStack("minecraft:diamond", amount=2, custom_name="Prize")</code></pre></div>
+          <div data-api-language="cpp"><pre><code>EntitySnapshot zombie{42, "minecraft:zombie", place};
+ItemStack reward{"minecraft:diamond", 2, 0, "Prize"};</code></pre></div>
+        </article>
+        <div class="callout warning"><strong data-i18n="objects.privacyTitle">Handle connection identifiers carefully</strong><p data-i18n="objects.privacy">IP addresses and device identifiers may be operationally useful, but plugins should collect, log, and retain only what the server owner genuinely needs.</p></div>
+      </section>
+
+      <section id="commands" data-title="Commands" data-group="API reference">
+        <h2 data-i18n="commands.title">Typed slash commands and vanilla control</h2>
+        <p data-i18n="commands.intro">Registered commands join the native BDS command registry, including chat autocomplete. Overloads support integer, real, string, remaining text, and enum arguments. Enum choices provide literal suggestions.</p>
+        <div data-api-language="python"><pre><code>from bedrockplus import CommandArgument
+
+host.register_command(
+    "weatherplus", callback,
+    description="Weather controls",
+    aliases=["wp"],
+    overloads=[[
+        CommandArgument("action", "enum",
+                        choices=("start", "stop", "status")),
+        CommandArgument("seconds", "int", optional=True),
+    ]],
+)</code></pre></div>
+        <div data-api-language="cpp"><pre><code>CommandDefinition command{
+    "weatherplus", "Weather controls", "any", {"wp"},
+    {CommandOverload{{
+        {"action", CommandArgumentType::enumeration, false,
+         {"start", "stop", "status"}},
+        {"seconds", CommandArgumentType::integer, true, {}}
+    }}}
+};
+commands().register_command(command, callback);</code></pre></div>
+        <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.command.type">Type</th><th data-i18n="api.command.members">Important members</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
+          <tr><td><code>CommandArgument</code></td><td><code>name</code>, <code>type</code>, <code>optional</code>, <code>choices</code></td><td data-i18n="api.command.argument">Defines one typed autocomplete argument. Choices are used by enum arguments.</td></tr>
+          <tr><td><code>CommandInvocation</code></td><td><code>source_kind</code>, <code>source_name</code>, <code>source_identity</code>, <code>command</code>, <code>arguments</code>, <code>args</code>/<code>values</code></td><td data-i18n="api.command.invocation">Describes who ran the command and contains parsed values in overload order.</td></tr>
+          <tr><td><code>CommandResult</code>/<code>CommandResponse</code></td><td><code>succeeded</code>, <code>message</code>, <code>error_code</code></td><td data-i18n="api.command.result">Returns success state and optional user-facing output. Python callbacks may also return None, bool, or str.</td></tr>
+          <tr><td><code>CommandSourceKind</code></td><td><code>CONSOLE</code> · <code>PLAYER</code></td><td data-i18n="api.command.source">Lets the handler apply different behavior based on the command source.</td></tr>
+        </tbody></table></div>
+        <div data-api-language="python"><pre><code>def callback(invocation: CommandInvocation) -&gt; CommandResult:
+    action = str(invocation.args[0])
+    return CommandResult.success(f"Selected: {action}")</code></pre></div>
+        <div data-api-language="cpp"><pre><code>CommandResponse callback(const CommandInvocation&amp; input) {
+    const auto&amp; action = std::get&lt;std::string&gt;(input.values.at(0));
+    return {true, "Selected: " + action, {}};
+}</code></pre></div>
+        <p data-i18n="commands.policy">Player and server command events run before BDS executes vanilla or BedrockPlus commands. A listener may cancel execution or replace the command string. Hidden vanilla commands disappear from player suggestions and are rejected when typed, while the server console remains unaffected.</p>
+      </section>
+
+      <section id="events" data-title="Events" data-group="API reference">
+        <h2 data-i18n="events.title">Events, priority, cancellation, and mutation</h2>
+        <p data-i18n="events.intro">Subscribe after server ready and keep the returned ID for cleanup. Priorities run from earliest to monitor. Monitor listeners should observe rather than modify.</p>
+        <div data-api-language="python"><pre><code>subscription = host.subscribe_event(
+    "player.command", on_command, priority=-100
+)
+
+def on_command(event: PlayerCommandEvent) -&gt; None:
+    if event.command == "blocked":
+        event.cancel()</code></pre></div>
+        <div data-api-language="cpp"><pre><code>auto subscription = events().subscribe(
+    "player.command", [](const Event&amp; event) {
+        if (event.field("command") == "blocked") {
+            static_cast&lt;void&gt;(event.cancel());
+        }
+    }, EventPriority::early);</code></pre></div>
+        <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.event.type">Class / field</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
+          <tr><td><code>Event.name</code> · <code>Event.sequence</code></td><td data-i18n="api.event.base">Event identity and monotonic sequence number. Concrete classes expose typed properties rather than a public dictionary.</td></tr>
+          <tr><td><code>CancellableEvent</code> · <code>Event.is_cancellable</code> · <code>is_cancelled</code> · <code>cancel()</code></td><td data-i18n="api.event.cancel">Check support and request cancellation before BDS executes the action.</td></tr>
+          <tr><td><code>EventPriority</code></td><td data-i18n="api.event.priority">LOWEST/earliest runs first; MONITOR runs last and should only observe.</td></tr>
+          <tr><td><code>PlayerJoinEvent</code> · <code>PlayerQuitEvent</code></td><td data-i18n="api.event.lifecycle">Expose event.player directly; Server.player_from_event(event) returns the same typed Player.</td></tr>
+          <tr><td><code>PlayerCommandEvent</code> · <code>ServerCommandEvent</code></td><td data-i18n="api.event.commands">Live cancellable command events. Assign event.command to rewrite the command.</td></tr>
+          <tr><td><code>ServerTickEvent</code></td><td data-i18n="api.event.tick">A lightweight live pulse with no cancellable action.</td></tr>
+        </tbody></table></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th data-i18n="events.event">Event</th><th data-i18n="events.status">Status</th><th data-i18n="events.data">Data and control</th></tr></thead>
+          <tbody>
+            <tr><td>server.tick</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.tick">Sequence number; read-only.</td></tr>
+            <tr><td>player.join · player.quit</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.players">Stable name and session, plus authenticated connection snapshot when available.</td></tr>
+            <tr><td>player.command · server.command</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.command">Cancellable before execution; command is mutable.</td></tr>
+            <tr><td>player.chat · block.break · block.place · server.list_ping · player.jump · player.kick · player.login · player.move</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.gameplay">Typed properties, validated mutation, and cancellation where the BDS action is cancellable.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="scheduler" data-title="Scheduler" data-group="API reference">
+        <h2 data-i18n="scheduler.title">Server-thread scheduler</h2>
+        <p data-i18n="scheduler.intro">Schedule one-shot or finite repeating callbacks in milliseconds. Keep task IDs and cancel outstanding work during server stopping. A plugin instance accepts at most 1024 submitted callbacks in API v1.</p>
+        <div data-api-language="python"><pre><code>once = host.schedule(callback, delay_ms=1000)
+repeat = host.schedule(callback, delay_ms=2000,
+                       interval_ms=2000, runs=3)
+host.cancel_task(repeat)</code></pre></div>
+        <div data-api-language="cpp"><pre><code>auto once = scheduler().schedule(callback, 1'000);
+auto repeat = scheduler().schedule(callback, 2'000, 2'000, 3);
+scheduler().cancel(repeat);</code></pre></div>
+      </section>
+
+      <section id="logging-data" data-title="Logging and data" data-group="API reference">
+        <h2 data-i18n="logging.title">Structured logs and private data</h2>
+        <p data-i18n="logging.intro">Log levels, stable event codes, and string fields appear in console and dated files according to BedrockPlus.ini. Each plugin receives a private persistent directory under the hidden BedrockPlus state path.</p>
+        <div data-api-language="python"><pre><code>from pathlib import Path
+
+host.log("info", "MY_PLUGIN.READY", "Ready", {"mode": "safe"})
+state_file = Path(host.data_directory()) / "state.json"</code></pre></div>
+        <div data-api-language="cpp"><pre><code>logger().log(BP_LOG_INFO, "Ready", "MY_PLUGIN.READY",
+             {{"mode", "safe"}});
+auto state_file = data_directory() / "state.json";</code></pre></div>
+        <p data-i18n="logging.color">Plugin text may use ampersand color codes such as &amp;a; BedrockPlus converts supported codes to the Minecraft section-sign format before dispatch.</p>
+      </section>
+
+      <section id="dependencies" data-title="Dependencies" data-group="Packages">
+        <h2 data-i18n="deps.title">Self-contained dependencies</h2>
+        <div data-api-language="python">
+          <p data-i18n="deps.python">Put direct, exact versions in requirements.txt, one package per line. An optional requirements.lock takes priority and should contain the complete tested set. bedrockplus plugin pack installs them into python/vendor inside a temporary staging copy; server startup never runs pip.</p>
+          <pre><code># requirements.txt
+TikTokLive==6.6.5</code></pre>
+        </div>
+        <div data-api-language="cpp"><p data-i18n="deps.cpp">Prefer static runtime and library linkage or ship explicitly licensed DLL dependencies inside native/windows-x64. The plugin must not rely on the developer machine's PATH or debug runtime.</p></div>
+        <div class="callout warning"><strong data-i18n="deps.securityTitle">Review what you ship</strong><p data-i18n="deps.security">Dependencies execute with the same operating-system access as the server. Pin versions, keep required notices, and rebuild after security updates.</p></div>
+      </section>
+
+      <section id="packaging" data-title="Build .bppack" data-group="Packages">
+        <h2 data-i18n="pack.title">Build, validate, and install</h2>
+        <p data-i18n="pack.intro">Run the command in the folder containing manifest.json. It validates paths, identity, runtime metadata, and generated hashes, then writes the finished archive beside the manifest unless an output path is supplied.</p>
+        <pre><code>bedrockplus plugin pack
+bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
+        <p data-i18n="pack.install">Copy the unchanged result into the server's plugins directory. Do not unzip it and do not rename internal files after building.</p>
+      </section>
+
+      <section id="folder-plugins" data-title="Folder plugins" data-group="Packages">
+        <h2 data-i18n="folder.title">Unpacked development plugins</h2>
+        <p data-i18n="folder.body">During development, a plugin may remain as a normal folder directly under plugins. Python vendor dependencies work in either form. Use .bppack for repeatable installation, transfer, and release.</p>
+      </section>
+
+      <section id="bundled-packs" data-title="Behavior and resource packs" data-group="Packages">
+        <h2 data-i18n="packs.title">Bundled vanilla packs</h2>
+        <p data-i18n="packs.body">A .bppack may include behavior_packs and resource_packs directories. BedrockPlus validates them and manages their world installation without changing the original plugin archive.</p>
+      </section>
+
+      <section id="diagnostics" data-title="Diagnostics" data-group="Operate">
+        <h2 data-i18n="diag.title">Validation and common failures</h2>
+        <div class="accordion">
+          <details><summary data-i18n="diag.noLoadTitle">Plugin does not load</summary><p data-i18n="diag.noLoad">Read the first validation error in console and logs. Check manifest paths, API version, runtime version, duplicate IDs, and package integrity.</p></details>
+          <details><summary data-i18n="diag.noEventTitle">Event callback never runs</summary><p data-i18n="diag.noEvent">Verify the exact event name in the live table and subscribe during server ready. A listener that raises an exception is logged and removed for safety.</p></details>
+          <details><summary data-i18n="diag.noImportTitle">Python import fails</summary><p data-i18n="diag.noImport">Declare the exact package in requirements.txt and rebuild. Do not install dependencies globally and do not run pip during server startup.</p></details>
+          <details><summary data-i18n="diag.noCommandTitle">Command lacks autocomplete</summary><p data-i18n="diag.noCommand">Register typed overloads after server ready. Use enum choices for fixed words such as connect, disconnect, and status.</p></details>
+        </div>
+      </section>
+
+      <section id="support" data-title="License and support" data-group="Operate">
+        <h2 data-i18n="support.title">License, security, and support</h2>
+        <p data-i18n="support.body">BedrockPlus is proprietary software created by Turkmen. Read the license before installation. Report reproducible bugs with the BedrockPlus version, BDS version, transport, first relevant error, and steps to reproduce; remove IP addresses, device IDs, XUIDs, and secrets before sharing logs.</p>
+        <div class="hero-actions"><a class="button secondary" href="LICENSE.txt" data-i18n="support.license">Read the BedrockPlus license</a><a class="button secondary" href="https://bedrockpvp.com/" data-i18n="support.contact">BedrockPVP contact</a></div>
+      </section>
+
+      <section id="limitations" data-title="Current boundaries" data-group="Operate">
+        <h2 data-i18n="limits.title">Current Beta 1 boundaries</h2>
+        <ul class="boundary-list">
+          <li data-i18n="limits.windows">The runtime currently targets 64-bit Windows, BDS 1.26.51.1, Python 3.13, and C++ ABI v1.</li>
+          <li data-i18n="limits.interpreter">Python plugins share one embedded interpreter. Dependency folders are isolated, but this is not process-level security isolation.</li>
+          <li data-i18n="limits.events">The thirteen documented event types are live; broader inventory, entity, chunk, NBT, scoreboard, form, and raw-packet APIs remain future milestones.</li>
+          <li data-i18n="limits.compat">Plugins must target the documented BedrockPlus API. Existing compiled plugins from another host are not binary-compatible.</li>
+          <li data-i18n="limits.snapshots">Gameplay identity and connection data are copied snapshots; Python and C++ Player actions are validated command-backed operations rather than retained native BDS pointers.</li>
+        </ul>
+      </section>
+
+      <div id="search-empty" class="search-empty" hidden data-i18n="ui.noResults">No matching documentation sections.</div>
+      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 1</span><span data-i18n="ui.footer">Created by Turkmen · Beta documentation</span></footer>
+    </main>
+  </div>
+</body>
+</html>
