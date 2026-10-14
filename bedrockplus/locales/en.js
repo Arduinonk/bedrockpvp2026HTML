@@ -13,7 +13,7 @@ window.BedrockPlusI18n.registerLocale("en", {
     "ui.brandSub": "Developer Docs · API v1",
     "ui.theme": "Switch color theme",
     "ui.sections": "Documentation sections",
-    "ui.current": "BedrockPlus 0.1.0 Beta 1 API",
+    "ui.current": "BedrockPlus 0.1.0 Beta 3 API",
     "ui.noResults": "No matching documentation sections.",
     "ui.footer": "Created by Turkmen · Beta documentation",
     "ui.copy": "Copy",
@@ -25,6 +25,22 @@ window.BedrockPlusI18n.registerLocale("en", {
     "group.c++": "C++",
     "group.packages": "Packages",
     "group.api-reference": "API reference",
-    "group.operate": "Operate"
+    "group.operate": "Operate",
+    "apiIndex.title": "Clickable API symbol index",
+    "apiIndex.intro": "Select a class, method, property, or parameter to jump to its contract and a small Python/C++ example. Every symbol below links to documentation on this page.",
+    "api.server.onlinePlayers": "Fresh authenticated player snapshots in stable session order.",
+    "api.server.getPlayer": "Find an online player by exact session ID, XUID, or name. The identity parameter must be a non-empty string.",
+    "api.server.entities": "Fresh pointer-free copies of the complete verified Level-owned Actor set.",
+    "api.server.getEntity": "Find a currently live Entity by its non-negative native runtime ID.",
+    "api.level.entities": "Level.entities performs a fresh native registry query and filters by BDS numeric dimension ID. The mapping is exact for Overworld, Nether, and The End; unknown custom mappings fail clearly.",
+    "api.entity.identity": "Verified native runtime/unique identity plus canonical and numeric Actor types.",
+    "api.entity.motion": "Motion and dimension values copied together after the completed native Level tick.",
+    "api.entity.player": "True when the native object is registered through the authenticated Player lifecycle.",
+    "api.entity.validity": "Query the registry again by runtime ID. A retained snapshot never keeps its Actor alive.",
+    "api.item.desc": "ItemStack is currently a validated plugin value used by command-backed Player helpers. It is not yet a live native inventory slot.",
+    "events.lifecycleExtended": "Authenticated lifecycle and exact native input/state transitions.",
+    "api.system.run": "Schedule the next tick or one delayed callback and return its task ID.",
+    "api.system.interval": "Run repeated tick work or advance one iterator step per tick. Exceptions retire the task safely.",
+    "api.system.clear": "Cancel an owned pending task by the ID returned from a scheduling method."
   }
 });
