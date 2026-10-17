@@ -8,10 +8,10 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b5cf6'/%3E%3Cpath d='M14 16h20c10 0 16 4 16 12 0 5-3 8-7 10 6 1 9 5 9 10H39c0-4-2-6-7-6h-5v8H14V16zm13 10v7h6c3 0 5-1 5-4s-2-3-5-3h-6z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/styles.css">
   <script defer src="assets/i18n.js"></script>
-  <script defer src="locales/en.js?v=20261014.1"></script>
-  <script defer src="locales/tr.js?v=20261014.1"></script>
-  <script defer src="locales/ru.js?v=20261014.1"></script>
-  <script defer src="locales/tk.js?v=20261014.1"></script>
+  <script defer src="locales/en.js?v=20261017.1"></script>
+  <script defer src="locales/tr.js?v=20261017.1"></script>
+  <script defer src="locales/ru.js?v=20261017.1"></script>
+  <script defer src="locales/tk.js?v=20261017.1"></script>
   <script defer src="assets/app.js"></script>
 </head>
 <body>
@@ -38,9 +38,10 @@
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <nav id="doc-navigation" aria-label="Documentation sections" data-i18n-aria-label="ui.sections"></nav>
-      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 3 API</span></div>
+      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 4 API</span></div>
     </aside>
     <main id="content">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bedrockpvp.com/">BedrockPVP</a><span>/</span><a href="#overview">BedrockPlus</a><span>/</span><span data-i18n="ui.docs">Documentation</span></nav>
       <section id="overview" data-title="Overview" data-group="Start">
         <div class="eyebrow" data-i18n="overview.eyebrow">Plugin development · API v1</div>
         <h1 data-i18n="overview.title">Build a BedrockPlus plugin</h1>
@@ -180,12 +181,12 @@ cmake --build build --config Release</code></pre>
         <h2 data-i18n="example.title">Complete working reference plugin</h2>
         <p data-i18n="example.intro">Each package demonstrates every feature currently exposed by its public API and deliberately avoids pretending that reserved future event names are live.</p>
         <div data-api-language="python">
-          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-api-example-1.13.0.bppack" download data-i18n="example.downloadPython">Download Python .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-api-example-1.13.0-source.zip" download data-i18n="example.source">Download source</a></div>
-          <pre><code>bedrockplus-full-api-example-1.13.0.bppack</code></pre>
+          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-api-example-1.15.0.bppack" download data-i18n="example.downloadPython">Download Python .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-api-example-1.15.0-source.zip" download data-i18n="example.source">Download source</a></div>
+          <pre><code>bedrockplus-full-api-example-1.15.0.bppack</code></pre>
         </div>
         <div data-api-language="cpp">
-          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-cpp-example-1.10.0.bppack" download data-i18n="example.downloadCpp">Download C++ .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-cpp-example-1.10.0-source.zip" download data-i18n="example.source">Download source</a></div>
-          <pre><code>bedrockplus-full-cpp-example-1.10.0.bppack</code></pre>
+          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-cpp-example-1.12.0.bppack" download data-i18n="example.downloadCpp">Download C++ .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-cpp-example-1.12.0-source.zip" download data-i18n="example.source">Download source</a></div>
+          <pre><code>bedrockplus-full-cpp-example-1.12.0.bppack</code></pre>
         </div>
       </section>
 
@@ -249,6 +250,14 @@ cmake --build build --config Release</code></pre>
           <article class="symbol-group">
             <h3>Entity · Level</h3>
             <div class="symbol-links"><a href="#api-entity-identity"><code>runtime_id</code></a><a href="#api-entity-identity"><code>type_id</code></a><a href="#api-entity-motion"><code>position</code></a><a href="#api-entity-motion"><code>velocity</code></a><a href="#api-entity-validity"><code>refresh()</code></a><a href="#api-entity-validity"><code>is_valid</code></a><a href="#api-level-entities"><code>Level.entities</code></a></div>
+          </article>
+          <article class="symbol-group">
+            <h3>Item registry</h3>
+            <div class="symbol-links"><a href="#api-item-registry"><code>Server.item_registry</code></a><a href="#api-item-registry-entry"><code>ItemRegistryEntry.runtime_id</code></a><a href="#api-item-registry-get"><code>get(type_id)</code></a><a href="#api-item-registry-get"><code>get_by_runtime_id(id)</code></a><a href="#api-item-registry-custom"><code>custom_entries</code></a></div>
+          </article>
+          <article class="symbol-group">
+            <h3>Scoreboard</h3>
+            <div class="symbol-links"><a href="#api-scoreboard"><code>Server.scoreboard</code></a><a href="#api-scoreboard-objective"><code>add_objective(...)</code></a><a href="#api-objective-score"><code>set_score(...)</code></a><a href="#api-objective-display"><code>set_display(...)</code></a><a href="#api-score-value"><code>Score.add(value)</code></a></div>
           </article>
           <article class="symbol-group">
             <h3>Commands · events · scheduler</h3>
@@ -336,6 +345,7 @@ logger().log(BP_LOG_INFO, "Loaded", "MY.LOAD", {{"mode", "safe"}});</code></pre>
             <tr id="api-server-get-player"><td><a class="api-symbol" href="#api-server-get-player"><code>get_player(identity)</code></a></td><td><code>Player | None</code></td><td data-i18n="api.server.getPlayer">Find an online player by exact session ID, XUID, or name. The identity parameter must be a non-empty string.</td></tr>
             <tr id="api-server-entities"><td><a class="api-symbol" href="#api-server-entities"><code>entities</code></a></td><td><code>tuple[Entity, ...]</code></td><td data-i18n="api.server.entities">Fresh pointer-free copies of the complete verified Level-owned Actor set.</td></tr>
             <tr id="api-server-get-entity"><td><a class="api-symbol" href="#api-server-get-entity"><code>get_entity(runtime_id)</code></a></td><td><code>Entity | None</code></td><td data-i18n="api.server.getEntity">Find a currently live Entity by its non-negative native runtime ID.</td></tr>
+            <tr id="api-server-native-registries"><td><a class="api-symbol" href="#api-item-registry"><code>item_registry</code></a> · <a class="api-symbol" href="#api-scoreboard"><code>scoreboard</code></a></td><td><code>ItemRegistrySnapshot</code> · <code>Scoreboard</code></td><td data-i18n="api.server.registries">Read immutable generations of the authoritative BDS item registry and scoreboard.</td></tr>
             <tr id="api-server-factories"><td><a class="api-symbol" href="#api-server-factories"><code>world(name)</code> · <code>level(name, dimension_id)</code> · <code>block(...)</code> · <code>item_stack(...)</code></a></td><td data-i18n="api.server.factories">Typed object</td><td data-i18n="api.server.factoryDesc">Create typed references or immutable plugin values. Construction alone does not spawn or modify BDS objects.</td></tr>
           </tbody></table></div>
           <div data-api-language="python"><pre><code>self.server = Server(host)
@@ -440,6 +450,65 @@ if entity is not None:
           <div data-api-language="cpp"><pre><code>ItemStack reward{"minecraft:diamond", 2, 0, "Prize"};</code></pre></div>
         </article>
         <div class="callout warning"><strong data-i18n="objects.privacyTitle">Handle connection identifiers carefully</strong><p data-i18n="objects.privacy">IP addresses and device identifiers may be operationally useful, but plugins should collect, log, and retain only what the server owner genuinely needs.</p></div>
+      </section>
+
+      <section id="item-registry" data-title="Item registry" data-group="API reference">
+        <h2 data-i18n="itemRegistry.title">Native item registry</h2>
+        <p data-i18n="itemRegistry.intro">Read the exact item type IDs and signed runtime IDs serialized by BDS for the active vanilla and add-on packs. The first generation becomes ready after BDS prepares an ItemRegistryPacket for a connecting client.</p>
+        <article class="api-class" id="api-item-registry">
+          <h3><code>ItemRegistrySnapshot</code></h3>
+          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
+            <tr><td><a class="api-symbol" href="#api-item-registry"><code>ready</code> · <code>generation</code> · <code>entries</code></a></td><td><code>bool</code> · <code>int</code> · <code>tuple</code></td><td data-i18n="itemRegistry.state">Availability, immutable generation number, and packet-order entries.</td></tr>
+            <tr id="api-item-registry-get"><td><a class="api-symbol" href="#api-item-registry-get"><code>get(type_id)</code> · <code>get_by_runtime_id(runtime_id)</code></a></td><td><code>ItemRegistryEntry | None</code></td><td data-i18n="itemRegistry.lookup">Look up vanilla or add-on items in either direction without changing runtime IDs.</td></tr>
+            <tr id="api-item-registry-custom"><td><a class="api-symbol" href="#api-item-registry-custom"><code>custom_entries</code></a></td><td><code>tuple[ItemRegistryEntry, ...]</code></td><td data-i18n="itemRegistry.custom">Entries outside the minecraft namespace, in native packet order.</td></tr>
+            <tr id="api-item-registry-entry"><td><a class="api-symbol" href="#api-item-registry-entry"><code>type_id</code> · <code>runtime_id</code> · <code>component_based</code> · <code>item_version</code></a></td><td><code>str</code> · <code>int</code> · <code>bool</code> · <code>int</code></td><td data-i18n="itemRegistry.entry">One exact BDS registration. Runtime IDs are signed 16-bit values, so negative values are valid.</td></tr>
+          </tbody></table></div>
+          <div data-api-language="python"><pre><code>registry = self.server.item_registry
+if registry.ready:
+    sword = registry.get("minecraft:diamond_sword")
+    custom = registry.custom_entries</code></pre></div>
+          <div data-api-language="cpp"><pre><code>const auto registry = server().item_registry();
+if (registry.ready) {
+    const auto* sword = registry.find("minecraft:diamond_sword");
+    for (const auto&amp; item : registry.entries) { /* use item.runtime_id */ }
+}</code></pre></div>
+        </article>
+      </section>
+
+      <section id="scoreboard-api" data-title="Scoreboard" data-group="API reference">
+        <h2 data-i18n="scoreboard.title">Native scoreboard API</h2>
+        <p data-i18n="scoreboard.intro">Read objectives, identities, scores, and display slots from authoritative BDS state. Mutations execute on the BDS tick thread and report a typed error when native state rejects them; no vanilla scoreboard command is composed.</p>
+        <article class="api-class" id="api-scoreboard">
+          <h3><code>Scoreboard</code></h3>
+          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
+            <tr><td><a class="api-symbol" href="#api-scoreboard"><code>ready</code> · <code>generation</code> · <code>objectives</code> · <code>entries</code></a></td><td><code>bool</code> · <code>int</code> · <code>tuple</code></td><td data-i18n="scoreboard.state">One immutable, internally consistent view of native scoreboard state.</td></tr>
+            <tr id="api-scoreboard-get"><td><a class="api-symbol" href="#api-scoreboard-get"><code>get_objective(name_or_slot)</code> · <code>get_objectives_by_criteria(criteria)</code></a></td><td><code>Objective | None</code> · <code>tuple</code></td><td data-i18n="scoreboard.get">Find an objective by unique name, display slot, or BDS criteria.</td></tr>
+            <tr id="api-scoreboard-objective"><td><a class="api-symbol" href="#api-scoreboard-objective"><code>add_objective(name, criteria, display_name, render_type)</code></a></td><td><code>None</code></td><td data-i18n="scoreboard.add">Create a native objective, then read Server.scoreboard again to obtain its new snapshot.</td></tr>
+            <tr id="api-scoreboard-clear"><td><a class="api-symbol" href="#api-scoreboard-clear"><code>clear_display(slot)</code> · <code>reset_scores(entry)</code></a></td><td><code>None</code></td><td data-i18n="scoreboard.clear">Clear one display slot or remove one participant from all modifiable objectives.</td></tr>
+          </tbody></table></div>
+        </article>
+        <article class="api-class" id="api-objective">
+          <h3><code>Objective</code> · <code>Score</code> · <code>ScoreboardEntry</code></h3>
+          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
+            <tr><td><a class="api-symbol" href="#api-objective"><code>name</code> · <code>display_name</code> · <code>criteria</code> · <code>scores</code></a></td><td data-i18n="scoreboard.objectiveType">Objective metadata</td><td data-i18n="scoreboard.objective">Copied native objective state and its real scores.</td></tr>
+            <tr id="api-objective-score"><td><a class="api-symbol" href="#api-objective-score"><code>get_score(entry)</code> · <code>set_score(entry, value)</code> · <code>add_score(entry, value)</code> · <code>reset_score(entry)</code></a></td><td><code>Score | None</code> · <code>int</code></td><td data-i18n="scoreboard.scoreOps">Read or mutate player, entity, existing-entry, and fake-player scores.</td></tr>
+            <tr id="api-objective-display"><td><a class="api-symbol" href="#api-objective-display"><code>set_display_name(text)</code> · <code>set_display(slot, order)</code> · <code>remove()</code></a></td><td><code>None</code></td><td data-i18n="scoreboard.displayOps">Update client-visible objective metadata or unregister the objective.</td></tr>
+            <tr id="api-score-value"><td><a class="api-symbol" href="#api-score-value"><code>Score.value</code> · <code>set_value(value)</code> · <code>add(value)</code> · <code>reset()</code></a></td><td><code>int</code> · <code>None</code></td><td data-i18n="scoreboard.valueOps">Operate on the exact native identity captured by a Score snapshot.</td></tr>
+          </tbody></table></div>
+          <div data-api-language="python"><pre><code>board = self.server.scoreboard
+objective = board.get_objective("kills")
+if objective is None:
+    board.add_objective("kills", display_name="Kills")
+else:
+    objective.add_score(player, 1)
+    objective.set_display(ScoreboardDisplaySlot.SIDEBAR)</code></pre></div>
+          <div data-api-language="cpp"><pre><code>auto board = server().scoreboard();
+if (const auto* objective = board.find_objective("kills")) {
+    static_cast&lt;void&gt;(server().add_score("kills", player, 1));
+    static_cast&lt;void&gt;(server().set_display(
+        "kills", ScoreboardDisplaySlot::sidebar));
+}</code></pre></div>
+        </article>
       </section>
 
       <section id="commands" data-title="Commands" data-group="API reference">
@@ -572,6 +641,16 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
         <p data-i18n="folder.body">During development, a plugin may remain as a normal folder directly under plugins. Python vendor dependencies work in either form. Use .bppack for repeatable installation, transfer, and release.</p>
       </section>
 
+      <section id="development-packs" data-title="Development packs" data-group="Server owners">
+        <h2 data-i18n="devPacks.title">Automatic development-pack activation</h2>
+        <p data-i18n="devPacks.intro">Before BDS starts, BedrockPlus reads valid folders, .zip files, and .mcpack files from development_behavior_packs and development_resource_packs, then updates the active world's registration JSON. The pack files themselves are not moved, extracted, or added to .bppack.</p>
+        <ul>
+          <li data-i18n="devPacks.update">Changing a pack manifest version updates the matching world registration on the next start.</li>
+          <li data-i18n="devPacks.disable">A folder, archive, or manifest header name ending in Disabled is excluded from BedrockPlus-managed registrations.</li>
+          <li data-i18n="devPacks.manual">Registrations not owned by BedrockPlus are preserved, so server owners remain free to manage normal world packs themselves.</li>
+        </ul>
+      </section>
+
       <section id="diagnostics" data-title="Diagnostics" data-group="Operate">
         <h2 data-i18n="diag.title">Validation and common failures</h2>
         <div class="accordion">
@@ -589,19 +668,24 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
       </section>
 
       <section id="limitations" data-title="Current boundaries" data-group="Operate">
-        <h2 data-i18n="limits.title">Current Beta 3 boundaries</h2>
+        <h2 data-i18n="limits.title">Current Beta 4 boundaries</h2>
         <ul class="boundary-list">
           <li data-i18n="limits.windows">The runtime currently targets 64-bit Windows, BDS 1.26.51.1, Python 3.13, and C++ ABI v1.</li>
           <li data-i18n="limits.interpreter">Python plugins share one embedded interpreter. Dependency folders are isolated, but this is not process-level security isolation.</li>
-          <li data-i18n="limits.events">The eighteen documented event types and read-only Entity fields are live; native Entity mutation, Level/BlockSource, chunks, inventory, NBT, scoreboard, forms, and raw packets remain future milestones.</li>
+          <li data-i18n="limits.events">The eighteen documented event types, read-only Entity fields, native item registry, and native scoreboard are live; native Entity mutation, Level/BlockSource, chunks, inventory, NBT, forms, and raw packets remain future milestones.</li>
           <li data-i18n="limits.compat">Plugins must target the documented BedrockPlus API. Existing compiled plugins from another host are not binary-compatible.</li>
           <li data-i18n="limits.snapshots">Player identity/connection and Entity data are pointer-free copied snapshots. Existing Player convenience actions are explicit command-backed operations and are not presented as completed native object methods.</li>
         </ul>
       </section>
 
       <div id="search-empty" class="search-empty" hidden data-i18n="ui.noResults">No matching documentation sections.</div>
-      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 3</span><span data-i18n="ui.footer">Created by Turkmen · Beta documentation</span></footer>
+      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 4</span><span data-i18n="ui.footer">Created by Turkmen · Beta 4 documentation</span></footer>
     </main>
+    <aside class="article-rail" aria-label="On this page" data-i18n-aria-label="ui.onThisPage">
+      <strong data-i18n="ui.onThisPage">On this page</strong>
+      <nav id="article-toc"></nav>
+      <a class="back-to-top" href="#overview" data-i18n="ui.backToTop">Back to top ↑</a>
+    </aside>
   </div>
 </body>
 </html>
