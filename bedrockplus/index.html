@@ -8,10 +8,10 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b5cf6'/%3E%3Cpath d='M14 16h20c10 0 16 4 16 12 0 5-3 8-7 10 6 1 9 5 9 10H39c0-4-2-6-7-6h-5v8H14V16zm13 10v7h6c3 0 5-1 5-4s-2-3-5-3h-6z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/styles.css">
   <script defer src="assets/i18n.js"></script>
-  <script defer src="locales/en.js?v=20261017.1"></script>
-  <script defer src="locales/tr.js?v=20261017.1"></script>
-  <script defer src="locales/ru.js?v=20261017.1"></script>
-  <script defer src="locales/tk.js?v=20261017.1"></script>
+  <script defer src="locales/en.js?v=20261020.2"></script>
+  <script defer src="locales/tr.js?v=20261020.2"></script>
+  <script defer src="locales/ru.js?v=20261020.2"></script>
+  <script defer src="locales/tk.js?v=20261020.2"></script>
   <script defer src="assets/app.js"></script>
 </head>
 <body>
@@ -38,7 +38,7 @@
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <nav id="doc-navigation" aria-label="Documentation sections" data-i18n-aria-label="ui.sections"></nav>
-      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 4 API</span></div>
+      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 6 API</span></div>
     </aside>
     <main id="content">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bedrockpvp.com/">BedrockPVP</a><span>/</span><a href="#overview">BedrockPlus</a><span>/</span><span data-i18n="ui.docs">Documentation</span></nav>
@@ -50,7 +50,7 @@
           <a class="button primary" href="#quickstart" data-i18n="overview.start">Start building</a>
           <a class="button secondary" href="#full-example" data-i18n="overview.download">Download full example</a>
         </div>
-        <div class="callout success"><strong data-i18n="overview.worksTitle">Working in this build</strong><p data-i18n="overview.works">Validated Python and C++ plugins, six lifecycle callbacks, structured logs, private data, scheduled tasks, typed slash commands, eighteen live native event types, authenticated online players, and pointer-free native Entity enumeration.</p></div>
+        <div class="callout success"><strong data-i18n="overview.worksTitle">Working in this build</strong><p data-i18n="overview.works">Validated Python and C++ plugins, six lifecycle callbacks, scheduled tasks, typed slash commands, eighteen live native event types, native player tags, plugin-owned boss bars, authenticated online players, and pointer-free native Entity enumeration.</p></div>
         <div class="card-grid three">
           <article class="metric-card"><span data-i18n="overview.package">Package</span><strong>.bppack</strong><small data-i18n="overview.packageSub">Validated ZIP with file hashes</small></article>
           <article class="metric-card"><span data-i18n="overview.runtimes">Runtimes</span><strong>Python 3.13 · C++20</strong><small>Windows x64 · API/ABI v1</small></article>
@@ -89,6 +89,7 @@ bedrockplus</code></pre>
           <tbody>
             <tr><td><code>bedrockplus</code></td><td data-i18n="serverInstall.commandDefault">Initialize an empty folder when needed, then start the server.</td></tr>
             <tr><td><code>bedrockplus init</code></td><td data-i18n="serverInstall.commandInit">Initialize the current empty folder without starting BDS.</td></tr>
+            <tr><td><code>bedrockplus adopt</code></td><td data-i18n="serverInstall.commandAdopt">Install missing BedrockPlus/BDS files into an existing server folder without overwriting worlds, plugins, packs, or operator configuration.</td></tr>
             <tr><td><code>bedrockplus start</code></td><td data-i18n="serverInstall.commandStart">Start an already initialized server.</td></tr>
             <tr><td><code>bedrockplus doctor</code></td><td data-i18n="serverInstall.commandDoctor">Run read-only checks when the server does not start correctly.</td></tr>
             <tr><td><code>bedrockplus list-versions</code></td><td data-i18n="serverInstall.commandVersions">Show the BDS versions supported by this BedrockPlus build.</td></tr>
@@ -181,12 +182,12 @@ cmake --build build --config Release</code></pre>
         <h2 data-i18n="example.title">Complete working reference plugin</h2>
         <p data-i18n="example.intro">Each package demonstrates every feature currently exposed by its public API and deliberately avoids pretending that reserved future event names are live.</p>
         <div data-api-language="python">
-          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-api-example-1.15.0.bppack" download data-i18n="example.downloadPython">Download Python .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-api-example-1.15.0-source.zip" download data-i18n="example.source">Download source</a></div>
-          <pre><code>bedrockplus-full-api-example-1.15.0.bppack</code></pre>
+          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-api-example-1.16.0.bppack" download data-i18n="example.downloadPython">Download Python .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-api-example-1.16.0-source.zip" download data-i18n="example.source">Download source</a></div>
+          <pre><code>bedrockplus-full-api-example-1.16.0.bppack</code></pre>
         </div>
         <div data-api-language="cpp">
-          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-cpp-example-1.12.0.bppack" download data-i18n="example.downloadCpp">Download C++ .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-cpp-example-1.12.0-source.zip" download data-i18n="example.source">Download source</a></div>
-          <pre><code>bedrockplus-full-cpp-example-1.12.0.bppack</code></pre>
+          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-cpp-example-1.13.0.bppack" download data-i18n="example.downloadCpp">Download C++ .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-cpp-example-1.13.0-source.zip" download data-i18n="example.source">Download source</a></div>
+          <pre><code>bedrockplus-full-cpp-example-1.13.0.bppack</code></pre>
         </div>
       </section>
 
@@ -250,6 +251,14 @@ cmake --build build --config Release</code></pre>
           <article class="symbol-group">
             <h3>Entity · Level</h3>
             <div class="symbol-links"><a href="#api-entity-identity"><code>runtime_id</code></a><a href="#api-entity-identity"><code>type_id</code></a><a href="#api-entity-motion"><code>position</code></a><a href="#api-entity-motion"><code>velocity</code></a><a href="#api-entity-validity"><code>refresh()</code></a><a href="#api-entity-validity"><code>is_valid</code></a><a href="#api-level-entities"><code>Level.entities</code></a></div>
+          </article>
+          <article class="symbol-group">
+            <h3>Player</h3>
+            <div class="symbol-links"><a href="#api-player-identity"><code>Player</code></a><a href="#api-player-native-tags"><code>scoreboard_tags</code></a><a href="#api-player-native-tags"><code>has_tag(tag)</code></a><a href="#api-player-native-tags"><code>add_tag(tag)</code></a><a href="#api-player-native-tags"><code>remove_tag(tag)</code></a></div>
+          </article>
+          <article class="symbol-group">
+            <h3>BossBar</h3>
+            <div class="symbol-links"><a href="#api-boss-bar-create"><code>create_boss_bar(...)</code></a><a href="#api-boss-bar-state"><code>Server.boss_bars</code></a><a href="#api-boss-bar-update"><code>set_progress(value)</code></a><a href="#api-boss-bar-viewers"><code>add_player(player)</code></a><a href="#api-boss-bar-destroy"><code>destroy()</code></a></div>
           </article>
           <article class="symbol-group">
             <h3>Item registry</h3>
@@ -346,6 +355,7 @@ logger().log(BP_LOG_INFO, "Loaded", "MY.LOAD", {{"mode", "safe"}});</code></pre>
             <tr id="api-server-entities"><td><a class="api-symbol" href="#api-server-entities"><code>entities</code></a></td><td><code>tuple[Entity, ...]</code></td><td data-i18n="api.server.entities">Fresh pointer-free copies of the complete verified Level-owned Actor set.</td></tr>
             <tr id="api-server-get-entity"><td><a class="api-symbol" href="#api-server-get-entity"><code>get_entity(runtime_id)</code></a></td><td><code>Entity | None</code></td><td data-i18n="api.server.getEntity">Find a currently live Entity by its non-negative native runtime ID.</td></tr>
             <tr id="api-server-native-registries"><td><a class="api-symbol" href="#api-item-registry"><code>item_registry</code></a> · <a class="api-symbol" href="#api-scoreboard"><code>scoreboard</code></a></td><td><code>ItemRegistrySnapshot</code> · <code>Scoreboard</code></td><td data-i18n="api.server.registries">Read immutable generations of the authoritative BDS item registry and scoreboard.</td></tr>
+            <tr id="api-server-boss-bars"><td><a class="api-symbol" href="#api-boss-bar-state"><code>boss_bars</code></a> · <a class="api-symbol" href="#api-boss-bar-create"><code>create_boss_bar(...)</code></a></td><td><code>tuple[BossBar, ...]</code> · <code>BossBar</code></td><td data-i18n="api.server.bossBars">Read this plugin's bars or create a native player-visible boss bar.</td></tr>
             <tr id="api-server-factories"><td><a class="api-symbol" href="#api-server-factories"><code>world(name)</code> · <code>level(name, dimension_id)</code> · <code>block(...)</code> · <code>item_stack(...)</code></a></td><td data-i18n="api.server.factories">Typed object</td><td data-i18n="api.server.factoryDesc">Create typed references or immutable plugin values. Construction alone does not spawn or modify BDS objects.</td></tr>
           </tbody></table></div>
           <div data-api-language="python"><pre><code>self.server = Server(host)
@@ -375,7 +385,8 @@ for (const auto&amp; entity : server().entities()) {
             <tr id="api-player-selector"><td><a class="api-symbol" href="#api-player-selector"><code>selector</code></a></td><td><code>str</code></td><td data-i18n="api.player.selector">A safely escaped target selector for this named player.</td></tr>
             <tr id="api-player-actions"><td><a class="api-symbol" href="#api-player-actions"><code>send_message(text)</code> · <code>run_command(command)</code> · <code>kick(reason)</code> · <code>give(item)</code></a></td><td><code>bool</code></td><td data-i18n="api.player.actions">Queue messaging, player-origin command, removal, or item operations. True means accepted for dispatch.</td></tr>
             <tr id="api-player-movement"><td><a class="api-symbol" href="#api-player-movement"><code>teleport()</code> · <code>set_spawn_point()</code> · <code>set_rotation()</code> · <code>look_at()</code></a></td><td><code>bool</code></td><td data-i18n="api.player.movement">Validated command-backed position, spawn, and orientation requests.</td></tr>
-            <tr id="api-player-progression"><td><a class="api-symbol" href="#api-player-progression"><code>set_game_mode()</code> · <code>add_experience()</code> · <code>add_levels()</code> · <code>add_tag()</code> · <code>remove_tag()</code></a></td><td><code>bool</code></td><td data-i18n="api.player.progression">Command-backed game mode, progression, and scoreboard-tag requests.</td></tr>
+            <tr id="api-player-progression"><td><a class="api-symbol" href="#api-player-progression"><code>set_game_mode()</code> · <code>add_experience()</code> · <code>add_levels()</code></a></td><td><code>bool</code></td><td data-i18n="api.player.progression">Command-backed game mode and progression requests.</td></tr>
+            <tr id="api-player-native-tags"><td><a class="api-symbol" href="#api-player-native-tags"><code>scoreboard_tags</code> · <code>tags</code> · <code>has_tag(tag)</code> · <code>add_tag(tag)</code> · <code>remove_tag(tag)</code></a></td><td><code>tuple[str, ...]</code> · <code>bool</code></td><td data-i18n="api.player.tags">Read or mutate the live native Actor tag set on the BDS tick thread. No vanilla command is dispatched.</td></tr>
             <tr id="api-player-effects"><td><a class="api-symbol" href="#api-player-effects"><code>add_effect()</code> · <code>remove_effect()</code> · <code>apply_damage()</code> · <code>kill()</code></a></td><td><code>bool</code></td><td data-i18n="api.player.effects">Command-backed effect and damage requests. Health maximum mutation is not exposed.</td></tr>
             <tr id="api-player-media"><td><a class="api-symbol" href="#api-player-media"><code>play_sound()</code> · <code>stop_sound()</code> · <code>trigger_event()</code> · <code>play_animation()</code></a></td><td><code>bool</code></td><td data-i18n="api.player.media">Command-backed sound, entity-event, and animation requests.</td></tr>
           </tbody></table></div>
@@ -452,6 +463,80 @@ if entity is not None:
         <div class="callout warning"><strong data-i18n="objects.privacyTitle">Handle connection identifiers carefully</strong><p data-i18n="objects.privacy">IP addresses and device identifiers may be operationally useful, but plugins should collect, log, and retain only what the server owner genuinely needs.</p></div>
       </section>
 
+      <section id="boss-bar-api" data-title="Boss bars" data-group="API reference">
+        <h2 data-i18n="bossBar.title">Native boss-bar API</h2>
+        <p data-i18n="bossBar.intro">Create plugin-owned bars, attach authenticated players, and update the visible title, progress, color, style, and visibility through native BDS packets. No vanilla command or fake entity is used.</p>
+        <article class="api-class" id="api-boss-bar">
+          <h3><code>BossBar</code> · <code>BossBarColor</code> · <code>BossBarStyle</code></h3>
+          <h3 data-i18n="bossBar.guideTitle">Connect a boss bar to a player</h3>
+          <p data-i18n="bossBar.guideIntro">Create the Server facade during load, subscribe to player.join when the server is ready, defer attachment until the next tick, retain the returned BossBar, and destroy it when the player leaves or the plugin stops.</p>
+          <ol class="steps compact-steps">
+            <li><span>1</span><div><strong data-i18n="bossBar.stepCreateTitle">Create</strong><p data-i18n="bossBar.stepCreate">Call Server.create_boss_bar with a title, color, style, progress from 0.0 to 1.0, and visibility.</p></div></li>
+            <li><span>2</span><div><strong data-i18n="bossBar.stepAttachTitle">Attach</strong><p data-i18n="bossBar.stepAttach">Call add_player with a currently authenticated Player. Creating a bar alone does not show it to anybody.</p></div></li>
+            <li><span>3</span><div><strong data-i18n="bossBar.stepKeepTitle">Retain and update</strong><p data-i18n="bossBar.stepKeep">Keep the BossBar object in plugin state, then call set_title, set_progress, set_color, set_style, show, or hide.</p></div></li>
+            <li><span>4</span><div><strong data-i18n="bossBar.stepDestroyTitle">Destroy</strong><p data-i18n="bossBar.stepDestroy">Call destroy when the viewer leaves or during server stopping so the native bar and retained state are released.</p></div></li>
+          </ol>
+          <div data-api-language="python"><pre><code># Create once in on_load:
+self.server = Server(self.host)
+self.bars = {}
+
+# Attach on the next tick after player.join:
+def attach() -&gt; None:
+    player = self.server.get_player(event.player.session_id)
+    if player is None:
+        return
+    bar = self.server.create_boss_bar(
+        "Welcome!", color=BossBarColor.PURPLE,
+        style=BossBarStyle.SOLID, progress=1.0,
+    )
+    bar.add_player(player)
+    self.bars[player.session_id] = bar
+
+self.host.schedule(attach)
+
+# On player.quit or on_server_stopping:
+bar = self.bars.pop(event.player.session_id, None)
+if bar is not None:
+    bar.destroy()</code></pre></div>
+          <div data-api-language="cpp"><pre><code>// Defer this fragment from PlayerJoinEvent to the next tick:
+scheduler().run([this, session = event.player().session_id] {
+    auto player = server().get_player(session);
+    if (!player) return;
+    auto bar = server().create_boss_bar(
+        "Welcome!", 1.0F,
+        BossBarColor::purple, BossBarStyle::solid);
+    bar.add_player(*player);
+    bars_.insert_or_assign(session, std::move(bar));
+});
+
+// On quit or stopping:
+if (auto found = bars_.find(session); found != bars_.end()) {
+    found-&gt;second.destroy();
+    bars_.erase(found);
+}</code></pre></div>
+          <div class="callout info"><strong data-i18n="bossBar.timingTitle">Why the next tick?</strong><p data-i18n="bossBar.timing">player.join is delivered inside the completed native spawn path. Reading the Player is safe immediately; client-facing UI work is deferred to avoid re-entering BDS during spawn.</p></div>
+          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
+            <tr id="api-boss-bar-create"><td><a class="api-symbol" href="#api-boss-bar-create"><code>Server.create_boss_bar(title, color, style, progress, visible)</code></a></td><td><code>BossBar</code></td><td data-i18n="bossBar.create">Create one bar owned by the calling plugin. Progress must be between 0.0 and 1.0.</td></tr>
+            <tr id="api-boss-bar-state"><td><a class="api-symbol" href="#api-boss-bar-state"><code>Server.boss_bars</code> · <code>id</code> · <code>revision</code> · <code>player_sessions</code></a></td><td><code>tuple[BossBar, ...]</code></td><td data-i18n="bossBar.state">Return only bars owned by this plugin as fresh, inspectable snapshots.</td></tr>
+            <tr id="api-boss-bar-update"><td><a class="api-symbol" href="#api-boss-bar-update"><code>set_title()</code> · <code>set_progress()</code> · <code>set_color()</code> · <code>set_style()</code> · <code>show()</code> · <code>hide()</code></a></td><td><code>None</code> / result</td><td data-i18n="bossBar.update">Serialize validated mutations on the BDS tick thread and update the client UI.</td></tr>
+            <tr id="api-boss-bar-viewers"><td><a class="api-symbol" href="#api-boss-bar-viewers"><code>add_player(player)</code> · <code>remove_player(player)</code> · <code>remove_all_players()</code></a></td><td><code>None</code> / result</td><td data-i18n="bossBar.viewers">Manage authenticated viewers. Disconnect and plugin shutdown clean retained state safely.</td></tr>
+            <tr id="api-boss-bar-destroy"><td><a class="api-symbol" href="#api-boss-bar-destroy"><code>refresh()</code> · <code>destroy()</code></a></td><td><code>BossBar</code> · <code>None</code> / result</td><td data-i18n="bossBar.destroy">Refresh authoritative state or remove the bar from every viewer and release it.</td></tr>
+          </tbody></table></div>
+          <div data-api-language="python"><pre><code>bar = self.server.create_boss_bar(
+    "Welcome", BossBarColor.PURPLE, BossBarStyle.SOLID, 1.0
+)
+bar.add_player(player)
+bar.set_progress(0.75)
+bar.destroy()</code></pre></div>
+          <div data-api-language="cpp"><pre><code>auto bar = server().create_boss_bar(
+    "Welcome", 1.0F, BossBarColor::purple, BossBarStyle::solid);
+bar.add_player(player);
+bar.set_progress(0.75F);
+bar.destroy();</code></pre></div>
+          <div class="callout warning"><strong data-i18n="bossBar.limitTitle">Current native limit</strong><p data-i18n="bossBar.limit">A player can be attached to one BedrockPlus plugin boss bar at a time. A vanilla dragon or wither bar is independent and can appear together with it.</p></div>
+        </article>
+      </section>
+
       <section id="item-registry" data-title="Item registry" data-group="API reference">
         <h2 data-i18n="itemRegistry.title">Native item registry</h2>
         <p data-i18n="itemRegistry.intro">Read the exact item type IDs and signed runtime IDs serialized by BDS for the active vanilla and add-on packs. The first generation becomes ready after BDS prepares an ItemRegistryPacket for a connecting client.</p>
@@ -509,6 +594,51 @@ if (const auto* objective = board.find_objective("kills")) {
         "kills", ScoreboardDisplaySlot::sidebar));
 }</code></pre></div>
         </article>
+      </section>
+
+      <section id="event-subscriptions" data-title="Subscribe to events" data-group="API reference">
+        <h2 data-i18n="eventsGuide.title">How to subscribe to an event</h2>
+        <p data-i18n="eventsGuide.intro">A subscription connects one exact event name to one callback method. Register it in on_server_ready, keep the numeric subscription ID, and unsubscribe during on_server_stopping.</p>
+        <div class="member-table table-wrap"><table><thead><tr><th data-i18n="eventsGuide.part">Part</th><th data-i18n="eventsGuide.meaning">What you provide</th></tr></thead><tbody>
+          <tr><td><code>"player.join"</code></td><td data-i18n="eventsGuide.name">The exact canonical event name from the live-events table.</td></tr>
+          <tr><td><code>self.on_player_join</code></td><td data-i18n="eventsGuide.callback">A function reference, without parentheses. BedrockPlus calls it later and supplies the typed event object.</td></tr>
+          <tr><td><code>EventPriority.NORMAL</code></td><td data-i18n="eventsGuide.priority">Optional listener order. NORMAL is appropriate unless the plugin specifically needs earlier or monitor behavior.</td></tr>
+          <tr><td><code>subscription_id</code></td><td data-i18n="eventsGuide.id">The integer returned by subscribe_event. Store it so the exact listener can be removed.</td></tr>
+          <tr><td><code>event.player</code></td><td data-i18n="eventsGuide.eventObject">The typed Player associated with PlayerJoinEvent; read its documented properties directly.</td></tr>
+        </tbody></table></div>
+        <div data-api-language="python"><pre><code>from bedrockplus import EventPriority, PlayerJoinEvent
+
+# In on_server_ready: save the returned ID.
+self.join_subscription = self.host.subscribe_event(
+    "player.join",          # exact event name
+    self.on_player_join,     # function reference; do not add ()
+    EventPriority.NORMAL,
+)
+
+# BedrockPlus calls this method and supplies the event.
+def on_player_join(self, event: PlayerJoinEvent) -&gt; None:
+    player = event.player
+    self.host.log(
+        "info", "PLAYER_INFO.JOIN",
+        f"{player.display_name} joined; XUID={player.xuid or 'unavailable'}",
+    )
+
+# In on_server_stopping: remove the exact subscription.
+self.host.unsubscribe_event(self.join_subscription)</code></pre></div>
+        <div data-api-language="cpp"><pre><code>// In on_server_ready: save the returned ID.
+join_subscription_ = events().subscribe&lt;PlayerJoinEvent&gt;(
+    [this](const PlayerJoinEvent&amp; event) {
+        const auto player = event.player();
+        logger().log(
+            BP_LOG_INFO, player.name + " joined", "PLAYER_INFO.JOIN",
+            {{"session", player.session_id}, {"xuid", player.xuid}});
+    },
+    EventPriority::normal);
+
+// In on_server_stopping:
+events().unsubscribe(join_subscription_);</code></pre></div>
+        <div class="callout info"><strong data-i18n="eventsGuide.lifecycleTitle">Correct lifecycle location</strong><p data-i18n="eventsGuide.lifecycle">on_load only stores PluginHost. Runtime services become usable in on_server_ready. Remove listeners in on_server_stopping before plugin code is disabled and unloaded.</p></div>
+        <div class="callout warning"><strong data-i18n="eventsGuide.joinTitle">player.join is observational</strong><p data-i18n="eventsGuide.join">It cannot be cancelled. Reading identity and connection snapshots is immediate; defer messages, boss bars, or other client-facing actions to the next tick.</p></div>
       </section>
 
       <section id="commands" data-title="Commands" data-group="API reference">
@@ -668,7 +798,7 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
       </section>
 
       <section id="limitations" data-title="Current boundaries" data-group="Operate">
-        <h2 data-i18n="limits.title">Current Beta 4 boundaries</h2>
+        <h2 data-i18n="limits.title">Current Beta 6 boundaries</h2>
         <ul class="boundary-list">
           <li data-i18n="limits.windows">The runtime currently targets 64-bit Windows, BDS 1.26.51.1, Python 3.13, and C++ ABI v1.</li>
           <li data-i18n="limits.interpreter">Python plugins share one embedded interpreter. Dependency folders are isolated, but this is not process-level security isolation.</li>
@@ -679,7 +809,7 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
       </section>
 
       <div id="search-empty" class="search-empty" hidden data-i18n="ui.noResults">No matching documentation sections.</div>
-      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 4</span><span data-i18n="ui.footer">Created by Turkmen · Beta 4 documentation</span></footer>
+      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 6</span><span data-i18n="ui.footer">Created by Turkmen · Beta 6 documentation</span></footer>
     </main>
     <aside class="article-rail" aria-label="On this page" data-i18n-aria-label="ui.onThisPage">
       <strong data-i18n="ui.onThisPage">On this page</strong>
