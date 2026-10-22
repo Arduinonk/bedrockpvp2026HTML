@@ -9,11 +9,9 @@
   const menuButton = document.querySelector("#menu-button");
   const themeButton = document.querySelector("#theme-button");
   const languageSelect = document.querySelector("#language-select");
-  const articleToc = document.querySelector("#article-toc");
   const apiLanguageButtons = [...document.querySelectorAll("[data-api-language-select]")];
   const i18n = window.BedrockPlusI18n;
   let links = [];
-  let activeSection = null;
 
   function slug(value) {
     return value.toLocaleLowerCase().replace(/[^a-z0-9+]+/g, "-").replace(/^-|-$/g, "");
@@ -53,28 +51,10 @@
     links = [...document.querySelectorAll(".nav-link")];
   }
 
-  function buildArticleToc(section) {
-    if (!articleToc || !section || section === activeSection) return;
-    activeSection = section;
-    articleToc.replaceChildren();
-    const headings = [...section.querySelectorAll("h1, h2, h3")];
-    for (const [index, heading] of headings.entries()) {
-      if (!heading.id) heading.id = `${section.id}-heading-${index + 1}`;
-      const link = document.createElement("a");
-      link.href = `#${heading.id}`;
-      link.textContent = heading.textContent.trim();
-      if (heading.tagName === "H3") link.className = "toc-subitem";
-      articleToc.append(link);
-    }
-  }
-
   i18n?.initialize(languageSelect);
   buildNavigation();
   document.addEventListener("bedrockplus:locale-changed", () => {
     buildNavigation();
-    const visible = sections.find((section) => section.id === activeSection?.id) || sections[0];
-    activeSection = null;
-    buildArticleToc(visible);
     filterDocumentation();
     for (const button of document.querySelectorAll(".copy-button")) {
       button.textContent = i18n?.t("ui.copy", "Copy") || "Copy";
@@ -86,11 +66,9 @@
       .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
     if (!visible.length) return;
     const id = visible[0].target.id;
-    buildArticleToc(visible[0].target);
     for (const link of links) link.classList.toggle("active", link.dataset.section === id);
   }, { rootMargin: "-20% 0px -70% 0px" });
   sections.forEach((section) => observer.observe(section));
-  buildArticleToc(sections[0]);
 
   function filterDocumentation() {
     const term = search.value.trim().toLocaleLowerCase();

@@ -6,13 +6,13 @@
   <meta name="description" content="BedrockPlus server installation, plugin development, and API v1 documentation for Python and C++.">
   <title>BedrockPlus Documentation</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b5cf6'/%3E%3Cpath d='M14 16h20c10 0 16 4 16 12 0 5-3 8-7 10 6 1 9 5 9 10H39c0-4-2-6-7-6h-5v8H14V16zm13 10v7h6c3 0 5-1 5-4s-2-3-5-3h-6z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="assets/styles.css">
-  <script defer src="assets/i18n.js"></script>
-  <script defer src="locales/en.js?v=20261020.2"></script>
-  <script defer src="locales/tr.js?v=20261020.2"></script>
-  <script defer src="locales/ru.js?v=20261020.2"></script>
-  <script defer src="locales/tk.js?v=20261020.2"></script>
-  <script defer src="assets/app.js"></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20261022.2">
+  <script defer src="assets/i18n.js?v=20261022.2"></script>
+  <script defer src="locales/en.js?v=20261022.2"></script>
+  <script defer src="locales/tr.js?v=20261022.2"></script>
+  <script defer src="locales/ru.js?v=20261022.2"></script>
+  <script defer src="locales/tk.js?v=20261022.2"></script>
+  <script defer src="assets/app.js?v=20261022.2"></script>
 </head>
 <body>
   <a class="skip-link" href="#content" data-i18n="ui.skip">Skip to documentation</a>
@@ -38,7 +38,7 @@
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <nav id="doc-navigation" aria-label="Documentation sections" data-i18n-aria-label="ui.sections"></nav>
-      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 6 API</span></div>
+      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 8 API</span></div>
     </aside>
     <main id="content">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bedrockpvp.com/">BedrockPVP</a><span>/</span><a href="#overview">BedrockPlus</a><span>/</span><span data-i18n="ui.docs">Documentation</span></nav>
@@ -50,7 +50,7 @@
           <a class="button primary" href="#quickstart" data-i18n="overview.start">Start building</a>
           <a class="button secondary" href="#full-example" data-i18n="overview.download">Download full example</a>
         </div>
-        <div class="callout success"><strong data-i18n="overview.worksTitle">Working in this build</strong><p data-i18n="overview.works">Validated Python and C++ plugins, six lifecycle callbacks, scheduled tasks, typed slash commands, eighteen live native event types, native player tags, plugin-owned boss bars, authenticated online players, and pointer-free native Entity enumeration.</p></div>
+        <div class="callout success"><strong data-i18n="overview.worksTitle">Working in this build</strong><p data-i18n="overview.works">Validated Python and C++ plugins, six lifecycle callbacks, scheduled tasks, typed slash commands, nineteen live native event types including cancellable player attacks with CPS metrics, native player tags, plugin-owned boss bars, authenticated online players, and pointer-free native Entity enumeration.</p></div>
         <div class="card-grid three">
           <article class="metric-card"><span data-i18n="overview.package">Package</span><strong>.bppack</strong><small data-i18n="overview.packageSub">Validated ZIP with file hashes</small></article>
           <article class="metric-card"><span data-i18n="overview.runtimes">Runtimes</span><strong>Python 3.13 · C++20</strong><small>Windows x64 · API/ABI v1</small></article>
@@ -145,7 +145,7 @@ class MyFirstPlugin:
         self.host = host
 
     def on_server_ready(self) -&gt; None:
-        self.host.log("info", "MY_PLUGIN.READY", "Plugin is ready")</code></pre></div>
+        self.host.log("&amp;aPlugin is ready")</code></pre></div>
         <div data-api-language="cpp"><pre><code>#include &lt;bedrockplus/sdk/plugin.hpp&gt;
 
 class MyFirstPlugin final : public bedrockplus::sdk::Plugin {
@@ -182,12 +182,12 @@ cmake --build build --config Release</code></pre>
         <h2 data-i18n="example.title">Complete working reference plugin</h2>
         <p data-i18n="example.intro">Each package demonstrates every feature currently exposed by its public API and deliberately avoids pretending that reserved future event names are live.</p>
         <div data-api-language="python">
-          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-api-example-1.16.0.bppack" download data-i18n="example.downloadPython">Download Python .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-api-example-1.16.0-source.zip" download data-i18n="example.source">Download source</a></div>
-          <pre><code>bedrockplus-full-api-example-1.16.0.bppack</code></pre>
+          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-api-example-1.18.0.bppack" download data-i18n="example.downloadPython">Download Python .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-api-example-1.18.0-source.zip" download data-i18n="example.source">Download source</a></div>
+          <pre><code>bedrockplus-full-api-example-1.18.0.bppack</code></pre>
         </div>
         <div data-api-language="cpp">
-          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-cpp-example-1.13.0.bppack" download data-i18n="example.downloadCpp">Download C++ .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-cpp-example-1.13.0-source.zip" download data-i18n="example.source">Download source</a></div>
-          <pre><code>bedrockplus-full-cpp-example-1.13.0.bppack</code></pre>
+          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-cpp-example-1.15.0.bppack" download data-i18n="example.downloadCpp">Download C++ .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-cpp-example-1.15.0-source.zip" download data-i18n="example.source">Download source</a></div>
+          <pre><code>bedrockplus-full-cpp-example-1.15.0.bppack</code></pre>
         </div>
       </section>
 
@@ -242,7 +242,7 @@ cmake --build build --config Release</code></pre>
           </article>
           <article class="symbol-group">
             <h3>PluginHost</h3>
-            <div class="symbol-links"><a href="#api-host-log"><code>log(level, event_code, message, fields)</code></a><a href="#api-host-data"><code>data_directory()</code></a><a href="#api-host-schedule"><code>schedule(callback, delay_ms, interval_ms, runs)</code></a><a href="#api-host-events"><code>subscribe_event(name, callback, priority)</code></a><a href="#api-host-commands"><code>register_command(name, callback, ...)</code></a><a href="#api-host-dispatch"><code>dispatch_server_command(command)</code></a></div>
+            <div class="symbol-links"><a href="#api-host-log"><code>log(*values)</code></a><a href="#api-host-log"><code>warn(*values)</code></a><a href="#api-host-log"><code>error(*values)</code></a><a href="#api-host-print"><code>print(*values)</code></a><a href="#api-host-data"><code>data_directory()</code></a><a href="#api-host-schedule"><code>schedule(callback, delay_ms, interval_ms, runs)</code></a><a href="#api-host-events"><code>subscribe_event(name, callback, priority)</code></a><a href="#api-host-commands"><code>register_command(name, callback, ...)</code></a><a href="#api-host-dispatch"><code>dispatch_server_command(command)</code></a></div>
           </article>
           <article class="symbol-group">
             <h3>Server</h3>
@@ -270,7 +270,7 @@ cmake --build build --config Release</code></pre>
           </article>
           <article class="symbol-group">
             <h3>Commands · events · scheduler</h3>
-            <div class="symbol-links"><a href="#api-command-argument"><code>CommandArgument</code></a><a href="#api-command-invocation"><code>CommandInvocation</code></a><a href="#api-event-cancel"><code>event.cancel()</code></a><a href="#api-event-player"><code>event.player</code></a><a href="#api-system-run"><code>System.run(callback)</code></a><a href="#api-system-interval"><code>runInterval(callback, ticks)</code></a><a href="#api-system-clear"><code>clearRun(task_id)</code></a></div>
+            <div class="symbol-links"><a href="#api-command-argument"><code>CommandArgument</code></a><a href="#api-command-invocation"><code>CommandInvocation</code></a><a href="#api-event-cancel"><code>event.cancel()</code></a><a href="#api-event-player"><code>event.player</code></a><a href="#api-event-attack"><code>PlayerAttackEvent</code></a><a href="#api-event-attack"><code>cps</code></a><a href="#api-system-run"><code>System.run(callback)</code></a><a href="#api-system-interval"><code>runInterval(callback, ticks)</code></a><a href="#api-system-clear"><code>clearRun(task_id)</code></a></div>
           </article>
         </div>
       </section>
@@ -296,7 +296,7 @@ cmake --build build --config Release</code></pre>
         self.host = host
 
     def on_server_ready(self) -&gt; None:
-        self.host.log("info", "MY.READY", "Runtime services are ready")</code></pre></div>
+        self.host.log("&amp;aRuntime services are ready")</code></pre></div>
           <div data-api-language="cpp"><pre><code>class MyPlugin final : public bedrockplus::sdk::Plugin {
 public:
     using Plugin::Plugin;
@@ -312,7 +312,8 @@ public:
           <div class="member-table table-wrap"><table>
             <thead><tr><th data-i18n="api.member">Method</th><th data-i18n="api.returns">Returns</th><th data-i18n="api.meaning">Meaning</th></tr></thead>
             <tbody>
-              <tr id="api-host-log"><td><a class="api-symbol" href="#api-host-log"><code>log(level, event_code, message, fields=None)</code></a></td><td><code>None</code></td><td data-i18n="api.host.log">Write a structured plugin log record. Field keys and values are strings.</td></tr>
+              <tr id="api-host-log"><td><a class="api-symbol" href="#api-host-log"><code>log(*values)</code> · <code>debug(*values)</code> · <code>warn(*values)</code> · <code>error(*values)</code> · <code>critical(*values)</code></a></td><td><code>None</code></td><td data-i18n="api.host.log">Write a timestamped plugin message. The selected method supplies the level and console color, so no level string or event code is required.</td></tr>
+              <tr id="api-host-print"><td><a class="api-symbol" href="#api-host-print"><code>print(*values, sep=" ", end="\n")</code></a></td><td><code>None</code></td><td data-i18n="api.host.print">Write text directly to the console without a timestamp. Minecraft ampersand color codes are supported.</td></tr>
               <tr id="api-host-data"><td><a class="api-symbol" href="#api-host-data"><code>data_directory()</code></a></td><td><code>str</code></td><td data-i18n="api.host.data">Return this plugin's private persistent directory.</td></tr>
               <tr id="api-host-available"><td><a class="api-symbol" href="#api-host-available"><code>scheduler_available()</code> · <code>events_available()</code> · <code>commands_available()</code></a></td><td><code>bool</code></td><td data-i18n="api.host.available">Check whether a service exists before using an optional host feature.</td></tr>
               <tr id="api-host-schedule"><td><a class="api-symbol" href="#api-host-schedule"><code>schedule(callback, delay_ms, interval_ms, runs)</code></a> · <code>cancel_task(task_id)</code></td><td><code>int</code> · <code>bool</code></td><td data-i18n="api.host.schedule">Create or cancel server-thread work. Keep the returned task ID.</td></tr>
@@ -361,11 +362,10 @@ logger().log(BP_LOG_INFO, "Loaded", "MY.LOAD", {{"mode", "safe"}});</code></pre>
           <div data-api-language="python"><pre><code>self.server = Server(host)
 
 for player in self.server.online_players:
-    self.host.log("info", "PLAYERS.ONLINE", player.display_name)
+    self.host.log("Online:", player.display_name)
 
 for entity in self.server.entities:
-    self.host.log("info", "ENTITY.SEEN", entity.type_id,
-                  {"runtime_id": str(entity.runtime_id)})</code></pre></div>
+    self.host.debug("Entity:", entity.type_id, entity.runtime_id)</code></pre></div>
           <div data-api-language="cpp"><pre><code>for (const auto&amp; player : server().online_players()) {
     logger().info(player.display_name());
 }
@@ -393,7 +393,7 @@ for (const auto&amp; entity : server().entities()) {
           <div data-api-language="python"><pre><code>player = self.server.player_from_event(joined)
 player.send_message("&amp;aWelcome, &amp;f" + player.display_name)
 if player.ping_ms is not None:
-    self.host.log("info", "MY.PING", "Ping sampled", {"ms": str(player.ping_ms)})</code></pre></div>
+    self.host.log("Ping:", player.ping_ms, "ms")</code></pre></div>
           <div data-api-language="cpp"><pre><code>Player player{commands(), authenticated_player};
 player.send_message("&amp;aWelcome, &amp;f" + player.display_name());
 if (const auto ping = player.get_ping()) {
@@ -619,8 +619,7 @@ self.join_subscription = self.host.subscribe_event(
 def on_player_join(self, event: PlayerJoinEvent) -&gt; None:
     player = event.player
     self.host.log(
-        "info", "PLAYER_INFO.JOIN",
-        f"{player.display_name} joined; XUID={player.xuid or 'unavailable'}",
+        f"{player.display_name} joined; XUID={player.xuid or 'unavailable'}"
     )
 
 # In on_server_stopping: remove the exact subscription.
@@ -699,9 +698,10 @@ def on_command(event: PlayerCommandEvent) -&gt; None:
     }, EventPriority::early);</code></pre></div>
         <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.event.type">Class / field</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
           <tr id="api-event-base"><td><a class="api-symbol" href="#api-event-base"><code>Event.name</code> · <code>Event.sequence</code></a></td><td data-i18n="api.event.base">Event identity and monotonic sequence number. Concrete classes expose typed properties rather than a public dictionary.</td></tr>
-          <tr id="api-event-cancel"><td><a class="api-symbol" href="#api-event-cancel"><code>CancellableEvent</code> · <code>Event.is_cancellable</code> · <code>is_cancelled</code> · <code>cancel()</code></a></td><td data-i18n="api.event.cancel">Check support and request cancellation before BDS executes the action.</td></tr>
+          <tr id="api-event-cancel"><td><a class="api-symbol" href="#api-event-cancel"><code>CancellableEvent</code> · <code>Event.is_cancellable</code> · <code>CancellableEvent.is_cancelled</code> · <code>CancellableEvent.cancel()</code></a></td><td data-i18n="api.event.cancel">Only cancellable typed events expose cancellation state and cancel(). Call it synchronously before BDS executes the action.</td></tr>
           <tr><td><code>EventPriority</code></td><td data-i18n="api.event.priority">LOWEST/earliest runs first; MONITOR runs last and should only observe.</td></tr>
           <tr id="api-event-player"><td><a class="api-symbol" href="#api-event-player"><code>PlayerJoinEvent</code> · <code>PlayerQuitEvent</code> · <code>event.player</code></a></td><td data-i18n="api.event.lifecycle">Expose event.player directly; Server.player_from_event(event) returns the same typed Player.</td></tr>
+          <tr id="api-event-attack"><td><a class="api-symbol" href="#api-event-attack"><code>PlayerAttackEvent</code> · <code>target_runtime_id</code> · <code>target</code> · <code>cps</code> · <code>interval_ms</code> · <code>average_interval_ms</code> · <code>is_saturated</code></a></td><td data-i18n="api.event.attack">An authenticated entity attack attempt before vanilla combat. Cancellation suppresses that attack transaction; CPS remains moderation evidence rather than proof by itself.</td></tr>
           <tr><td><code>PlayerCommandEvent</code> · <code>ServerCommandEvent</code></td><td data-i18n="api.event.commands">Live cancellable command events. Assign event.command to rewrite the command.</td></tr>
           <tr><td><code>ServerTickEvent</code></td><td data-i18n="api.event.tick">A lightweight live pulse with no cancellable action.</td></tr>
         </tbody></table></div>
@@ -712,9 +712,34 @@ def on_command(event: PlayerCommandEvent) -&gt; None:
             <tr><td>player.join · player.quit</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.players">Stable name and session, plus authenticated connection snapshot when available.</td></tr>
             <tr><td>player.command · server.command</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.command">Cancellable before execution; command is mutable.</td></tr>
             <tr><td>player.login · player.respawn · player.death · player.interact · player.toggle_sneak · player.toggle_sprint</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.lifecycleExtended">Authenticated lifecycle and exact native input/state transitions.</td></tr>
+            <tr><td><a class="api-symbol" href="#api-event-attack"><code>player.attack</code></a></td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.attackData">Authenticated target runtime ID, typed target resolution, rolling one-second CPS and interval metrics; cancellable before vanilla combat.</td></tr>
             <tr><td>player.chat · block.break · block.place · server.list_ping · player.jump · player.kick · player.move</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.gameplay">Typed properties, validated mutation, and cancellation where the BDS action is cancellable.</td></tr>
           </tbody>
         </table></div>
+        <h3 data-i18n="events.attackTitle">Moderate real entity attacks</h3>
+        <p data-i18n="events.attackIntro">Subscribe to player.attack for authenticated ItemUseOnActor attack attempts. Air swings and block actions are different signals. Count the event even when cancelled, and combine CPS with context before taking moderation action.</p>
+        <div data-api-language="python"><pre><code>from bedrockplus import PlayerAttackEvent
+
+self.attack_subscription = self.host.subscribe_event(
+    "player.attack", self.on_player_attack
+)
+
+def on_player_attack(self, event: PlayerAttackEvent) -&gt; None:
+    self.host.log(
+        f"{event.player.name} attacked {event.target_runtime_id}; "
+        f"CPS={event.cps}"
+    )
+    if event.cps &gt; 18:
+        event.cancel()</code></pre></div>
+        <div data-api-language="cpp"><pre><code>attack_subscription_ = events().subscribe&lt;PlayerAttackEvent&gt;(
+    [this](const PlayerAttackEvent&amp; event) {
+        const auto cps = event.clicks_per_second().value_or(0);
+        logger().info("Attack CPS=" + std::to_string(cps));
+        if (cps &gt; 18) {
+            static_cast&lt;void&gt;(event.cancel());
+        }
+    });</code></pre></div>
+        <div class="callout warning"><strong data-i18n="events.attackMeaningTitle">Attempt, not confirmed damage</strong><p data-i18n="events.attackMeaning">The event proves that the authenticated client submitted a targeted attack which reached BDS validation. It does not claim that armor, invulnerability, reach, game rules, or later combat logic allowed damage.</p></div>
       </section>
 
       <section id="scheduler" data-title="Scheduler" data-group="API reference">
@@ -735,16 +760,19 @@ scheduler().cancel(repeat);</code></pre></div>
       </section>
 
       <section id="logging-data" data-title="Logging and data" data-group="API reference">
-        <h2 data-i18n="logging.title">Structured logs and private data</h2>
-        <p data-i18n="logging.intro">Log levels, stable event codes, and string fields appear in console and dated files according to BedrockPlus.ini. Each plugin receives a private persistent directory under the hidden BedrockPlus state path.</p>
+        <h2 data-i18n="logging.title">Plugin output and private data</h2>
+        <p data-i18n="logging.intro">Use log, debug, warn, error, or critical like print: pass the values, and the method selects the timestamped level and console color. Plain print writes Minecraft-colored console text without a timestamp. Each plugin also receives a private persistent data directory.</p>
         <div data-api-language="python"><pre><code>from pathlib import Path
 
-host.log("info", "MY_PLUGIN.READY", "Ready", {"mode": "safe"})
+host.log("&amp;aReady")
+host.warn("Configuration is incomplete")
+host.error("Could not load file:", filename)
+print("&amp;bThis line has no timestamp")
 state_file = Path(host.data_directory()) / "state.json"</code></pre></div>
         <div data-api-language="cpp"><pre><code>logger().log(BP_LOG_INFO, "Ready", "MY_PLUGIN.READY",
              {{"mode", "safe"}});
 auto state_file = data_directory() / "state.json";</code></pre></div>
-        <p data-i18n="logging.color">Plugin text may use ampersand color codes such as &amp;a; BedrockPlus converts supported codes to the Minecraft section-sign format before dispatch.</p>
+        <p data-i18n="logging.color">Python print inside a plugin is plugin-local BedrockPlus output: it supports ampersand color codes such as &amp;a and bypasses the timestamp. Use host.log/warn/error when the line should also be retained in plugin log files.</p>
       </section>
 
       <section id="dependencies" data-title="Dependencies" data-group="Packages">
@@ -798,24 +826,19 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
       </section>
 
       <section id="limitations" data-title="Current boundaries" data-group="Operate">
-        <h2 data-i18n="limits.title">Current Beta 6 boundaries</h2>
+        <h2 data-i18n="limits.title">Current Beta 8 boundaries</h2>
         <ul class="boundary-list">
           <li data-i18n="limits.windows">The runtime currently targets 64-bit Windows, BDS 1.26.51.1, Python 3.13, and C++ ABI v1.</li>
           <li data-i18n="limits.interpreter">Python plugins share one embedded interpreter. Dependency folders are isolated, but this is not process-level security isolation.</li>
-          <li data-i18n="limits.events">The eighteen documented event types, read-only Entity fields, native item registry, and native scoreboard are live; native Entity mutation, Level/BlockSource, chunks, inventory, NBT, forms, and raw packets remain future milestones.</li>
+          <li data-i18n="limits.events">The nineteen documented event types, read-only Entity fields, native item registry, and native scoreboard are live; native Entity mutation, Level/BlockSource, chunks, inventory, NBT, forms, and raw packets remain future milestones.</li>
           <li data-i18n="limits.compat">Plugins must target the documented BedrockPlus API. Existing compiled plugins from another host are not binary-compatible.</li>
           <li data-i18n="limits.snapshots">Player identity/connection and Entity data are pointer-free copied snapshots. Existing Player convenience actions are explicit command-backed operations and are not presented as completed native object methods.</li>
         </ul>
       </section>
 
       <div id="search-empty" class="search-empty" hidden data-i18n="ui.noResults">No matching documentation sections.</div>
-      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 6</span><span data-i18n="ui.footer">Created by Turkmen · Beta 6 documentation</span></footer>
+      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 8</span><span data-i18n="ui.footer">Created by Turkmen · Beta 8 documentation</span></footer>
     </main>
-    <aside class="article-rail" aria-label="On this page" data-i18n-aria-label="ui.onThisPage">
-      <strong data-i18n="ui.onThisPage">On this page</strong>
-      <nav id="article-toc"></nav>
-      <a class="back-to-top" href="#overview" data-i18n="ui.backToTop">Back to top ↑</a>
-    </aside>
   </div>
 </body>
 </html>
