@@ -6,13 +6,13 @@
   <meta name="description" content="BedrockPlus server installation, plugin development, and API v1 documentation for Python and C++.">
   <title>BedrockPlus Documentation</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b5cf6'/%3E%3Cpath d='M14 16h20c10 0 16 4 16 12 0 5-3 8-7 10 6 1 9 5 9 10H39c0-4-2-6-7-6h-5v8H14V16zm13 10v7h6c3 0 5-1 5-4s-2-3-5-3h-6z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="assets/styles.css?v=20261022.2">
-  <script defer src="assets/i18n.js?v=20261022.2"></script>
-  <script defer src="locales/en.js?v=20261022.2"></script>
-  <script defer src="locales/tr.js?v=20261022.2"></script>
-  <script defer src="locales/ru.js?v=20261022.2"></script>
-  <script defer src="locales/tk.js?v=20261022.2"></script>
-  <script defer src="assets/app.js?v=20261022.2"></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20261023.1">
+  <script defer src="assets/i18n.js?v=20261023.1"></script>
+  <script defer src="locales/en.js?v=20261023.1"></script>
+  <script defer src="locales/tr.js?v=20261023.1"></script>
+  <script defer src="locales/ru.js?v=20261023.1"></script>
+  <script defer src="locales/tk.js?v=20261023.1"></script>
+  <script defer src="assets/app.js?v=20261023.1"></script>
 </head>
 <body>
   <a class="skip-link" href="#content" data-i18n="ui.skip">Skip to documentation</a>
@@ -38,7 +38,7 @@
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <nav id="doc-navigation" aria-label="Documentation sections" data-i18n-aria-label="ui.sections"></nav>
-      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 8 API</span></div>
+      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 9 API</span></div>
     </aside>
     <main id="content">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bedrockpvp.com/">BedrockPVP</a><span>/</span><a href="#overview">BedrockPlus</a><span>/</span><span data-i18n="ui.docs">Documentation</span></nav>
@@ -54,14 +54,14 @@
         <div class="card-grid three">
           <article class="metric-card"><span data-i18n="overview.package">Package</span><strong>.bppack</strong><small data-i18n="overview.packageSub">Validated ZIP with file hashes</small></article>
           <article class="metric-card"><span data-i18n="overview.runtimes">Runtimes</span><strong>Python 3.13 · C++20</strong><small>Windows x64 · API/ABI v1</small></article>
-          <article class="metric-card"><span data-i18n="overview.bds">Current BDS profile</span><strong>1.26.51.1</strong><small data-i18n="overview.bdsSub">Exact-build integration</small></article>
+          <article class="metric-card"><span data-i18n="overview.bds">Current BDS profile</span><strong>1.26.52.3</strong><small data-i18n="overview.bdsSub">Exact-build integration</small></article>
         </div>
       </section>
 
       <section id="server-install" data-title="Install server" data-group="Server owners">
         <div class="eyebrow" data-i18n="serverInstall.eyebrow">Server owner quickstart · Windows x64</div>
         <h2 data-i18n="serverInstall.title">Install and start BedrockPlus</h2>
-        <p data-i18n="serverInstall.intro">Install the BedrockPlus command once, initialize one empty server folder, and use that same folder for every later start. BedrockPlus currently supports Python 3.13 and BDS 1.26.51.1.</p>
+        <p data-i18n="serverInstall.intro">Install the BedrockPlus command once, initialize one empty server folder, and use that same folder for every later start. BedrockPlus currently supports Python 3.13 and BDS 1.26.52.3.</p>
 
         <h3 data-i18n="serverInstall.installTitle">1. Install the BedrockPlus command once</h3>
         <p data-i18n="serverInstall.installText">Open Command Prompt or PowerShell and install the public BedrockPlus package. This makes the bedrockplus command available on the computer.</p>
@@ -84,6 +84,7 @@ bedrockplus</code></pre>
         <pre><code>cd C:\Servers\MyBedrockPlusServer
 bedrockplus</code></pre>
         <p data-i18n="serverInstall.plugins">To install a plugin, stop the server, place its .bppack file or development folder in plugins beside server.properties, and start BedrockPlus again.</p>
+        <div class="callout info"><strong data-i18n="serverInstall.updateTitle">Safe BDS updates</strong><p data-i18n="serverInstall.update">Every start verifies the exact BDS build. When a known older official build is found, BedrockPlus explains why an update is required and asks for confirmation. A verified transaction preserves worlds, plugins, configuration and custom packs, shows progress, creates a rollback backup, and starts BDS only after a real readiness check succeeds.</p></div>
         <div class="table-wrap"><table>
           <thead><tr><th data-i18n="serverInstall.command">Command</th><th data-i18n="serverInstall.purpose">Purpose</th></tr></thead>
           <tbody>
@@ -826,9 +827,9 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
       </section>
 
       <section id="limitations" data-title="Current boundaries" data-group="Operate">
-        <h2 data-i18n="limits.title">Current Beta 8 boundaries</h2>
+        <h2 data-i18n="limits.title">Current Beta 9 boundaries</h2>
         <ul class="boundary-list">
-          <li data-i18n="limits.windows">The runtime currently targets 64-bit Windows, BDS 1.26.51.1, Python 3.13, and C++ ABI v1.</li>
+          <li data-i18n="limits.windows">The runtime currently targets 64-bit Windows, BDS 1.26.52.3, Python 3.13, and C++ ABI v1.</li>
           <li data-i18n="limits.interpreter">Python plugins share one embedded interpreter. Dependency folders are isolated, but this is not process-level security isolation.</li>
           <li data-i18n="limits.events">The nineteen documented event types, read-only Entity fields, native item registry, and native scoreboard are live; native Entity mutation, Level/BlockSource, chunks, inventory, NBT, forms, and raw packets remain future milestones.</li>
           <li data-i18n="limits.compat">Plugins must target the documented BedrockPlus API. Existing compiled plugins from another host are not binary-compatible.</li>
@@ -837,7 +838,7 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
       </section>
 
       <div id="search-empty" class="search-empty" hidden data-i18n="ui.noResults">No matching documentation sections.</div>
-      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 8</span><span data-i18n="ui.footer">Created by Turkmen · Beta 8 documentation</span></footer>
+      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 9</span><span data-i18n="ui.footer">Created by Turkmen · Beta 9 documentation</span></footer>
     </main>
   </div>
 </body>
