@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="BedrockPlus server installation, plugin development, and API v1 documentation for Python and C++.">
+  <meta name="description" content="BedrockPlus server installation, plugin development, and API 1.0 documentation for Python and C++.">
   <title>BedrockPlus Documentation</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b5cf6'/%3E%3Cpath d='M14 16h20c10 0 16 4 16 12 0 5-3 8-7 10 6 1 9 5 9 10H39c0-4-2-6-7-6h-5v8H14V16zm13 10v7h6c3 0 5-1 5-4s-2-3-5-3h-6z' fill='white'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="assets/styles.css?v=20261023.1">
@@ -20,7 +20,7 @@
     <button class="icon-button menu-button" id="menu-button" aria-label="Open navigation" data-i18n-aria-label="ui.openNav" aria-expanded="false">☰</button>
     <a class="brand" href="#overview" aria-label="BedrockPlus documentation home" data-i18n-aria-label="ui.home">
       <span class="brand-mark">B+</span>
-      <span><strong>BedrockPlus</strong><small data-i18n="ui.brandSub">Developer Docs · API v1</small></span>
+      <span><strong>BedrockPlus</strong><small data-i18n="ui.brandSub">Developer Docs · API 1.0</small></span>
     </a>
     <a class="bedrockpvp-link" href="https://bedrockpvp.com/" aria-label="Back to BedrockPVP" data-i18n-aria-label="ui.backToBedrockPvp">
       <span aria-hidden="true">←</span><span class="bedrockpvp-label">Bedrock<span>PVP</span>.com</span>
@@ -38,12 +38,12 @@
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <nav id="doc-navigation" aria-label="Documentation sections" data-i18n-aria-label="ui.sections"></nav>
-      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 1.0.0 API</span></div>
+      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 1.0.1 API</span></div>
     </aside>
     <main id="content">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bedrockpvp.com/">BedrockPVP</a><span>/</span><a href="#overview">BedrockPlus</a><span>/</span><span data-i18n="ui.docs">Documentation</span></nav>
       <section id="overview" data-title="Overview" data-group="Start">
-        <div class="eyebrow" data-i18n="overview.eyebrow">Plugin development · API v1</div>
+        <div class="eyebrow" data-i18n="overview.eyebrow">Plugin development · API 1.0</div>
         <h1 data-i18n="overview.title">Build a BedrockPlus plugin</h1>
         <p class="lead" data-i18n="overview.lead">Create a typed Python or C++ plugin, package it as one validated .bppack archive, place it in plugins, and start the server.</p>
         <div class="hero-actions">
@@ -53,7 +53,7 @@
         <div class="callout success"><strong data-i18n="overview.worksTitle">Working in this build</strong><p data-i18n="overview.works">Validated Python and C++ plugins, six lifecycle callbacks, scheduled tasks, typed slash commands, eighteen live native event types including cancellable player attacks with CPS metrics, native player tags, plugin-owned boss bars, authenticated online players, and pointer-free native Entity enumeration.</p></div>
         <div class="card-grid three">
           <article class="metric-card"><span data-i18n="overview.package">Package</span><strong>.bppack</strong><small data-i18n="overview.packageSub">Validated ZIP with file hashes</small></article>
-          <article class="metric-card"><span data-i18n="overview.runtimes">Runtimes</span><strong>Python 3.13 · C++20</strong><small>Windows x64 · API/ABI v1</small></article>
+          <article class="metric-card"><span data-i18n="overview.runtimes">Runtimes</span><strong>Python 3.13 · C++20</strong><small>Windows x64 · API 1.0 · ABI 1</small></article>
           <article class="metric-card"><span data-i18n="overview.bds">Current BDS profile</span><strong>1.26.52.3</strong><small data-i18n="overview.bdsSub">Exact-build integration</small></article>
         </div>
       </section>
@@ -195,12 +195,13 @@ cmake --build build --config Release</code></pre>
       <section id="manifest" data-title="Manifest reference" data-group="Packages">
         <h2 data-i18n="manifest.title">manifest.json</h2>
         <p data-i18n="manifest.intro">The root manifest is the package identity and runtime contract. Plugin ID and version must match the exported class or native descriptor.</p>
+        <div class="callout info"><strong data-i18n="manifest.apiVersionTitle">Declare the API your plugin requires</strong><p data-i18n="manifest.apiVersion">Use a major.minor string. BedrockPlus major.minor is the maximum supported API: newer runtimes retain older supported APIs, but an older runtime rejects a plugin that requires a newer API. BedrockPlus 1.0.1 supports API "1.0". Numeric 1 is accepted only as a legacy BedrockPlus 1.0.0 alias; new manifests use "1.0". The manifest is checked before plugin code is loaded.</p></div>
         <div data-api-language="python"><pre><code>{
   "format_version": 1,
   "id": "example.my-plugin",
   "name": "My Plugin",
   "version": "0.1.0",
-  "api_version": 1,
+  "api_version": "1.0",
   "runtime": {
     "type": "python",
     "entrypoint": "python/plugin.py",
@@ -213,7 +214,7 @@ cmake --build build --config Release</code></pre>
   "id": "example.my-plugin",
   "name": "My Plugin",
   "version": "0.1.0",
-  "api_version": 1,
+  "api_version": "1.0",
   "runtime": {
     "type": "cpp",
     "entrypoint": "native/windows-x64/my_plugin.dll",
@@ -350,7 +351,7 @@ logger().log(BP_LOG_INFO, "Loaded", "MY.LOAD", {{"mode", "safe"}});</code></pre>
           <h3><code>Server(host)</code></h3>
           <p data-i18n="api.server.desc">The entry point for authenticated online players and the verified native Entity registry. Python constructs Server from PluginHost; C++ plugins use server().</p>
           <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-            <tr id="api-server-properties"><td><a class="api-symbol" href="#api-server-properties"><code>name</code> · <code>api_version</code> · <code>data_directory</code></a></td><td><code>str</code> · <code>int</code> · <code>Path</code></td><td data-i18n="api.server.properties">Server identity, public API version, and this plugin's private data path.</td></tr>
+            <tr id="api-server-properties"><td><a class="api-symbol" href="#api-server-properties"><code>name</code> · <code>api_version</code> · <code>data_directory</code></a></td><td><code>str</code> · <code>str</code> · <code>Path</code></td><td data-i18n="api.server.properties">Server identity, public API version, and this plugin's private data path.</td></tr>
             <tr id="api-server-actions"><td><a class="api-symbol" href="#api-server-actions"><code>dispatch_command(command)</code> · <code>broadcast(message)</code></a></td><td><code>bool</code></td><td data-i18n="api.server.actions">Explicitly queue a server command or a broadcast. These are command APIs, not hidden native object implementations.</td></tr>
             <tr id="api-server-online-players"><td><a class="api-symbol" href="#api-server-online-players"><code>online_players</code> · <code>online_player_count</code></a></td><td><code>tuple[Player, ...]</code> · <code>int</code></td><td data-i18n="api.server.onlinePlayers">Fresh authenticated player snapshots in stable session order.</td></tr>
             <tr id="api-server-get-player"><td><a class="api-symbol" href="#api-server-get-player"><code>get_player(identity)</code></a></td><td><code>Player | None</code></td><td data-i18n="api.server.getPlayer">Find an online player by exact session ID, XUID, or name. The identity parameter must be a non-empty string.</td></tr>
@@ -745,7 +746,7 @@ def on_player_attack(self, event: PlayerAttackEvent) -&gt; None:
 
       <section id="scheduler" data-title="Scheduler" data-group="API reference">
         <h2 data-i18n="scheduler.title">Server-thread scheduler</h2>
-        <p data-i18n="scheduler.intro">Schedule one-shot or finite repeating callbacks in milliseconds. Keep task IDs and cancel outstanding work during server stopping. A plugin instance accepts at most 1024 submitted callbacks in API v1.</p>
+        <p data-i18n="scheduler.intro">Schedule one-shot or finite repeating callbacks in milliseconds. Keep task IDs and cancel outstanding work during server stopping. A plugin instance accepts at most 1024 active callbacks in API 1.0.</p>
         <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Method</th><th data-i18n="api.returns">Returns</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
           <tr id="api-system-run"><td><a class="api-symbol" href="#api-system-run"><code>run(callback)</code> · <code>runTimeout(callback, delay_ticks)</code></a></td><td><code>int</code></td><td data-i18n="api.system.run">Schedule the next tick or one delayed callback and return its task ID.</td></tr>
           <tr id="api-system-interval"><td><a class="api-symbol" href="#api-system-interval"><code>runInterval(callback, interval_ticks)</code> · <code>runJob(iterator)</code></a></td><td><code>int</code></td><td data-i18n="api.system.interval">Run repeated tick work or advance one iterator step per tick. Exceptions retire the task safely.</td></tr>
@@ -827,7 +828,7 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
       </section>
 
       <section id="limitations" data-title="Current boundaries" data-group="Operate">
-        <h2 data-i18n="limits.title">Current 1.0.0 boundaries</h2>
+        <h2 data-i18n="limits.title">Current 1.0.1 boundaries</h2>
         <ul class="boundary-list">
           <li data-i18n="limits.windows">The runtime currently targets 64-bit Windows, BDS 1.26.52.3, Python 3.13, and C++ ABI v1.</li>
           <li data-i18n="limits.interpreter">Python plugins share one embedded interpreter. Dependency folders are isolated, but this is not process-level security isolation.</li>
@@ -838,7 +839,7 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
       </section>
 
       <div id="search-empty" class="search-empty" hidden data-i18n="ui.noResults">No matching documentation sections.</div>
-      <footer><span>BedrockPlus API v1 · 1.0.0</span><span data-i18n="ui.footer">Created by Turkmen · 1.0.0 documentation</span></footer>
+      <footer><span>BedrockPlus API 1.0 · BedrockPlus 1.0.1</span><span data-i18n="ui.footer">Created by Turkmen · 1.0.1 documentation</span></footer>
     </main>
   </div>
 </body>
