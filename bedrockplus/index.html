@@ -38,7 +38,7 @@
   <div class="layout">
     <aside class="sidebar" id="sidebar">
       <nav id="doc-navigation" aria-label="Documentation sections" data-i18n-aria-label="ui.sections"></nav>
-      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 0.1.0 Beta 9 API</span></div>
+      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 1.0.0 API</span></div>
     </aside>
     <main id="content">
       <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bedrockpvp.com/">BedrockPVP</a><span>/</span><a href="#overview">BedrockPlus</a><span>/</span><span data-i18n="ui.docs">Documentation</span></nav>
@@ -50,7 +50,7 @@
           <a class="button primary" href="#quickstart" data-i18n="overview.start">Start building</a>
           <a class="button secondary" href="#full-example" data-i18n="overview.download">Download full example</a>
         </div>
-        <div class="callout success"><strong data-i18n="overview.worksTitle">Working in this build</strong><p data-i18n="overview.works">Validated Python and C++ plugins, six lifecycle callbacks, scheduled tasks, typed slash commands, nineteen live native event types including cancellable player attacks with CPS metrics, native player tags, plugin-owned boss bars, authenticated online players, and pointer-free native Entity enumeration.</p></div>
+        <div class="callout success"><strong data-i18n="overview.worksTitle">Working in this build</strong><p data-i18n="overview.works">Validated Python and C++ plugins, six lifecycle callbacks, scheduled tasks, typed slash commands, eighteen live native event types including cancellable player attacks with CPS metrics, native player tags, plugin-owned boss bars, authenticated online players, and pointer-free native Entity enumeration.</p></div>
         <div class="card-grid three">
           <article class="metric-card"><span data-i18n="overview.package">Package</span><strong>.bppack</strong><small data-i18n="overview.packageSub">Validated ZIP with file hashes</small></article>
           <article class="metric-card"><span data-i18n="overview.runtimes">Runtimes</span><strong>Python 3.13 · C++20</strong><small>Windows x64 · API/ABI v1</small></article>
@@ -714,7 +714,7 @@ def on_command(event: PlayerCommandEvent) -&gt; None:
             <tr><td>player.command · server.command</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.command">Cancellable before execution; command is mutable.</td></tr>
             <tr><td>player.login · player.respawn · player.death · player.interact · player.toggle_sneak · player.toggle_sprint</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.lifecycleExtended">Authenticated lifecycle and exact native input/state transitions.</td></tr>
             <tr><td><a class="api-symbol" href="#api-event-attack"><code>player.attack</code></a></td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.attackData">Authenticated target runtime ID, typed target resolution, rolling one-second CPS and interval metrics; cancellable before vanilla combat.</td></tr>
-            <tr><td>player.chat · block.break · block.place · server.list_ping · player.jump · player.kick · player.move</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.gameplay">Typed properties, validated mutation, and cancellation where the BDS action is cancellable.</td></tr>
+            <tr><td>player.chat · block.place · server.list_ping · player.jump · player.kick · player.move</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.gameplay">Typed properties, validated mutation, and cancellation where the BDS action is cancellable.</td></tr>
           </tbody>
         </table></div>
         <h3 data-i18n="events.attackTitle">Moderate real entity attacks</h3>
@@ -827,18 +827,18 @@ bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
       </section>
 
       <section id="limitations" data-title="Current boundaries" data-group="Operate">
-        <h2 data-i18n="limits.title">Current Beta 9 boundaries</h2>
+        <h2 data-i18n="limits.title">Current 1.0.0 boundaries</h2>
         <ul class="boundary-list">
           <li data-i18n="limits.windows">The runtime currently targets 64-bit Windows, BDS 1.26.52.3, Python 3.13, and C++ ABI v1.</li>
           <li data-i18n="limits.interpreter">Python plugins share one embedded interpreter. Dependency folders are isolated, but this is not process-level security isolation.</li>
-          <li data-i18n="limits.events">The nineteen documented event types, read-only Entity fields, native item registry, and native scoreboard are live; native Entity mutation, Level/BlockSource, chunks, inventory, NBT, forms, and raw packets remain future milestones.</li>
+          <li data-i18n="limits.events">The eighteen documented event types, read-only Entity fields, native item registry, and native scoreboard are live; native Entity mutation, Level/BlockSource, chunks, inventory, NBT, forms, and raw packets remain future milestones.</li>
           <li data-i18n="limits.compat">Plugins must target the documented BedrockPlus API. Existing compiled plugins from another host are not binary-compatible.</li>
           <li data-i18n="limits.snapshots">Player identity/connection and Entity data are pointer-free copied snapshots. Existing Player convenience actions are explicit command-backed operations and are not presented as completed native object methods.</li>
         </ul>
       </section>
 
       <div id="search-empty" class="search-empty" hidden data-i18n="ui.noResults">No matching documentation sections.</div>
-      <footer><span>BedrockPlus API v1 · 0.1.0 Beta 9</span><span data-i18n="ui.footer">Created by Turkmen · Beta 9 documentation</span></footer>
+      <footer><span>BedrockPlus API v1 · 1.0.0</span><span data-i18n="ui.footer">Created by Turkmen · 1.0.0 documentation</span></footer>
     </main>
   </div>
 </body>
