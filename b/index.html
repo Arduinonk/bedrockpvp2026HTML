@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BedrockPlus server platform and plugin API documentation.">
+  <title>BedrockPlus Documentation</title>
+  <link rel="stylesheet" href="assets/styles.css?v=20261025-2">
+  <script defer src="site-config.js?v=20261025-2"></script>
+  <script defer src="locales/en.js?v=20261025-2"></script>
+  <script defer src="locales/ru.js?v=20261025-2"></script>
+  <script defer src="locales/tr.js?v=20261025-2"></script>
+  <script defer src="locales/tk.js?v=20261025-2"></script>
+  <script defer src="assets/app.js?v=20261025-2"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="access.skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-main shell">
+      <a class="brand" href="#/home" aria-label="BedrockPlus home">
+        <span class="brand-mark" aria-hidden="true">B+</span>
+        <span class="brand-name">BedrockPlus</span>
+      </a>
+      <span class="version-chip"><span data-version>1.0.1</span><span aria-hidden="true">⌄</span></span>
+      <div class="runtime-switch" data-runtime-switch role="group" aria-label="Plugin language">
+        <button type="button" data-runtime-option="python" aria-pressed="true"><span class="runtime-short">Py</span><span class="runtime-long">Python</span></button>
+        <button type="button" data-runtime-option="cpp" aria-pressed="false"><span class="runtime-short">C++</span><span class="runtime-long">C++</span></button>
+      </div>
+      <div class="header-spacer"></div>
+      <button class="search-trigger" type="button" data-open-search>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+        <span data-i18n="search.placeholder">Search documentation</span><kbd>/</kbd>
+      </button>
+      <label class="language-control"><span class="sr-only" data-i18n="language.label">Language</span><select data-language aria-label="Language"><option value="en">EN</option><option value="ru">RU</option><option value="tr">TR</option><option value="tk">TK</option></select></label>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="Toggle color theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg></button>
+      <a class="github-link is-unavailable" data-github="repository" href="#/report" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.58 9.58 0 0 1 12 6.82c.85 0 1.71.11 2.51.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg><span data-i18n="github.support">Support repository</span></a>
+      <button class="mobile-menu" type="button" data-menu-toggle aria-expanded="false" aria-label="Open navigation">☰</button>
+    </div>
+    <nav class="top-nav shell" aria-label="Primary navigation" data-top-nav>
+      <a href="#/home" data-route="home" data-i18n="nav.home">Home</a>
+      <a href="#/getting-started" data-route="getting-started" data-i18n="nav.start">Getting Started</a>
+      <a href="#/tutorials" data-route="tutorials" data-i18n="nav.tutorials">Tutorials</a>
+      <a href="#/reference" data-route="reference" data-i18n="nav.reference">API Reference</a>
+      <a href="#/changelog" data-route="changelog" data-i18n="nav.changelog">Changelog</a>
+      <a href="#/report" data-route="report" data-i18n="nav.report">Report a bug</a>
+    </nav>
+  </header>
+
+  <div class="layout shell">
+    <aside class="side-nav" data-side-nav aria-label="Page navigation"></aside>
+    <main id="main" class="content" tabindex="-1">
+      <article class="page" data-page="home">
+        <div class="breadcrumb"><span data-i18n="nav.home">Home</span></div>
+        <section class="hero" id="welcome">
+          <div class="hero-grid" aria-hidden="true"></div><div class="hero-emblem" aria-hidden="true">B+</div>
+          <div class="eyebrow" data-i18n="home.eyebrow">Bedrock Dedicated Server · Python & C++</div>
+          <h1>BedrockPlus</h1>
+          <p data-i18n="home.lead">A native Windows server platform with a typed plugin API, exact-build BDS integration and a safe publication workflow.</p>
+          <div class="hero-actions"><a class="button primary" href="#/getting-started" data-i18n="home.start">Start building</a><a class="button secondary" href="#/reference" data-i18n="home.api">Explore the API</a></div>
+          <div class="release-strip"><span><small>BEDROCKPLUS</small><strong data-version>1.0.1</strong></span><span><small>API</small><strong data-api-version>1.0</strong></span><span><small>BDS</small><strong data-bds-version>1.26.52.3</strong></span><span><small>PLATFORM</small><strong>Windows x64</strong></span></div>
+        </section>
+        <section id="platform">
+          <div class="section-heading"><span class="section-kicker">01</span><div><h2 data-i18n="home.platformTitle">One platform, two plugin languages</h2><p data-i18n="home.platformText">Choose typed Python 3.13 or native C++20. Both runtimes share lifecycle, events, commands, scheduling and the same validated package format.</p></div></div>
+          <div class="feature-grid"><article class="feature-card"><span class="feature-icon">Py</span><h3 data-i18n="home.pythonTitle">Python plugins</h3><p data-i18n="home.pythonText">Typed classes, editor autocomplete, documented events and packaged dependencies.</p></article><article class="feature-card"><span class="feature-icon">C++</span><h3 data-i18n="home.cppTitle">Native plugins</h3><p data-i18n="home.cppText">A stable public ABI with header-only C++ helpers and verified native loading.</p></article><article class="feature-card"><span class="feature-icon">BDS</span><h3 data-i18n="home.nativeTitle">Real server integration</h3><p data-i18n="home.nativeText">Native player, entity, scoreboard, boss bar, item registry and command foundations without fake values.</p></article></div>
+        </section>
+        <section id="install-preview" class="split-section">
+          <div><span class="section-kicker">02</span><h2 data-i18n="home.installTitle">From an empty folder to a running server</h2><p data-i18n="home.installText">Install the public package, enter a server directory and run one command. BedrockPlus downloads the supported official BDS build and preserves operator-owned files.</p><a class="text-link" href="#/getting-started" data-i18n="home.readGuide">Read the installation guide →</a></div>
+          <div class="terminal-card"><div class="terminal-title"><span></span><span></span><span></span><b>PowerShell</b></div><pre><code>pip install bedrockplus
+mkdir MyBedrockServer
+cd MyBedrockServer
+bedrockplus</code></pre></div>
+        </section>
+        <section id="support-preview" class="support-banner"><div><span class="section-kicker">03</span><h2 data-i18n="home.supportTitle">Public issues, private source</h2><p data-i18n="home.supportText">The future GitHub repository will be used for bug reports, feature requests and changelog references. BedrockPlus source code does not need to be published there.</p></div><a class="button secondary is-unavailable" data-github="issues" href="#/report" aria-disabled="true" data-i18n="home.issuesSoon">Issue tracker coming soon</a></section>
+      </article>
+
+      <article class="page" data-page="getting-started">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.start">Getting Started</span></div>
+        <header class="page-header" id="requirements"><span class="page-label">GUIDE</span><h1 data-i18n="start.title">Getting Started</h1><p data-i18n="start.lead">Install BedrockPlus, initialize a safe server directory and confirm the exact supported environment.</p></header>
+        <section id="requirements-list"><h2 data-i18n="start.requirements">Requirements</h2><ul class="check-list"><li>Windows 10/11 x64</li><li data-runtime-content="python">Python 3.13 x64</li><li data-runtime-content="cpp" hidden data-i18n="start.cppTools">Visual Studio 2022 with the C++ desktop workload and CMake</li><li data-i18n="start.network">Internet access for the first official BDS download</li><li data-i18n="start.terms">Acceptance of the applicable Minecraft server terms</li></ul></section>
+        <section id="install"><h2 data-i18n="start.install">Install BedrockPlus</h2><p data-i18n="start.installText">Use the production PyPI package. Upgrade uses the same command with --upgrade.</p><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>py -3.13 -m pip install --upgrade bedrockplus</code></pre></div></section>
+        <section id="initialize"><h2 data-i18n="start.initialize">Initialize and start a server</h2><p data-i18n="start.initializeText">Run BedrockPlus inside the directory that should own the server. Existing worlds, plugins and packs are preserved by the adoption and update workflow.</p><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>mkdir D:\Minecraft\MyServer
+cd D:\Minecraft\MyServer
+bedrockplus</code></pre></div><div class="callout"><strong data-i18n="start.localCommandTitle">Server-local command</strong><p data-i18n="start.localCommandText">Initialization places bedrockplus.exe beside bedrock_server.exe, so the server can be managed without depending on a global command later.</p></div></section>
+        <section id="next"><h2 data-i18n="start.next">Next step</h2><p data-i18n="start.nextText">Create a folder plugin during development, then package the same files as a validated .bppack for distribution.</p><a class="button primary" href="#/tutorials" data-i18n="start.createPlugin">Create your first plugin</a></section>
+      </article>
+
+      <article class="page" data-page="tutorials">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.tutorials">Tutorials</span></div>
+        <header class="page-header" id="first-plugin"><span class="page-label"><span data-runtime-content="python">PYTHON</span><span data-runtime-content="cpp" hidden>C++20</span></span><h1 data-i18n="tutorial.title">Your first plugin</h1><p data-i18n="tutorial.lead">Create one folder plugin that subscribes to a real player join event and writes a clear lifecycle message.</p></header>
+        <section id="create"><h2 data-i18n="tutorial.create">Create the project</h2><div data-runtime-content="python"><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>bedrockplus plugin python init "Join Reporter"</code></pre></div></div><div data-runtime-content="cpp" hidden><div class="callout info"><strong data-i18n="tutorial.cppUseTitle">Using a ready C++ plugin requires no build tools</strong><p data-i18n="tutorial.cppUseText">Put the compiled .bppack in the server plugins folder. CMake, Visual Studio and source code are needed only when you create or modify the plugin DLL.</p></div><div class="callout"><strong data-i18n="tutorial.cppStartTitle">Start from the verified C++ example</strong><p data-i18n="tutorial.cppStartText">Copy examples/plugins/cpp-hello as the project skeleton, then change its manifest identity, class and exported descriptor together.</p></div></div><p data-i18n="tutorial.folderText">Keep the generated folder under the server plugins directory while developing.</p></section>
+        <section id="manifest"><h2>manifest.json</h2><p data-i18n="tutorial.manifestText">The manifest declares compatibility before any plugin code executes. API 1.0 is written as a string.</p><div data-runtime-content="python"><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>{
+  "format_version": 1,
+  "id": "example.join-reporter",
+  "name": "Join Reporter",
+  "version": "1.0.0",
+  "api_version": "1.0",
+  "runtime": {
+    "type": "python",
+    "entrypoint": "python/plugin.py",
+    "entry_class": "JoinReporter",
+    "python": "3.13"
+  }
+}</code></pre></div></div><div data-runtime-content="cpp" hidden><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>{
+  "format_version": 1,
+  "id": "example.join-reporter",
+  "name": "Join Reporter",
+  "version": "1.0.0",
+  "api_version": "1.0",
+  "runtime": {
+    "type": "cpp",
+    "entrypoint": "native/windows-x64/join_reporter.dll",
+    "platform": "windows-x64",
+    "abi": 1
+  }
+}</code></pre></div></div></section>
+        <section id="subscribe"><h2 data-i18n="tutorial.subscribe">Subscribe to player.join</h2><p data-i18n="tutorial.subscribeText">Subscribe when the server is ready, retain the subscription ID and remove it during stopping. The event provides a typed Player object.</p><div data-runtime-content="python"><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>from bedrockplus import PlayerJoinEvent, Plugin, Server
+
+class JoinReporter(Plugin):
+    def on_load(self) -&gt; None:
+        self.server = Server(self.host)
+        self.join_subscription = None
+
+    def on_server_ready(self) -&gt; None:
+        self.join_subscription = self.host.subscribe_event(
+            "player.join", self.on_player_join
+        )
+        self.host.log("Join Reporter is ready")
+
+    def on_player_join(self, event: PlayerJoinEvent) -&gt; None:
+        player = event.player
+        self.host.log(player.name, "joined with XUID", player.xuid)
+
+    def on_server_stopping(self) -&gt; None:
+        if self.join_subscription is not None:
+            self.host.unsubscribe_event(self.join_subscription)
+            self.join_subscription = None</code></pre></div></div><div data-runtime-content="cpp" hidden><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>#include &lt;bedrockplus/sdk/plugin.hpp&gt;
+
+class JoinReporter final : public bedrockplus::sdk::Plugin {
+public:
+    using Plugin::Plugin;
+
+    void on_server_ready() override {
+        join_listener_ = events().subscribe&lt;bedrockplus::sdk::PlayerJoinEvent&gt;(
+            [this](const auto&amp; event) {
+                logger().info(event.player().name + " joined");
+            });
+    }
+
+    void on_disable() override {
+        if (join_listener_ != 0) events().unsubscribe(join_listener_);
+    }
+
+private:
+    std::uint64_t join_listener_{};
+};
+
+BEDROCKPLUS_PLUGIN(
+    JoinReporter,
+    "example.join-reporter",
+    "Join Reporter",
+    "1.0.0")</code></pre></div></div><div class="callout info"><strong data-i18n="tutorial.logTitle">Plugin-owned messages</strong><p data-i18n="tutorial.logText">BedrockPlus does not print automatic successful load/enable notices. Log only the lifecycle information that is useful for your plugin.</p></div></section>
+        <section id="package"><h2 data-i18n="tutorial.package">Validate and package</h2><div data-runtime-content="python"><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>cd plugins\JoinReporter
+bedrockplus plugin pack</code></pre></div></div><div data-runtime-content="cpp" hidden><div class="callout info"><strong data-i18n="tutorial.cppToolsTitle">One-time C++ toolchain</strong><p data-i18n="tutorial.cppToolsText">Install Visual Studio 2022 Build Tools with Desktop development with C++. Select MSVC x64/x86 build tools, a Windows SDK and CMake tools for Windows. The Visual Studio graphical IDE is optional.</p></div><ol class="build-steps"><li><strong>CMake</strong><span data-i18n="tutorial.cppCmakeRole">checks the project and generates Visual Studio/MSBuild files.</span></li><li><strong>MSVC</strong><span data-i18n="tutorial.cppMsvcRole">compiles the C++ source into the DLL named by manifest.json.</span></li><li><strong>bedrockplus plugin pack</strong><span data-i18n="tutorial.cppPackRole">validates manifest.json plus the compiled DLL and creates the .bppack archive.</span></li></ol><div class="callout warning"><strong data-i18n="tutorial.cppSdkTitle">Current SDK requirement</strong><p data-i18n="tutorial.cppSdkText">BEDROCKPLUS_ROOT must be a directory containing include/bedrockplus/sdk/plugin.hpp. BedrockPlus 1.0.1 has not yet published a standalone C++ SDK archive, so rebuilding the source example currently requires the BedrockPlus developer checkout. The ready .bppack does not.</p></div><p data-i18n="tutorial.cppShellText">Run these commands in Developer PowerShell for VS 2022 after replacing the SDK path:</p><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>$env:BEDROCKPLUS_ROOT = "D:\Path\To\BedrockPlusSdk"
+Test-Path "$env:BEDROCKPLUS_ROOT\include\bedrockplus\sdk\plugin.hpp"
+
+cmake -S . -B build -G "Visual Studio 17 2022" -A x64 `
+  -DBEDROCKPLUS_ROOT="$env:BEDROCKPLUS_ROOT"
+cmake --build build --config Release
+bedrockplus plugin pack</code></pre></div></div></section>
+      </article>
+
+      <article class="page" data-page="reference">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.reference">API Reference</span></div>
+        <header class="page-header" id="api-overview"><span class="page-label">API 1.0</span><h1 data-i18n="reference.title">API Reference</h1><p data-i18n="reference.lead">A navigable overview of the stable public surface. Detailed symbol pages will be added here without changing the v1 website.</p></header>
+        <section id="server-api"><h2>Server</h2><div class="api-grid"><a href="#/reference/server-api"><code>online_players</code><span data-i18n="reference.players">Authenticated Player snapshots</span></a><a href="#/reference/server-api"><code>entities</code><span data-i18n="reference.entities">Verified native Entity snapshots</span></a><a href="#/reference/server-api"><code>scoreboard</code><span data-i18n="reference.scoreboard">Native objectives and scores</span></a><a href="#/reference/server-api"><code>create_boss_bar()</code><span data-i18n="reference.bossbars">Player-visible native boss bars</span></a></div></section>
+        <section id="player-api"><h2>Player</h2><div class="api-grid"><a href="#/reference/player-api"><code>name · xuid · session_id</code><span data-i18n="reference.identity">Stable copied identity</span></a><a href="#/reference/player-api"><code>connection · address · ping</code><span data-i18n="reference.connection">Available native connection data</span></a><a href="#/reference/player-api"><code>tags · add_tag() · remove_tag()</code><span data-i18n="reference.tags">Native Actor tags</span></a><a href="#/reference/player-api"><code>transfer()</code><span data-i18n="reference.transfer">Move a player to another server</span></a></div></section>
+        <section id="events-api"><h2 data-i18n="reference.eventsTitle">Events and commands</h2><p data-i18n="reference.eventsText">Typed lifecycle and gameplay events use class properties rather than dictionaries. Only events with a truthful pre-action native boundary expose cancellation.</p><div class="status-table"><div><strong>player.join</strong><span>PlayerJoinEvent</span><em data-i18n="reference.observe">Observe</em></div><div><strong>player.attack</strong><span>PlayerAttackEvent</span><em class="cancellable" data-i18n="reference.cancel">Cancellable</em></div><div><strong>player.command</strong><span>PlayerCommandEvent</span><em class="cancellable" data-i18n="reference.cancel">Cancellable</em></div><div><strong>server.tick</strong><span>ServerTickEvent</span><em data-i18n="reference.observe">Observe</em></div></div></section>
+        <section id="api-compatibility"><h2 data-i18n="reference.compatTitle">Compatibility contract</h2><p data-i18n="reference.compatText">A plugin declares the minimum API line it requires. New BedrockPlus releases retain supported older lines; an older runtime rejects plugins requiring a newer API before their code loads.</p></section>
+      </article>
+
+      <article class="page" data-page="changelog">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.changelog">Changelog</span></div>
+        <header class="page-header" id="release-history"><span class="page-label" data-i18n="changelog.label">Releases</span><h1 data-i18n="changelog.title">Changelog</h1><p data-i18n="changelog.lead">Product changes, compatibility notes and—after the support repository opens—links to the reports resolved by each release.</p></header>
+        <section id="next-release" class="release-entry"><div class="release-meta"><span class="release-badge draft" data-i18n="changelog.draft">Draft</span><time data-i18n="changelog.nextRelease">Next release</time></div><h2>BedrockPlus 1.0.1</h2><ul><li data-i18n="changelog.scheduler">Reuses completed scheduler callback slots during long-running plugin sessions.</li><li data-i18n="changelog.compat">Defines API 1.0 as the current maximum and preserves the legacy numeric API declaration.</li><li data-i18n="changelog.quiet">Removes automatic successful plugin load and enable notices; plugin authors control their own lifecycle messages.</li><li data-i18n="changelog.updateNotice">Adds a non-blocking PyPI update notice that never prevents offline startup.</li></ul><p class="issue-note" data-i18n="changelog.issuePending">Issue references will be attached here after the public support repository is configured.</p></section>
+        <section id="release-100" class="release-entry"><div class="release-meta"><span class="release-badge stable" data-i18n="changelog.stable">Stable</span><time datetime="2026-10-24">24 Oct 2026</time></div><h2>BedrockPlus 1.0.0</h2><ul><li data-i18n="changelog.firstStable">First stable Windows x64 release for BDS 1.26.52.3.</li><li data-i18n="changelog.nativeApis">Ships typed Python and C++ APIs with native players, entities, scoreboard, boss bars, tags and item registry foundations.</li><li data-i18n="changelog.releaseFlow">Introduces verified Wheel, runtime, examples, website and checksum publication gates.</li></ul></section>
+        <section id="issue-links"><h2 data-i18n="changelog.linkTitle">Linking reports to releases</h2><p data-i18n="changelog.linkText">When a real report is fixed, its GitHub issue number will appear beside the exact changelog item. No invented counters or placeholder issues are shown.</p></section>
+      </article>
+
+      <article class="page" data-page="report">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.report">Report a bug</span></div>
+        <header class="page-header" id="report-overview"><span class="page-label">SUPPORT</span><h1 data-i18n="report.title">Report a bug</h1><p data-i18n="report.lead">A dedicated public support repository will collect reproducible bug reports and feature requests without exposing the private BedrockPlus source repository.</p></header>
+        <section id="repository-status" class="repository-status"><div class="status-orb" aria-hidden="true"></div><div><h2 data-i18n="report.notConnected">Support repository is not connected yet</h2><p data-i18n="report.notConnectedText">The website is ready for its URL. Until then, no button will send users to a missing or unrelated repository.</p></div><a class="button primary is-unavailable" data-github="new-issue" href="#" aria-disabled="true" data-i18n="report.openIssue">Open a new issue</a></section>
+        <section id="report-checklist"><h2 data-i18n="report.includeTitle">What a useful report includes</h2><div class="report-grid"><article><strong>1</strong><h3 data-i18n="report.versionTitle">Exact versions</h3><p data-i18n="report.versionText">BedrockPlus, BDS, Python and the affected plugin version.</p></article><article><strong>2</strong><h3 data-i18n="report.stepsTitle">Reproduction steps</h3><p data-i18n="report.stepsText">What you ran, what happened and what you expected instead.</p></article><article><strong>3</strong><h3 data-i18n="report.logTitle">Relevant log</h3><p data-i18n="report.logText">The first related warning or error, not an unrelated full console dump.</p></article><article><strong>4</strong><h3 data-i18n="report.privacyTitle">Redacted identity data</h3><p data-i18n="report.privacyText">Remove tokens, IP addresses, XUID, device IDs and private server information.</p></article></div></section>
+        <section id="report-types"><h2 data-i18n="report.typesTitle">Repository structure</h2><div class="type-list"><div><span class="type-icon bug">!</span><div><h3 data-i18n="report.bug">Bug report</h3><p data-i18n="report.bugText">A reproducible problem in BedrockPlus or its documented API.</p></div></div><div><span class="type-icon request">+</span><div><h3 data-i18n="report.request">Feature request</h3><p data-i18n="report.requestText">A concrete capability with its server-owner or plugin-author use case.</p></div></div><div><span class="type-icon docs">?</span><div><h3 data-i18n="report.docs">Documentation problem</h3><p data-i18n="report.docsText">Missing, misleading or outdated public guidance.</p></div></div></div></section>
+      </article>
+    </main>
+  </div>
+
+  <footer class="site-footer"><div class="shell"><span>BedrockPlus · Turkmen</span><span><span data-i18n="footer.api">Documentation for API</span> <b data-api-version>1.0</b></span></div></footer>
+  <dialog class="search-dialog" data-search-dialog><form method="dialog" class="search-panel"><div class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg><input type="search" data-search-input autocomplete="off" data-i18n-placeholder="search.placeholder" placeholder="Search documentation"><button value="cancel" aria-label="Close">×</button></div><div class="search-results" data-search-results><p data-i18n="search.hint">Type a class, command, event or guide name.</p></div></form></dialog>
+</body>
+</html>
