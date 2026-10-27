@@ -1,846 +1,204 @@
 <!doctype html>
-<html lang="en" data-theme="dark" data-api-language="python">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="BedrockPlus server installation, plugin development, and API 1.0 documentation for Python and C++.">
+  <meta name="description" content="BedrockPlus server platform and plugin API documentation.">
   <title>BedrockPlus Documentation</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%238b5cf6'/%3E%3Cpath d='M14 16h20c10 0 16 4 16 12 0 5-3 8-7 10 6 1 9 5 9 10H39c0-4-2-6-7-6h-5v8H14V16zm13 10v7h6c3 0 5-1 5-4s-2-3-5-3h-6z' fill='white'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="assets/styles.css?v=20261023.1">
-  <script defer src="assets/i18n.js?v=20261023.1"></script>
-  <script defer src="locales/en.js?v=20261023.1"></script>
-  <script defer src="locales/tr.js?v=20261023.1"></script>
-  <script defer src="locales/ru.js?v=20261023.1"></script>
-  <script defer src="locales/tk.js?v=20261023.1"></script>
-  <script defer src="assets/app.js?v=20261023.1"></script>
+  <link rel="stylesheet" href="assets/styles.css?v=20261025-2">
+  <script defer src="site-config.js?v=20261025-2"></script>
+  <script defer src="locales/en.js?v=20261025-2"></script>
+  <script defer src="locales/ru.js?v=20261025-2"></script>
+  <script defer src="locales/tr.js?v=20261025-2"></script>
+  <script defer src="locales/tk.js?v=20261025-2"></script>
+  <script defer src="assets/app.js?v=20261025-2"></script>
 </head>
 <body>
-  <a class="skip-link" href="#content" data-i18n="ui.skip">Skip to documentation</a>
-  <header class="topbar">
-    <button class="icon-button menu-button" id="menu-button" aria-label="Open navigation" data-i18n-aria-label="ui.openNav" aria-expanded="false">☰</button>
-    <a class="brand" href="#overview" aria-label="BedrockPlus documentation home" data-i18n-aria-label="ui.home">
-      <span class="brand-mark">B+</span>
-      <span><strong>BedrockPlus</strong><small data-i18n="ui.brandSub">Developer Docs · API 1.0</small></span>
-    </a>
-    <a class="bedrockpvp-link" href="https://bedrockpvp.com/" aria-label="Back to BedrockPVP" data-i18n-aria-label="ui.backToBedrockPvp">
-      <span aria-hidden="true">←</span><span class="bedrockpvp-label">Bedrock<span>PVP</span>.com</span>
-    </a>
-    <div class="top-actions">
-      <div class="api-language-switch" role="group" aria-label="Plugin language" data-i18n-aria-label="ui.pluginLanguage">
-        <button type="button" data-api-language-select="python" class="active">Python</button>
-        <button type="button" data-api-language-select="cpp">C++</button>
+  <a class="skip-link" href="#main" data-i18n="access.skip">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-main shell">
+      <a class="brand" href="#/home" aria-label="BedrockPlus home">
+        <span class="brand-mark" aria-hidden="true">B+</span>
+        <span class="brand-name">BedrockPlus</span>
+      </a>
+      <span class="version-chip"><span data-version>1.0.2</span><span aria-hidden="true">⌄</span></span>
+      <div class="runtime-switch" data-runtime-switch role="group" aria-label="Plugin language">
+        <button type="button" data-runtime-option="python" aria-pressed="true"><span class="runtime-short">Py</span><span class="runtime-long">Python</span></button>
+        <button type="button" data-runtime-option="cpp" aria-pressed="false"><span class="runtime-short">C++</span><span class="runtime-long">C++</span></button>
       </div>
-      <label class="language-picker"><span data-i18n="ui.language">Language</span><select id="language-select" aria-label="Documentation language" data-i18n-aria-label="ui.languageLabel"></select></label>
-      <label class="search"><span aria-hidden="true">⌕</span><input id="doc-search" type="search" placeholder="Search the API…" data-i18n-placeholder="ui.search" autocomplete="off"><kbd>/</kbd></label>
-      <button class="icon-button" id="theme-button" aria-label="Switch color theme" data-i18n-aria-label="ui.theme">◐</button>
+      <div class="header-spacer"></div>
+      <button class="search-trigger" type="button" data-open-search>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg>
+        <span data-i18n="search.placeholder">Search documentation</span><kbd>/</kbd>
+      </button>
+      <label class="language-control"><span class="sr-only" data-i18n="language.label">Language</span><select data-language aria-label="Language"><option value="en">EN</option><option value="ru">RU</option><option value="tr">TR</option><option value="tk">TK</option></select></label>
+      <button class="icon-button" type="button" data-theme-toggle aria-label="Toggle color theme"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg></button>
+      <a class="github-link is-unavailable" data-github="repository" href="#/report" aria-disabled="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.87c-2.78.6-3.37-1.18-3.37-1.18-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.35 1.09 2.92.83.09-.65.35-1.09.64-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02A9.58 9.58 0 0 1 12 6.82c.85 0 1.71.11 2.51.34 1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.86v2.76c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg><span data-i18n="github.support">Support repository</span></a>
+      <button class="mobile-menu" type="button" data-menu-toggle aria-expanded="false" aria-label="Open navigation">☰</button>
     </div>
+    <nav class="top-nav shell" aria-label="Primary navigation" data-top-nav>
+      <a href="#/home" data-route="home" data-i18n="nav.home">Home</a>
+      <a href="#/getting-started" data-route="getting-started" data-i18n="nav.start">Getting Started</a>
+      <a href="#/tutorials" data-route="tutorials" data-i18n="nav.tutorials">Tutorials</a>
+      <a href="#/reference" data-route="reference" data-i18n="nav.reference">API Reference</a>
+      <a href="#/changelog" data-route="changelog" data-i18n="nav.changelog">Changelog</a>
+      <a href="#/report" data-route="report" data-i18n="nav.report">Report a bug</a>
+    </nav>
   </header>
-  <div class="layout">
-    <aside class="sidebar" id="sidebar">
-      <nav id="doc-navigation" aria-label="Documentation sections" data-i18n-aria-label="ui.sections"></nav>
-      <div class="sidebar-footer"><span class="status-dot"></span><span data-i18n="ui.current">BedrockPlus 1.0.1 API</span></div>
-    </aside>
-    <main id="content">
-      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="https://bedrockpvp.com/">BedrockPVP</a><span>/</span><a href="#overview">BedrockPlus</a><span>/</span><span data-i18n="ui.docs">Documentation</span></nav>
-      <section id="overview" data-title="Overview" data-group="Start">
-        <div class="eyebrow" data-i18n="overview.eyebrow">Plugin development · API 1.0</div>
-        <h1 data-i18n="overview.title">Build a BedrockPlus plugin</h1>
-        <p class="lead" data-i18n="overview.lead">Create a typed Python or C++ plugin, package it as one validated .bppack archive, place it in plugins, and start the server.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#quickstart" data-i18n="overview.start">Start building</a>
-          <a class="button secondary" href="#full-example" data-i18n="overview.download">Download full example</a>
-        </div>
-        <div class="callout success"><strong data-i18n="overview.worksTitle">Working in this build</strong><p data-i18n="overview.works">Validated Python and C++ plugins, six lifecycle callbacks, scheduled tasks, typed slash commands, eighteen live native event types including cancellable player attacks with CPS metrics, native player tags, plugin-owned boss bars, authenticated online players, and pointer-free native Entity enumeration.</p></div>
-        <div class="card-grid three">
-          <article class="metric-card"><span data-i18n="overview.package">Package</span><strong>.bppack</strong><small data-i18n="overview.packageSub">Validated ZIP with file hashes</small></article>
-          <article class="metric-card"><span data-i18n="overview.runtimes">Runtimes</span><strong>Python 3.13 · C++20</strong><small>Windows x64 · API 1.0 · ABI 1</small></article>
-          <article class="metric-card"><span data-i18n="overview.bds">Current BDS profile</span><strong>1.26.52.3</strong><small data-i18n="overview.bdsSub">Exact-build integration</small></article>
-        </div>
-      </section>
 
-      <section id="server-install" data-title="Install server" data-group="Server owners">
-        <div class="eyebrow" data-i18n="serverInstall.eyebrow">Server owner quickstart · Windows x64</div>
-        <h2 data-i18n="serverInstall.title">Install and start BedrockPlus</h2>
-        <p data-i18n="serverInstall.intro">Install the BedrockPlus command once, initialize one empty server folder, and use that same folder for every later start. BedrockPlus currently supports Python 3.13 and BDS 1.26.52.3.</p>
+  <div class="layout shell">
+    <aside class="side-nav" data-side-nav aria-label="Page navigation"></aside>
+    <main id="main" class="content" tabindex="-1">
+      <article class="page" data-page="home">
+        <div class="breadcrumb"><span data-i18n="nav.home">Home</span></div>
+        <section class="hero" id="welcome">
+          <div class="hero-grid" aria-hidden="true"></div><div class="hero-emblem" aria-hidden="true">B+</div>
+          <div class="eyebrow" data-i18n="home.eyebrow">Bedrock Dedicated Server · Python & C++</div>
+          <h1>BedrockPlus</h1>
+          <p data-i18n="home.lead">A native Windows server platform with a typed plugin API, exact-build BDS integration and a safe publication workflow.</p>
+          <div class="hero-actions"><a class="button primary" href="#/getting-started" data-i18n="home.start">Start building</a><a class="button secondary" href="#/reference" data-i18n="home.api">Explore the API</a></div>
+          <div class="release-strip"><span><small>BEDROCKPLUS</small><strong data-version>1.0.2</strong></span><span><small>API</small><strong data-api-version>1.0</strong></span><span><small>BDS</small><strong data-bds-version>1.26.52.3</strong></span><span><small>PLATFORM</small><strong>Windows x64</strong></span></div>
+        </section>
+        <section id="platform">
+          <div class="section-heading"><span class="section-kicker">01</span><div><h2 data-i18n="home.platformTitle">One platform, two plugin languages</h2><p data-i18n="home.platformText">Choose typed Python 3.13 or native C++20. Both runtimes share lifecycle, events, commands, scheduling and the same validated package format.</p></div></div>
+          <div class="feature-grid"><article class="feature-card"><span class="feature-icon">Py</span><h3 data-i18n="home.pythonTitle">Python plugins</h3><p data-i18n="home.pythonText">Typed classes, editor autocomplete, documented events and packaged dependencies.</p></article><article class="feature-card"><span class="feature-icon">C++</span><h3 data-i18n="home.cppTitle">Native plugins</h3><p data-i18n="home.cppText">A stable public ABI with header-only C++ helpers and verified native loading.</p></article><article class="feature-card"><span class="feature-icon">BDS</span><h3 data-i18n="home.nativeTitle">Real server integration</h3><p data-i18n="home.nativeText">Native player, entity, scoreboard, boss bar, item registry and command foundations without fake values.</p></article></div>
+        </section>
+        <section id="install-preview" class="split-section">
+          <div><span class="section-kicker">02</span><h2 data-i18n="home.installTitle">From an empty folder to a running server</h2><p data-i18n="home.installText">Install the public package, enter a server directory and run one command. BedrockPlus downloads the supported official BDS build and preserves operator-owned files.</p><a class="text-link" href="#/getting-started" data-i18n="home.readGuide">Read the installation guide →</a></div>
+          <div class="terminal-card"><div class="terminal-title"><span></span><span></span><span></span><b>PowerShell</b></div><pre><code>pip install bedrockplus
+mkdir MyBedrockServer
+cd MyBedrockServer
+bedrockplus</code></pre></div>
+        </section>
+        <section id="support-preview" class="support-banner"><div><span class="section-kicker">03</span><h2 data-i18n="home.supportTitle">Public issues, private source</h2><p data-i18n="home.supportText">The future GitHub repository will be used for bug reports, feature requests and changelog references. BedrockPlus source code does not need to be published there.</p></div><a class="button secondary is-unavailable" data-github="issues" href="#/report" aria-disabled="true" data-i18n="home.issuesSoon">Issue tracker coming soon</a></section>
+      </article>
 
-        <h3 data-i18n="serverInstall.installTitle">1. Install the BedrockPlus command once</h3>
-        <p data-i18n="serverInstall.installText">Open Command Prompt or PowerShell and install the public BedrockPlus package. This makes the bedrockplus command available on the computer.</p>
-        <pre><code>pip install bedrockplus</code></pre>
+      <article class="page" data-page="getting-started">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.start">Getting Started</span></div>
+        <header class="page-header" id="requirements"><span class="page-label">GUIDE</span><h1 data-i18n="start.title">Getting Started</h1><p data-i18n="start.lead">Install BedrockPlus, initialize a safe server directory and confirm the exact supported environment.</p></header>
+        <section id="requirements-list"><h2 data-i18n="start.requirements">Requirements</h2><ul class="check-list"><li>Windows 10/11 x64</li><li data-runtime-content="python">Python 3.13 x64</li><li data-runtime-content="cpp" hidden data-i18n="start.cppTools">Visual Studio 2022 with the C++ desktop workload and CMake</li><li data-i18n="start.network">Internet access for the first official BDS download</li><li data-i18n="start.terms">Acceptance of the applicable Minecraft server terms</li></ul></section>
+        <section id="install"><h2 data-i18n="start.install">Install BedrockPlus</h2><p data-i18n="start.installText">Use the production PyPI package. Upgrade uses the same command with --upgrade.</p><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>py -3.13 -m pip install --upgrade bedrockplus</code></pre></div></section>
+        <section id="initialize"><h2 data-i18n="start.initialize">Initialize and start a server</h2><p data-i18n="start.initializeText">Run BedrockPlus inside the directory that should own the server. Existing worlds, plugins and packs are preserved by the adoption and update workflow.</p><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>mkdir D:\Minecraft\MyServer
+cd D:\Minecraft\MyServer
+bedrockplus</code></pre></div><div class="callout"><strong data-i18n="start.localCommandTitle">Server-local command</strong><p data-i18n="start.localCommandText">Initialization places bedrockplus.exe beside bedrock_server.exe, so the server can be managed without depending on a global command later.</p></div></section>
+        <section id="next"><h2 data-i18n="start.next">Next step</h2><p data-i18n="start.nextText">Create a folder plugin during development, then package the same files as a validated .bppack for distribution.</p><a class="button primary" href="#/tutorials" data-i18n="start.createPlugin">Create your first plugin</a></section>
+      </article>
 
-        <h3 data-i18n="serverInstall.firstTitle">2. First use: create a fresh server</h3>
-        <p data-i18n="serverInstall.firstText">Create or open an empty folder and run bedrockplus inside it. The folder must be empty except for a reusable Downloads cache.</p>
-        <pre><code>mkdir MyBedrockPlusServer
-cd MyBedrockPlusServer
-bedrockplus</code></pre>
-        <ol class="steps">
-          <li><span>1</span><div><strong data-i18n="serverInstall.confirmTitle">Confirm the official BDS download</strong><p data-i18n="serverInstall.confirm">Press Enter to accept Yes. BedrockPlus downloads the supported official server archive, or reuses a verified matching archive from Downloads.</p></div></li>
-          <li><span>2</span><div><strong data-i18n="serverInstall.filesTitle">Let BedrockPlus prepare the folder</strong><p data-i18n="serverInstall.files">It verifies the archive and creates server.properties, BedrockPlus.ini, plugins, logs, worlds, and private runtime data.</p></div></li>
-          <li><span>3</span><div><strong data-i18n="serverInstall.readyTitle">Wait for the server to become ready</strong><p data-i18n="serverInstall.ready">The same command starts BDS with BedrockPlus and enabled plugins. Enter stop in the server console for a graceful shutdown.</p></div></li>
-        </ol>
-        <div class="callout info"><strong data-i18n="serverInstall.emptyTitle">Your files are protected</strong><p data-i18n="serverInstall.empty">If the selected folder contains unrelated files, initialization stops with a warning and does not overwrite them.</p></div>
-
-        <h3 data-i18n="serverInstall.laterTitle">3. Every later start</h3>
-        <p data-i18n="serverInstall.laterText">Return to the initialized server folder and run the same command. BedrockPlus uses the existing configuration, world, BDS installation, and plugins.</p>
-        <pre><code>cd C:\Servers\MyBedrockPlusServer
-bedrockplus</code></pre>
-        <p data-i18n="serverInstall.plugins">To install a plugin, stop the server, place its .bppack file or development folder in plugins beside server.properties, and start BedrockPlus again.</p>
-        <div class="callout info"><strong data-i18n="serverInstall.updateTitle">Safe BDS updates</strong><p data-i18n="serverInstall.update">Every start verifies the exact BDS build. When a known older official build is found, BedrockPlus explains why an update is required and asks for confirmation. A verified transaction preserves worlds, plugins, configuration and custom packs, shows progress, creates a rollback backup, and starts BDS only after a real readiness check succeeds.</p></div>
-        <div class="table-wrap"><table>
-          <thead><tr><th data-i18n="serverInstall.command">Command</th><th data-i18n="serverInstall.purpose">Purpose</th></tr></thead>
-          <tbody>
-            <tr><td><code>bedrockplus</code></td><td data-i18n="serverInstall.commandDefault">Initialize an empty folder when needed, then start the server.</td></tr>
-            <tr><td><code>bedrockplus init</code></td><td data-i18n="serverInstall.commandInit">Initialize the current empty folder without starting BDS.</td></tr>
-            <tr><td><code>bedrockplus adopt</code></td><td data-i18n="serverInstall.commandAdopt">Install missing BedrockPlus/BDS files into an existing server folder without overwriting worlds, plugins, packs, or operator configuration.</td></tr>
-            <tr><td><code>bedrockplus start</code></td><td data-i18n="serverInstall.commandStart">Start an already initialized server.</td></tr>
-            <tr><td><code>bedrockplus doctor</code></td><td data-i18n="serverInstall.commandDoctor">Run read-only checks when the server does not start correctly.</td></tr>
-            <tr><td><code>bedrockplus list-versions</code></td><td data-i18n="serverInstall.commandVersions">Show the BDS versions supported by this BedrockPlus build.</td></tr>
-          </tbody>
-        </table></div>
-      </section>
-
-      <section id="five-minute-path" data-title="Five-minute path" data-group="Start">
-        <h2 data-i18n="path.title">From an empty folder to a running plugin</h2>
-        <ol class="steps">
-          <li><span>1</span><div><strong data-i18n="path.oneTitle">Create the plugin</strong><p data-i18n="path.one">Use the BedrockPlus command for Python, or start from the C++ example project.</p></div></li>
-          <li><span>2</span><div><strong data-i18n="path.twoTitle">Write and test</strong><p data-i18n="path.two">Implement lifecycle callbacks and register commands, listeners, and tasks when the server is ready.</p></div></li>
-          <li><span>3</span><div><strong data-i18n="path.threeTitle">Build one package</strong><p data-i18n="path.three">Run the pack command beside manifest.json. Python dependencies are prepared only during this explicit build.</p></div></li>
-          <li><span>4</span><div><strong data-i18n="path.fourTitle">Install and start</strong><p data-i18n="path.four">Copy the .bppack into plugins beside server.properties, then run bedrockplus in that server folder.</p></div></li>
-        </ol>
-        <div data-api-language="python"><pre><code>bedrockplus plugin python init "My First Plugin"
-cd my-first-plugin
-bedrockplus plugin pack</code></pre></div>
-        <div data-api-language="cpp"><pre><code>cmake -S . -B build -G "Visual Studio 17 2022" -A x64
-cmake --build build --config Release
-bedrockplus plugin pack package</code></pre></div>
-      </section>
-
-      <section id="plugin-files" data-title="Plugin files explained" data-group="Start">
-        <h2 data-i18n="files.title">Files and folders</h2>
-        <p data-i18n="files.intro">The plugin creator owns the manifest and source. BedrockPlus creates integrity metadata and the finished archive. Server owners install only the .bppack file.</p>
-        <div data-api-language="python"><pre><code>my-plugin/
-├── manifest.json
-├── requirements.txt        # optional, exact third-party versions
-└── python/
-    └── plugin.py</code></pre></div>
-        <div data-api-language="cpp"><pre><code>my-plugin/
-├── CMakeLists.txt
-├── src/
-│   └── plugin.cpp
-└── package/
-    ├── manifest.json
-    └── native/windows-x64/my_plugin.dll</code></pre></div>
-        <div class="callout info"><strong data-i18n="files.ruleTitle">One installed form</strong><p data-i18n="files.rule">Do not install an unpacked folder and a .bppack with the same plugin ID together. BedrockPlus rejects duplicate identities.</p></div>
-      </section>
-
-      <section id="quickstart" data-title="Quickstart" data-group="Start">
-        <h2 data-i18n="quick.title">Minimal typed plugin</h2>
-        <p data-i18n="quick.intro">The global switch changes every code sample on this page. Lifecycle registration and host calls remain explicit in both runtimes.</p>
-        <div data-api-language="python"><pre><code>from bedrockplus import PluginHost
-
-class MyFirstPlugin:
-    id = "example.my-first-plugin"
-    name = "My First Plugin"
-    version = "0.1.0"
-
-    def on_load(self, host: PluginHost) -&gt; None:
-        self.host = host
-
-    def on_server_ready(self) -&gt; None:
-        self.host.log("&amp;aPlugin is ready")</code></pre></div>
-        <div data-api-language="cpp"><pre><code>#include &lt;bedrockplus/sdk/plugin.hpp&gt;
-
-class MyFirstPlugin final : public bedrockplus::sdk::Plugin {
-public:
-    using Plugin::Plugin;
-    void on_server_ready() override {
-        logger().log(BP_LOG_INFO, "Plugin is ready", "MY_PLUGIN.READY");
-    }
-};
-
-BEDROCKPLUS_PLUGIN(MyFirstPlugin, "example.my-first-plugin",
-                   "My First Plugin", "0.1.0")</code></pre></div>
-      </section>
-
-      <section id="python-quickstart" data-title="Python setup" data-group="Python" data-api-language="python">
-        <h2 data-i18n="python.title">Python development and autocomplete</h2>
-        <p data-i18n="python.intro">Install the public BedrockPlus package into the same Python environment selected by VS Code. The package contains typed interfaces and a py.typed marker, so Pylance can suggest classes, methods, fields, command shapes, and event types.</p>
-        <pre><code>py -3.13 -m venv .venv
-.venv\Scripts\activate
-python -m pip install bedrockplus</code></pre>
-        <p data-i18n="python.vscode">In VS Code choose Python: Select Interpreter and select .venv. Imports such as from bedrockplus import PluginHost, Player, Server will then autocomplete.</p>
-      </section>
-
-      <section id="cpp-quickstart" data-title="C++ setup" data-group="C++" data-api-language="cpp">
-        <h2 data-i18n="cpp.title">C++20 development</h2>
-        <p data-i18n="cpp.intro">Use Visual Studio 2022 with Desktop development with C++, CMake tools, and the Windows SDK. Link no private engine library: include the public headers and export the ABI v1 descriptor with BEDROCKPLUS_PLUGIN.</p>
-        <pre><code>cmake -S . -B build -G "Visual Studio 17 2022" -A x64 \
-  -DBEDROCKPLUS_ROOT=D:\path\to\BedrockPlusServerSoftware
-cmake --build build --config Release</code></pre>
-        <div class="callout warning"><strong data-i18n="cpp.runtimeTitle">Runtime choice</strong><p data-i18n="cpp.runtime">Build with the static MSVC runtime so users do not need a separately installed redistributable. The full example CMake project already configures this.</p></div>
-      </section>
-
-      <section id="full-example" data-title="Full examples" data-group="Start">
-        <h2 data-i18n="example.title">Complete working reference plugin</h2>
-        <p data-i18n="example.intro">Each package demonstrates every feature currently exposed by its public API and deliberately avoids pretending that reserved future event names are live.</p>
-        <div data-api-language="python">
-          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-api-example-1.18.0.bppack" download data-i18n="example.downloadPython">Download Python .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-api-example-1.18.0-source.zip" download data-i18n="example.source">Download source</a></div>
-          <pre><code>bedrockplus-full-api-example-1.18.0.bppack</code></pre>
-        </div>
-        <div data-api-language="cpp">
-          <div class="hero-actions"><a class="button primary" href="downloads/bedrockplus-full-cpp-example-1.15.0.bppack" download data-i18n="example.downloadCpp">Download C++ .bppack</a><a class="button secondary" href="downloads/bedrockplus-full-cpp-example-1.15.0-source.zip" download data-i18n="example.source">Download source</a></div>
-          <pre><code>bedrockplus-full-cpp-example-1.15.0.bppack</code></pre>
-        </div>
-      </section>
-
-      <section id="manifest" data-title="Manifest reference" data-group="Packages">
-        <h2 data-i18n="manifest.title">manifest.json</h2>
-        <p data-i18n="manifest.intro">The root manifest is the package identity and runtime contract. Plugin ID and version must match the exported class or native descriptor.</p>
-        <div class="callout info"><strong data-i18n="manifest.apiVersionTitle">Declare the API your plugin requires</strong><p data-i18n="manifest.apiVersion">Use a major.minor string. BedrockPlus major.minor is the maximum supported API: newer runtimes retain older supported APIs, but an older runtime rejects a plugin that requires a newer API. BedrockPlus 1.0.1 supports API "1.0". Numeric 1 is accepted only as a legacy BedrockPlus 1.0.0 alias; new manifests use "1.0". The manifest is checked before plugin code is loaded.</p></div>
-        <div data-api-language="python"><pre><code>{
+      <article class="page" data-page="tutorials">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.tutorials">Tutorials</span></div>
+        <header class="page-header" id="first-plugin"><span class="page-label"><span data-runtime-content="python">PYTHON</span><span data-runtime-content="cpp" hidden>C++20</span></span><h1 data-i18n="tutorial.title">Your first plugin</h1><p data-i18n="tutorial.lead">Create one folder plugin that subscribes to a real player join event and writes a clear lifecycle message.</p></header>
+        <section id="create"><h2 data-i18n="tutorial.create">Create the project</h2><div data-runtime-content="python"><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>bedrockplus plugin python init "Join Reporter"</code></pre></div></div><div data-runtime-content="cpp" hidden><div class="callout info"><strong data-i18n="tutorial.cppUseTitle">Using a ready C++ plugin requires no build tools</strong><p data-i18n="tutorial.cppUseText">Put the compiled .bppack in the server plugins folder. CMake, Visual Studio and source code are needed only when you create or modify the plugin DLL.</p></div><div class="callout"><strong data-i18n="tutorial.cppStartTitle">Start from the verified C++ example</strong><p data-i18n="tutorial.cppStartText">Copy examples/plugins/cpp-hello as the project skeleton, then change its manifest identity, class and exported descriptor together.</p></div></div><p data-i18n="tutorial.folderText">Keep the generated folder under the server plugins directory while developing.</p></section>
+        <section id="manifest"><h2>manifest.json</h2><p data-i18n="tutorial.manifestText">The manifest declares compatibility before any plugin code executes. API 1.0 is written as a string.</p><div data-runtime-content="python"><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>{
   "format_version": 1,
-  "id": "example.my-plugin",
-  "name": "My Plugin",
-  "version": "0.1.0",
+  "id": "example.join-reporter",
+  "name": "Join Reporter",
+  "version": "1.0.0",
   "api_version": "1.0",
   "runtime": {
     "type": "python",
     "entrypoint": "python/plugin.py",
-    "entry_class": "MyPlugin",
+    "entry_class": "JoinReporter",
     "python": "3.13"
   }
-}</code></pre></div>
-        <div data-api-language="cpp"><pre><code>{
+}</code></pre></div></div><div data-runtime-content="cpp" hidden><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>{
   "format_version": 1,
-  "id": "example.my-plugin",
-  "name": "My Plugin",
-  "version": "0.1.0",
+  "id": "example.join-reporter",
+  "name": "Join Reporter",
+  "version": "1.0.0",
   "api_version": "1.0",
   "runtime": {
     "type": "cpp",
-    "entrypoint": "native/windows-x64/my_plugin.dll",
+    "entrypoint": "native/windows-x64/join_reporter.dll",
     "platform": "windows-x64",
     "abi": 1
   }
-}</code></pre></div>
-      </section>
+}</code></pre></div></div></section>
+        <section id="subscribe"><h2 data-i18n="tutorial.subscribe">Subscribe to player.join</h2><p data-i18n="tutorial.subscribeText">Subscribe when the server is ready, retain the subscription ID and remove it during stopping. The event provides a typed Player object.</p><div data-runtime-content="python"><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>from bedrockplus import PlayerJoinEvent, Plugin, Server
 
-      <section id="lifecycle" data-title="Lifecycle" data-group="API reference">
-        <h2 data-i18n="lifecycle.title">Lifecycle callbacks</h2>
-        <p data-i18n="lifecycle.intro">Load stores the host, enable prepares data, server ready registers runtime services, server stopping releases them, disable saves state, and unload performs final local cleanup. Never call the host after unload returns.</p>
-        <div class="api-list">
-          <article class="api-entry" id="api-plugin-load"><h3><code>on_load(host)</code> · <code>on_enable()</code></h3><p data-i18n="lifecycle.load">Initialize plugin-owned state. Commands, events, and scheduling may not be ready yet.</p></article>
-          <article class="api-entry" id="api-plugin-ready"><h3><code>on_server_ready()</code> · <code>on_server_stopping()</code></h3><p data-i18n="lifecycle.ready">Register and explicitly release commands, listeners, and tasks while BDS runtime services are available.</p></article>
-          <article class="api-entry" id="api-plugin-unload"><h3><code>on_disable()</code> · <code>on_unload()</code></h3><p data-i18n="lifecycle.unload">Persist final state and release local resources. Exceptions must not cross the native ABI boundary.</p></article>
-        </div>
-      </section>
-
-      <section id="api-index" data-title="API symbol index" data-group="API reference">
-        <h2 data-i18n="apiIndex.title">Clickable API symbol index</h2>
-        <p data-i18n="apiIndex.intro">Select a class, method, property, or parameter to jump to its contract and a small Python/C++ example. Every symbol below links to documentation on this page.</p>
-        <div class="symbol-groups">
-          <article class="symbol-group">
-            <h3>Plugin</h3>
-            <div class="symbol-links"><a href="#api-plugin-load"><code>on_load(host)</code></a><a href="#api-plugin-load"><code>on_enable()</code></a><a href="#api-plugin-ready"><code>on_server_ready()</code></a><a href="#api-plugin-ready"><code>on_server_stopping()</code></a><a href="#api-plugin-unload"><code>on_disable()</code></a><a href="#api-plugin-unload"><code>on_unload()</code></a></div>
-          </article>
-          <article class="symbol-group">
-            <h3>PluginHost</h3>
-            <div class="symbol-links"><a href="#api-host-log"><code>log(*values)</code></a><a href="#api-host-log"><code>warn(*values)</code></a><a href="#api-host-log"><code>error(*values)</code></a><a href="#api-host-print"><code>print(*values)</code></a><a href="#api-host-data"><code>data_directory()</code></a><a href="#api-host-schedule"><code>schedule(callback, delay_ms, interval_ms, runs)</code></a><a href="#api-host-events"><code>subscribe_event(name, callback, priority)</code></a><a href="#api-host-commands"><code>register_command(name, callback, ...)</code></a><a href="#api-host-dispatch"><code>dispatch_server_command(command)</code></a></div>
-          </article>
-          <article class="symbol-group">
-            <h3>Server</h3>
-            <div class="symbol-links"><a href="#api-server-online-players"><code>online_players</code></a><a href="#api-server-get-player"><code>get_player(identity)</code></a><a href="#api-server-entities"><code>entities</code></a><a href="#api-server-get-entity"><code>get_entity(runtime_id)</code></a><a href="#api-server-factories"><code>level(...)</code></a><a href="#api-server-actions"><code>dispatch_command(command)</code></a></div>
-          </article>
-          <article class="symbol-group">
-            <h3>Entity · Level</h3>
-            <div class="symbol-links"><a href="#api-entity-identity"><code>runtime_id</code></a><a href="#api-entity-identity"><code>type_id</code></a><a href="#api-entity-motion"><code>position</code></a><a href="#api-entity-motion"><code>velocity</code></a><a href="#api-entity-validity"><code>refresh()</code></a><a href="#api-entity-validity"><code>is_valid</code></a><a href="#api-level-entities"><code>Level.entities</code></a></div>
-          </article>
-          <article class="symbol-group">
-            <h3>Player</h3>
-            <div class="symbol-links"><a href="#api-player-identity"><code>Player</code></a><a href="#api-player-native-tags"><code>scoreboard_tags</code></a><a href="#api-player-native-tags"><code>has_tag(tag)</code></a><a href="#api-player-native-tags"><code>add_tag(tag)</code></a><a href="#api-player-native-tags"><code>remove_tag(tag)</code></a></div>
-          </article>
-          <article class="symbol-group">
-            <h3>BossBar</h3>
-            <div class="symbol-links"><a href="#api-boss-bar-create"><code>create_boss_bar(...)</code></a><a href="#api-boss-bar-state"><code>Server.boss_bars</code></a><a href="#api-boss-bar-update"><code>set_progress(value)</code></a><a href="#api-boss-bar-viewers"><code>add_player(player)</code></a><a href="#api-boss-bar-destroy"><code>destroy()</code></a></div>
-          </article>
-          <article class="symbol-group">
-            <h3>Item registry</h3>
-            <div class="symbol-links"><a href="#api-item-registry"><code>Server.item_registry</code></a><a href="#api-item-registry-entry"><code>ItemRegistryEntry.runtime_id</code></a><a href="#api-item-registry-get"><code>get(type_id)</code></a><a href="#api-item-registry-get"><code>get_by_runtime_id(id)</code></a><a href="#api-item-registry-custom"><code>custom_entries</code></a></div>
-          </article>
-          <article class="symbol-group">
-            <h3>Scoreboard</h3>
-            <div class="symbol-links"><a href="#api-scoreboard"><code>Server.scoreboard</code></a><a href="#api-scoreboard-objective"><code>add_objective(...)</code></a><a href="#api-objective-score"><code>set_score(...)</code></a><a href="#api-objective-display"><code>set_display(...)</code></a><a href="#api-score-value"><code>Score.add(value)</code></a></div>
-          </article>
-          <article class="symbol-group">
-            <h3>Commands · events · scheduler</h3>
-            <div class="symbol-links"><a href="#api-command-argument"><code>CommandArgument</code></a><a href="#api-command-invocation"><code>CommandInvocation</code></a><a href="#api-event-cancel"><code>event.cancel()</code></a><a href="#api-event-player"><code>event.player</code></a><a href="#api-event-attack"><code>PlayerAttackEvent</code></a><a href="#api-event-attack"><code>cps</code></a><a href="#api-system-run"><code>System.run(callback)</code></a><a href="#api-system-interval"><code>runInterval(callback, ticks)</code></a><a href="#api-system-clear"><code>clearRun(task_id)</code></a></div>
-          </article>
-        </div>
-      </section>
-
-      <section id="python-api" data-title="Host API" data-group="API reference">
-        <h2 data-i18n="host.title">Host API map</h2>
-        <p data-i18n="host.intro">The same services are available through typed Python methods and C++ wrappers. Availability checks let a plugin fail clearly when it targets a newer host feature.</p>
-        <article class="api-class" id="api-plugin">
-          <h3><code>Plugin</code></h3>
-          <p data-i18n="api.plugin.desc">Your entry class implements six lifecycle callbacks. The runtime constructs it once, passes the host during load, and calls server callbacks only while BDS services are usable.</p>
-          <div class="member-table table-wrap"><table>
-            <thead><tr><th data-i18n="api.member">Member</th><th data-i18n="api.returns">Returns</th><th data-i18n="api.meaning">Meaning</th></tr></thead>
-            <tbody>
-              <tr><td><a class="api-symbol" href="#api-plugin-load"><code>on_load(host)</code></a></td><td><code>None</code> / <code>bp_status</code></td><td data-i18n="api.plugin.load">Store the host and create plugin-owned state. Runtime services may not be ready.</td></tr>
-              <tr><td><a class="api-symbol" href="#api-plugin-load"><code>on_enable()</code></a></td><td><code>None</code> / <code>bp_status</code></td><td data-i18n="api.plugin.enable">Load configuration and prepare local resources.</td></tr>
-              <tr><td><a class="api-symbol" href="#api-plugin-ready"><code>on_server_ready()</code></a></td><td><code>None</code></td><td data-i18n="api.plugin.ready">Register commands, events, and scheduled tasks here.</td></tr>
-              <tr><td><a class="api-symbol" href="#api-plugin-ready"><code>on_server_stopping()</code></a></td><td><code>None</code></td><td data-i18n="api.plugin.stopping">Unregister runtime services and cancel tasks before BDS stops.</td></tr>
-              <tr><td><a class="api-symbol" href="#api-plugin-unload"><code>on_disable()</code></a> · <a class="api-symbol" href="#api-plugin-unload"><code>on_unload()</code></a></td><td><code>None</code></td><td data-i18n="api.plugin.disable">Save state, close local resources, and stop using the host after unload.</td></tr>
-            </tbody>
-          </table></div>
-          <div data-api-language="python"><pre><code>class MyPlugin:
-    def on_load(self, host: PluginHost) -&gt; None:
-        self.host = host
+class JoinReporter(Plugin):
+    def on_load(self) -&gt; None:
+        self.server = Server(self.host)
+        self.join_subscription = None
 
     def on_server_ready(self) -&gt; None:
-        self.host.log("&amp;aRuntime services are ready")</code></pre></div>
-          <div data-api-language="cpp"><pre><code>class MyPlugin final : public bedrockplus::sdk::Plugin {
+        self.join_subscription = self.host.subscribe_event(
+            "player.join", self.on_player_join
+        )
+        self.host.log("Join Reporter is ready")
+
+    def on_player_join(self, event: PlayerJoinEvent) -&gt; None:
+        player = event.player
+        self.host.log(player.name, "joined with XUID", player.xuid)
+
+    def on_server_stopping(self) -&gt; None:
+        if self.join_subscription is not None:
+            self.host.unsubscribe_event(self.join_subscription)
+            self.join_subscription = None</code></pre></div></div><div data-runtime-content="cpp" hidden><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>#include &lt;bedrockplus/sdk/plugin.hpp&gt;
+
+class JoinReporter final : public bedrockplus::sdk::Plugin {
 public:
     using Plugin::Plugin;
+
     void on_server_ready() override {
-        logger().info("Runtime services are ready");
+        join_listener_ = events().subscribe&lt;bedrockplus::sdk::PlayerJoinEvent&gt;(
+            [this](const auto&amp; event) {
+                logger().info(event.player().name + " joined");
+            });
     }
-};</code></pre></div>
-        </article>
 
-        <article class="api-class" id="api-plugin-host">
-          <h3><code>PluginHost</code> <span class="runtime-note">Python</span></h3>
-          <p data-i18n="api.host.desc">BedrockPlus supplies this object to on_load. Do not construct it yourself. Boolean results report whether a request was accepted; command acceptance does not prove that BDS completed the command.</p>
-          <div class="member-table table-wrap"><table>
-            <thead><tr><th data-i18n="api.member">Method</th><th data-i18n="api.returns">Returns</th><th data-i18n="api.meaning">Meaning</th></tr></thead>
-            <tbody>
-              <tr id="api-host-log"><td><a class="api-symbol" href="#api-host-log"><code>log(*values)</code> · <code>debug(*values)</code> · <code>warn(*values)</code> · <code>error(*values)</code> · <code>critical(*values)</code></a></td><td><code>None</code></td><td data-i18n="api.host.log">Write a timestamped plugin message. The selected method supplies the level and console color, so no level string or event code is required.</td></tr>
-              <tr id="api-host-print"><td><a class="api-symbol" href="#api-host-print"><code>print(*values, sep=" ", end="\n")</code></a></td><td><code>None</code></td><td data-i18n="api.host.print">Write text directly to the console without a timestamp. Minecraft ampersand color codes are supported.</td></tr>
-              <tr id="api-host-data"><td><a class="api-symbol" href="#api-host-data"><code>data_directory()</code></a></td><td><code>str</code></td><td data-i18n="api.host.data">Return this plugin's private persistent directory.</td></tr>
-              <tr id="api-host-available"><td><a class="api-symbol" href="#api-host-available"><code>scheduler_available()</code> · <code>events_available()</code> · <code>commands_available()</code></a></td><td><code>bool</code></td><td data-i18n="api.host.available">Check whether a service exists before using an optional host feature.</td></tr>
-              <tr id="api-host-schedule"><td><a class="api-symbol" href="#api-host-schedule"><code>schedule(callback, delay_ms, interval_ms, runs)</code></a> · <code>cancel_task(task_id)</code></td><td><code>int</code> · <code>bool</code></td><td data-i18n="api.host.schedule">Create or cancel server-thread work. Keep the returned task ID.</td></tr>
-              <tr id="api-host-events"><td><a class="api-symbol" href="#api-host-events"><code>subscribe_event(name, callback, priority)</code></a> · <code>unsubscribe_event(subscription_id)</code></td><td><code>int</code> · <code>bool</code></td><td data-i18n="api.host.events">Attach or remove an event listener. Keep the returned subscription ID.</td></tr>
-              <tr id="api-host-commands"><td><a class="api-symbol" href="#api-host-commands"><code>register_command(name, callback, ...)</code></a> · <code>unregister_command(name)</code></td><td><code>None</code> · <code>bool</code></td><td data-i18n="api.host.commands">Add a typed native slash command or remove it.</td></tr>
-              <tr id="api-host-dispatch"><td><a class="api-symbol" href="#api-host-dispatch"><code>dispatch_server_command(command)</code></a></td><td><code>bool</code></td><td data-i18n="api.host.dispatch">Queue one command as the server. Do not include a leading slash or newline.</td></tr>
-              <tr id="api-host-policy"><td><a class="api-symbol" href="#api-host-policy"><code>hide_vanilla_command(name)</code> · <code>restore_vanilla_command(name)</code></a></td><td><code>bool</code></td><td data-i18n="api.host.policy">Change player visibility and access for one vanilla command; the console remains unaffected.</td></tr>
-            </tbody>
-          </table></div>
-          <div data-api-language="python"><pre><code>from pathlib import Path
+    void on_disable() override {
+        if (join_listener_ != 0) events().unsubscribe(join_listener_);
+    }
 
-data_file = Path(self.host.data_directory()) / "state.json"
-accepted = self.host.dispatch_server_command("say Hello from plugin")</code></pre></div>
-          <div data-api-language="cpp"><pre><code>// C++ exposes focused wrappers instead of PluginHost directly.
-auto data_file = data_directory() / "state.json";
-bool accepted = commands().dispatch_server_command("say Hello from plugin");</code></pre></div>
-        </article>
-
-        <article class="api-class" data-api-language="cpp">
-          <h3><code>Logger</code> · <code>Scheduler</code> · <code>Events</code> · <code>Commands</code></h3>
-          <p data-i18n="api.cpp.services">These protected Plugin accessors return non-owning wrappers around the host ABI. Call available() when a plugin may run on different API revisions, and retain task or subscription IDs for cleanup.</p>
-          <pre><code>if (events().available()) {
-    join_subscription_ = events().subscribe("player.join", on_join);
-}
-logger().log(BP_LOG_INFO, "Loaded", "MY.LOAD", {{"mode", "safe"}});</code></pre>
-        </article>
-      </section>
-
-      <section id="object-api" data-title="Gameplay objects" data-group="API reference">
-        <h2 data-i18n="objects.title">Typed objects and connection snapshots</h2>
-        <p data-i18n="objects.intro">Objects copy stable data instead of exposing raw BDS pointers. Missing optional values mean the active BDS profile did not provide them; BedrockPlus never invents connection data.</p>
-        <article class="api-class" id="api-server">
-          <h3><code>Server(host)</code></h3>
-          <p data-i18n="api.server.desc">The entry point for authenticated online players and the verified native Entity registry. Python constructs Server from PluginHost; C++ plugins use server().</p>
-          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-            <tr id="api-server-properties"><td><a class="api-symbol" href="#api-server-properties"><code>name</code> · <code>api_version</code> · <code>data_directory</code></a></td><td><code>str</code> · <code>str</code> · <code>Path</code></td><td data-i18n="api.server.properties">Server identity, public API version, and this plugin's private data path.</td></tr>
-            <tr id="api-server-actions"><td><a class="api-symbol" href="#api-server-actions"><code>dispatch_command(command)</code> · <code>broadcast(message)</code></a></td><td><code>bool</code></td><td data-i18n="api.server.actions">Explicitly queue a server command or a broadcast. These are command APIs, not hidden native object implementations.</td></tr>
-            <tr id="api-server-online-players"><td><a class="api-symbol" href="#api-server-online-players"><code>online_players</code> · <code>online_player_count</code></a></td><td><code>tuple[Player, ...]</code> · <code>int</code></td><td data-i18n="api.server.onlinePlayers">Fresh authenticated player snapshots in stable session order.</td></tr>
-            <tr id="api-server-get-player"><td><a class="api-symbol" href="#api-server-get-player"><code>get_player(identity)</code></a></td><td><code>Player | None</code></td><td data-i18n="api.server.getPlayer">Find an online player by exact session ID, XUID, or name. The identity parameter must be a non-empty string.</td></tr>
-            <tr id="api-server-entities"><td><a class="api-symbol" href="#api-server-entities"><code>entities</code></a></td><td><code>tuple[Entity, ...]</code></td><td data-i18n="api.server.entities">Fresh pointer-free copies of the complete verified Level-owned Actor set.</td></tr>
-            <tr id="api-server-get-entity"><td><a class="api-symbol" href="#api-server-get-entity"><code>get_entity(runtime_id)</code></a></td><td><code>Entity | None</code></td><td data-i18n="api.server.getEntity">Find a currently live Entity by its non-negative native runtime ID.</td></tr>
-            <tr id="api-server-native-registries"><td><a class="api-symbol" href="#api-item-registry"><code>item_registry</code></a> · <a class="api-symbol" href="#api-scoreboard"><code>scoreboard</code></a></td><td><code>ItemRegistrySnapshot</code> · <code>Scoreboard</code></td><td data-i18n="api.server.registries">Read immutable generations of the authoritative BDS item registry and scoreboard.</td></tr>
-            <tr id="api-server-boss-bars"><td><a class="api-symbol" href="#api-boss-bar-state"><code>boss_bars</code></a> · <a class="api-symbol" href="#api-boss-bar-create"><code>create_boss_bar(...)</code></a></td><td><code>tuple[BossBar, ...]</code> · <code>BossBar</code></td><td data-i18n="api.server.bossBars">Read this plugin's bars or create a native player-visible boss bar.</td></tr>
-            <tr id="api-server-factories"><td><a class="api-symbol" href="#api-server-factories"><code>world(name)</code> · <code>level(name, dimension_id)</code> · <code>block(...)</code> · <code>item_stack(...)</code></a></td><td data-i18n="api.server.factories">Typed object</td><td data-i18n="api.server.factoryDesc">Create typed references or immutable plugin values. Construction alone does not spawn or modify BDS objects.</td></tr>
-          </tbody></table></div>
-          <div data-api-language="python"><pre><code>self.server = Server(host)
-
-for player in self.server.online_players:
-    self.host.log("Online:", player.display_name)
-
-for entity in self.server.entities:
-    self.host.debug("Entity:", entity.type_id, entity.runtime_id)</code></pre></div>
-          <div data-api-language="cpp"><pre><code>for (const auto&amp; player : server().online_players()) {
-    logger().info(player.display_name());
-}
-for (const auto&amp; entity : server().entities()) {
-    logger().log(BP_LOG_INFO, entity.type_id(), "ENTITY.SEEN",
-                 {{"runtime_id", std::to_string(entity.runtime_id())}});
-}</code></pre></div>
-        </article>
-
-        <article class="api-class" id="api-player">
-          <h3><code>Player</code> <span class="runtime-note" data-i18n="api.pythonBehavior">behavioral in Python and C++</span></h3>
-          <p data-i18n="api.player.desc">A lightweight player snapshot plus safe command-backed actions. It does not retain a raw native player pointer, so storing it cannot keep a BDS object alive.</p>
-          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-            <tr id="api-player-identity"><td><a class="api-symbol" href="#api-player-identity"><code>name</code> · <code>display_name</code> · <code>session_id</code> · <code>unique_id</code> · <code>xuid</code></a></td><td><code>str</code></td><td data-i18n="api.player.identity">Copied identity fields. Some values may be empty when unavailable.</td></tr>
-            <tr id="api-player-connection"><td><a class="api-symbol" href="#api-player-connection"><code>connection</code></a></td><td><code>ConnectionInfo | None</code></td><td data-i18n="api.player.connection">Authenticated connection snapshot, or None if the active event did not provide it.</td></tr>
-            <tr id="api-player-device"><td><a class="api-symbol" href="#api-player-device"><code>address</code> · <code>ping_ms</code> · <code>device_id</code> · <code>device_model</code> · <code>device_os</code> · <code>input_mode</code> · <code>game_version</code> · <code>locale</code></a></td><td data-i18n="api.player.forwarded">Forwarded properties</td><td data-i18n="api.player.forwardedDesc">Convenient access to connection fields. Missing strings are empty; optional values are None.</td></tr>
-            <tr id="api-player-selector"><td><a class="api-symbol" href="#api-player-selector"><code>selector</code></a></td><td><code>str</code></td><td data-i18n="api.player.selector">A safely escaped target selector for this named player.</td></tr>
-            <tr id="api-player-actions"><td><a class="api-symbol" href="#api-player-actions"><code>send_message(text)</code> · <code>run_command(command)</code> · <code>kick(reason)</code> · <code>give(item)</code></a></td><td><code>bool</code></td><td data-i18n="api.player.actions">Queue messaging, player-origin command, removal, or item operations. True means accepted for dispatch.</td></tr>
-            <tr id="api-player-movement"><td><a class="api-symbol" href="#api-player-movement"><code>teleport()</code> · <code>set_spawn_point()</code> · <code>set_rotation()</code> · <code>look_at()</code></a></td><td><code>bool</code></td><td data-i18n="api.player.movement">Validated command-backed position, spawn, and orientation requests.</td></tr>
-            <tr id="api-player-progression"><td><a class="api-symbol" href="#api-player-progression"><code>set_game_mode()</code> · <code>add_experience()</code> · <code>add_levels()</code></a></td><td><code>bool</code></td><td data-i18n="api.player.progression">Command-backed game mode and progression requests.</td></tr>
-            <tr id="api-player-native-tags"><td><a class="api-symbol" href="#api-player-native-tags"><code>scoreboard_tags</code> · <code>tags</code> · <code>has_tag(tag)</code> · <code>add_tag(tag)</code> · <code>remove_tag(tag)</code></a></td><td><code>tuple[str, ...]</code> · <code>bool</code></td><td data-i18n="api.player.tags">Read or mutate the live native Actor tag set on the BDS tick thread. No vanilla command is dispatched.</td></tr>
-            <tr id="api-player-effects"><td><a class="api-symbol" href="#api-player-effects"><code>add_effect()</code> · <code>remove_effect()</code> · <code>apply_damage()</code> · <code>kill()</code></a></td><td><code>bool</code></td><td data-i18n="api.player.effects">Command-backed effect and damage requests. Health maximum mutation is not exposed.</td></tr>
-            <tr id="api-player-media"><td><a class="api-symbol" href="#api-player-media"><code>play_sound()</code> · <code>stop_sound()</code> · <code>trigger_event()</code> · <code>play_animation()</code></a></td><td><code>bool</code></td><td data-i18n="api.player.media">Command-backed sound, entity-event, and animation requests.</td></tr>
-          </tbody></table></div>
-          <div data-api-language="python"><pre><code>player = self.server.player_from_event(joined)
-player.send_message("&amp;aWelcome, &amp;f" + player.display_name)
-if player.ping_ms is not None:
-    self.host.log("Ping:", player.ping_ms, "ms")</code></pre></div>
-          <div data-api-language="cpp"><pre><code>Player player{commands(), authenticated_player};
-player.send_message("&amp;aWelcome, &amp;f" + player.display_name());
-if (const auto ping = player.get_ping()) {
-    logger().log(BP_LOG_INFO, "Ping sampled", "MY.PING",
-                 {{"ms", std::to_string(*ping)}});
-}</code></pre></div>
-        </article>
-
-        <article class="api-class" id="api-connection">
-          <h3><code>ConnectionInfo</code> · <code>SocketAddress</code></h3>
-          <p data-i18n="api.connection.desc">ConnectionInfo contains address, ping, device, input, version, locale, and optional client FPS snapshots. SocketAddress separates host and port. Treat every value as optional operational data, not a permanent identity.</p>
-          <p class="member-line"><strong data-i18n="api.properties">Properties</strong>: <a class="api-symbol" href="#api-connection"><code>address</code>, <code>ping_ms</code>, <code>device_id</code>, <code>device_model</code>, <code>device_os</code>, <code>input_mode</code>, <code>game_version</code>, <code>locale</code>, <code>client_fps</code>; <code>host</code>, <code>port</code></a>.</p>
-          <div data-api-language="python"><pre><code>connection = player.connection
-if connection and connection.address:
-    host = connection.address.host
-    port = connection.address.port</code></pre></div>
-          <div data-api-language="cpp"><pre><code>if (player.connection &amp;&amp; player.connection-&gt;address) {
-    const auto&amp; host = player.connection-&gt;address-&gt;host;
-    auto port = player.connection-&gt;address-&gt;port;
-}</code></pre></div>
-        </article>
-
-        <article class="api-class" id="api-level">
-          <h3><code>Vector3</code> · <code>Location</code> · <code>Level</code>/<code>LevelSnapshot</code></h3>
-          <p data-i18n="api.location.desc">Vector3 stores x, y, and z coordinates. Location adds an optional level name and dimension identifier. Python Level can filter verified native entities for vanilla dimensions; BlockSource, chunks and native block mutation are not public yet.</p>
-          <p class="member-line" id="api-level-location"><strong data-i18n="api.properties">Properties</strong>: <a class="api-symbol" href="#api-level-location"><code>x</code>, <code>y</code>, <code>z</code>, <code>level_name</code>, <code>dimension_id</code>, <code>position</code>, <code>yaw</code>, <code>pitch</code></a>; <a class="api-symbol" href="#api-level-entities"><code>Level.entities</code></a>, <code>native_dimension_id</code>.</p>
-          <p id="api-level-entities" data-i18n="api.level.entities">Level.entities performs a fresh native registry query and filters by BDS numeric dimension ID. The mapping is exact for Overworld, Nether, and The End; unknown custom mappings fail clearly.</p>
-          <div data-api-language="python"><pre><code>position = Vector3(12.5, 64.0, -8.0)
-place = Location("BedrockPlus", "minecraft:overworld", position, yaw=90.0)
-level = self.server.level(place.level_name, place.dimension_id)
-for entity in level.entities:
-    print(entity.type_id, entity.position)</code></pre></div>
-          <div data-api-language="cpp"><pre><code>Location place{"BedrockPlus", "minecraft:overworld",
-               Vector3{12.5, 64.0, -8.0}, 90.0F, 0.0F};
-LevelSnapshot level{place.level_name, place.dimension_id};</code></pre></div>
-        </article>
-
-        <article class="api-class" id="api-entity">
-          <h3><code>Entity</code>/<code>EntitySnapshot</code></h3>
-          <p data-i18n="api.entity.desc">Entities returned by Server are fresh pointer-free copies of real Actors owned by the native Level. BedrockPlus verifies every exposed field on the pinned BDS build; no raw pointer or guessed value reaches plugin code.</p>
-          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-            <tr id="api-entity-identity"><td><a class="api-symbol" href="#api-entity-identity"><code>runtime_id</code> · <code>unique_id</code> · <code>type_id</code> · <code>actor_type_id</code></a></td><td><code>int</code> · <code>str</code></td><td data-i18n="api.entity.identity">Verified native runtime/unique identity plus canonical and numeric Actor types.</td></tr>
-            <tr id="api-entity-motion"><td><a class="api-symbol" href="#api-entity-motion"><code>location</code> · <code>position</code> · <code>dimension_id</code> · <code>velocity</code> · <code>rotation</code></a></td><td><code>Location</code> · <code>Vector3</code> · <code>Vector2</code></td><td data-i18n="api.entity.motion">Motion and dimension values copied together after the completed native Level tick.</td></tr>
-            <tr id="api-entity-player"><td><a class="api-symbol" href="#api-entity-player"><code>is_player</code></a></td><td><code>bool</code></td><td data-i18n="api.entity.player">True when the native object is registered through the authenticated Player lifecycle.</td></tr>
-            <tr id="api-entity-validity"><td><a class="api-symbol" href="#api-entity-validity"><code>refresh()</code> · <code>is_valid</code></a></td><td><code>Entity | None</code> · <code>bool</code></td><td data-i18n="api.entity.validity">Query the registry again by runtime ID. A retained snapshot never keeps its Actor alive.</td></tr>
-          </tbody></table></div>
-          <div data-api-language="python"><pre><code>entity = self.server.get_entity(runtime_id)
-if entity is not None:
-    print(entity.type_id, entity.position, entity.velocity)
-    latest = entity.refresh()       # None after native retirement
-    still_live = entity.is_valid</code></pre></div>
-          <div data-api-language="cpp"><pre><code>if (auto entity = server().get_entity(runtime_id)) {
-    const auto&amp; position = entity-&gt;position();
-    auto latest = entity-&gt;refresh();
-    bool still_live = entity-&gt;is_valid();
-}</code></pre></div>
-        </article>
-
-        <article class="api-class" id="api-item-stack">
-          <h3><code>ItemStack</code></h3>
-          <p data-i18n="api.item.desc">ItemStack is currently a validated plugin value used by command-backed Player helpers. It is not yet a live native inventory slot.</p>
-          <p class="member-line"><strong data-i18n="api.properties">Properties</strong>: <a class="api-symbol" href="#api-item-stack"><code>type_id</code>, <code>amount</code>, <code>aux_value</code>, <code>custom_name</code></a>.</p>
-          <div data-api-language="python"><pre><code>reward = ItemStack("minecraft:diamond", amount=2,
-                   custom_name="Prize")</code></pre></div>
-          <div data-api-language="cpp"><pre><code>ItemStack reward{"minecraft:diamond", 2, 0, "Prize"};</code></pre></div>
-        </article>
-        <div class="callout warning"><strong data-i18n="objects.privacyTitle">Handle connection identifiers carefully</strong><p data-i18n="objects.privacy">IP addresses and device identifiers may be operationally useful, but plugins should collect, log, and retain only what the server owner genuinely needs.</p></div>
-      </section>
-
-      <section id="boss-bar-api" data-title="Boss bars" data-group="API reference">
-        <h2 data-i18n="bossBar.title">Native boss-bar API</h2>
-        <p data-i18n="bossBar.intro">Create plugin-owned bars, attach authenticated players, and update the visible title, progress, color, style, and visibility through native BDS packets. No vanilla command or fake entity is used.</p>
-        <article class="api-class" id="api-boss-bar">
-          <h3><code>BossBar</code> · <code>BossBarColor</code> · <code>BossBarStyle</code></h3>
-          <h3 data-i18n="bossBar.guideTitle">Connect a boss bar to a player</h3>
-          <p data-i18n="bossBar.guideIntro">Create the Server facade during load, subscribe to player.join when the server is ready, defer attachment until the next tick, retain the returned BossBar, and destroy it when the player leaves or the plugin stops.</p>
-          <ol class="steps compact-steps">
-            <li><span>1</span><div><strong data-i18n="bossBar.stepCreateTitle">Create</strong><p data-i18n="bossBar.stepCreate">Call Server.create_boss_bar with a title, color, style, progress from 0.0 to 1.0, and visibility.</p></div></li>
-            <li><span>2</span><div><strong data-i18n="bossBar.stepAttachTitle">Attach</strong><p data-i18n="bossBar.stepAttach">Call add_player with a currently authenticated Player. Creating a bar alone does not show it to anybody.</p></div></li>
-            <li><span>3</span><div><strong data-i18n="bossBar.stepKeepTitle">Retain and update</strong><p data-i18n="bossBar.stepKeep">Keep the BossBar object in plugin state, then call set_title, set_progress, set_color, set_style, show, or hide.</p></div></li>
-            <li><span>4</span><div><strong data-i18n="bossBar.stepDestroyTitle">Destroy</strong><p data-i18n="bossBar.stepDestroy">Call destroy when the viewer leaves or during server stopping so the native bar and retained state are released.</p></div></li>
-          </ol>
-          <div data-api-language="python"><pre><code># Create once in on_load:
-self.server = Server(self.host)
-self.bars = {}
-
-# Attach on the next tick after player.join:
-def attach() -&gt; None:
-    player = self.server.get_player(event.player.session_id)
-    if player is None:
-        return
-    bar = self.server.create_boss_bar(
-        "Welcome!", color=BossBarColor.PURPLE,
-        style=BossBarStyle.SOLID, progress=1.0,
-    )
-    bar.add_player(player)
-    self.bars[player.session_id] = bar
-
-self.host.schedule(attach)
-
-# On player.quit or on_server_stopping:
-bar = self.bars.pop(event.player.session_id, None)
-if bar is not None:
-    bar.destroy()</code></pre></div>
-          <div data-api-language="cpp"><pre><code>// Defer this fragment from PlayerJoinEvent to the next tick:
-scheduler().run([this, session = event.player().session_id] {
-    auto player = server().get_player(session);
-    if (!player) return;
-    auto bar = server().create_boss_bar(
-        "Welcome!", 1.0F,
-        BossBarColor::purple, BossBarStyle::solid);
-    bar.add_player(*player);
-    bars_.insert_or_assign(session, std::move(bar));
-});
-
-// On quit or stopping:
-if (auto found = bars_.find(session); found != bars_.end()) {
-    found-&gt;second.destroy();
-    bars_.erase(found);
-}</code></pre></div>
-          <div class="callout info"><strong data-i18n="bossBar.timingTitle">Why the next tick?</strong><p data-i18n="bossBar.timing">player.join is delivered inside the completed native spawn path. Reading the Player is safe immediately; client-facing UI work is deferred to avoid re-entering BDS during spawn.</p></div>
-          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-            <tr id="api-boss-bar-create"><td><a class="api-symbol" href="#api-boss-bar-create"><code>Server.create_boss_bar(title, color, style, progress, visible)</code></a></td><td><code>BossBar</code></td><td data-i18n="bossBar.create">Create one bar owned by the calling plugin. Progress must be between 0.0 and 1.0.</td></tr>
-            <tr id="api-boss-bar-state"><td><a class="api-symbol" href="#api-boss-bar-state"><code>Server.boss_bars</code> · <code>id</code> · <code>revision</code> · <code>player_sessions</code></a></td><td><code>tuple[BossBar, ...]</code></td><td data-i18n="bossBar.state">Return only bars owned by this plugin as fresh, inspectable snapshots.</td></tr>
-            <tr id="api-boss-bar-update"><td><a class="api-symbol" href="#api-boss-bar-update"><code>set_title()</code> · <code>set_progress()</code> · <code>set_color()</code> · <code>set_style()</code> · <code>show()</code> · <code>hide()</code></a></td><td><code>None</code> / result</td><td data-i18n="bossBar.update">Serialize validated mutations on the BDS tick thread and update the client UI.</td></tr>
-            <tr id="api-boss-bar-viewers"><td><a class="api-symbol" href="#api-boss-bar-viewers"><code>add_player(player)</code> · <code>remove_player(player)</code> · <code>remove_all_players()</code></a></td><td><code>None</code> / result</td><td data-i18n="bossBar.viewers">Manage authenticated viewers. Disconnect and plugin shutdown clean retained state safely.</td></tr>
-            <tr id="api-boss-bar-destroy"><td><a class="api-symbol" href="#api-boss-bar-destroy"><code>refresh()</code> · <code>destroy()</code></a></td><td><code>BossBar</code> · <code>None</code> / result</td><td data-i18n="bossBar.destroy">Refresh authoritative state or remove the bar from every viewer and release it.</td></tr>
-          </tbody></table></div>
-          <div data-api-language="python"><pre><code>bar = self.server.create_boss_bar(
-    "Welcome", BossBarColor.PURPLE, BossBarStyle.SOLID, 1.0
-)
-bar.add_player(player)
-bar.set_progress(0.75)
-bar.destroy()</code></pre></div>
-          <div data-api-language="cpp"><pre><code>auto bar = server().create_boss_bar(
-    "Welcome", 1.0F, BossBarColor::purple, BossBarStyle::solid);
-bar.add_player(player);
-bar.set_progress(0.75F);
-bar.destroy();</code></pre></div>
-          <div class="callout warning"><strong data-i18n="bossBar.limitTitle">Current native limit</strong><p data-i18n="bossBar.limit">A player can be attached to one BedrockPlus plugin boss bar at a time. A vanilla dragon or wither bar is independent and can appear together with it.</p></div>
-        </article>
-      </section>
-
-      <section id="item-registry" data-title="Item registry" data-group="API reference">
-        <h2 data-i18n="itemRegistry.title">Native item registry</h2>
-        <p data-i18n="itemRegistry.intro">Read the exact item type IDs and signed runtime IDs serialized by BDS for the active vanilla and add-on packs. The first generation becomes ready after BDS prepares an ItemRegistryPacket for a connecting client.</p>
-        <article class="api-class" id="api-item-registry">
-          <h3><code>ItemRegistrySnapshot</code></h3>
-          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-            <tr><td><a class="api-symbol" href="#api-item-registry"><code>ready</code> · <code>generation</code> · <code>entries</code></a></td><td><code>bool</code> · <code>int</code> · <code>tuple</code></td><td data-i18n="itemRegistry.state">Availability, immutable generation number, and packet-order entries.</td></tr>
-            <tr id="api-item-registry-get"><td><a class="api-symbol" href="#api-item-registry-get"><code>get(type_id)</code> · <code>get_by_runtime_id(runtime_id)</code></a></td><td><code>ItemRegistryEntry | None</code></td><td data-i18n="itemRegistry.lookup">Look up vanilla or add-on items in either direction without changing runtime IDs.</td></tr>
-            <tr id="api-item-registry-custom"><td><a class="api-symbol" href="#api-item-registry-custom"><code>custom_entries</code></a></td><td><code>tuple[ItemRegistryEntry, ...]</code></td><td data-i18n="itemRegistry.custom">Entries outside the minecraft namespace, in native packet order.</td></tr>
-            <tr id="api-item-registry-entry"><td><a class="api-symbol" href="#api-item-registry-entry"><code>type_id</code> · <code>runtime_id</code> · <code>component_based</code> · <code>item_version</code></a></td><td><code>str</code> · <code>int</code> · <code>bool</code> · <code>int</code></td><td data-i18n="itemRegistry.entry">One exact BDS registration. Runtime IDs are signed 16-bit values, so negative values are valid.</td></tr>
-          </tbody></table></div>
-          <div data-api-language="python"><pre><code>registry = self.server.item_registry
-if registry.ready:
-    sword = registry.get("minecraft:diamond_sword")
-    custom = registry.custom_entries</code></pre></div>
-          <div data-api-language="cpp"><pre><code>const auto registry = server().item_registry();
-if (registry.ready) {
-    const auto* sword = registry.find("minecraft:diamond_sword");
-    for (const auto&amp; item : registry.entries) { /* use item.runtime_id */ }
-}</code></pre></div>
-        </article>
-      </section>
-
-      <section id="scoreboard-api" data-title="Scoreboard" data-group="API reference">
-        <h2 data-i18n="scoreboard.title">Native scoreboard API</h2>
-        <p data-i18n="scoreboard.intro">Read objectives, identities, scores, and display slots from authoritative BDS state. Mutations execute on the BDS tick thread and report a typed error when native state rejects them; no vanilla scoreboard command is composed.</p>
-        <article class="api-class" id="api-scoreboard">
-          <h3><code>Scoreboard</code></h3>
-          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-            <tr><td><a class="api-symbol" href="#api-scoreboard"><code>ready</code> · <code>generation</code> · <code>objectives</code> · <code>entries</code></a></td><td><code>bool</code> · <code>int</code> · <code>tuple</code></td><td data-i18n="scoreboard.state">One immutable, internally consistent view of native scoreboard state.</td></tr>
-            <tr id="api-scoreboard-get"><td><a class="api-symbol" href="#api-scoreboard-get"><code>get_objective(name_or_slot)</code> · <code>get_objectives_by_criteria(criteria)</code></a></td><td><code>Objective | None</code> · <code>tuple</code></td><td data-i18n="scoreboard.get">Find an objective by unique name, display slot, or BDS criteria.</td></tr>
-            <tr id="api-scoreboard-objective"><td><a class="api-symbol" href="#api-scoreboard-objective"><code>add_objective(name, criteria, display_name, render_type)</code></a></td><td><code>None</code></td><td data-i18n="scoreboard.add">Create a native objective, then read Server.scoreboard again to obtain its new snapshot.</td></tr>
-            <tr id="api-scoreboard-clear"><td><a class="api-symbol" href="#api-scoreboard-clear"><code>clear_display(slot)</code> · <code>reset_scores(entry)</code></a></td><td><code>None</code></td><td data-i18n="scoreboard.clear">Clear one display slot or remove one participant from all modifiable objectives.</td></tr>
-          </tbody></table></div>
-        </article>
-        <article class="api-class" id="api-objective">
-          <h3><code>Objective</code> · <code>Score</code> · <code>ScoreboardEntry</code></h3>
-          <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Property or method</th><th data-i18n="api.returns">Type / return</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-            <tr><td><a class="api-symbol" href="#api-objective"><code>name</code> · <code>display_name</code> · <code>criteria</code> · <code>scores</code></a></td><td data-i18n="scoreboard.objectiveType">Objective metadata</td><td data-i18n="scoreboard.objective">Copied native objective state and its real scores.</td></tr>
-            <tr id="api-objective-score"><td><a class="api-symbol" href="#api-objective-score"><code>get_score(entry)</code> · <code>set_score(entry, value)</code> · <code>add_score(entry, value)</code> · <code>reset_score(entry)</code></a></td><td><code>Score | None</code> · <code>int</code></td><td data-i18n="scoreboard.scoreOps">Read or mutate player, entity, existing-entry, and fake-player scores.</td></tr>
-            <tr id="api-objective-display"><td><a class="api-symbol" href="#api-objective-display"><code>set_display_name(text)</code> · <code>set_display(slot, order)</code> · <code>remove()</code></a></td><td><code>None</code></td><td data-i18n="scoreboard.displayOps">Update client-visible objective metadata or unregister the objective.</td></tr>
-            <tr id="api-score-value"><td><a class="api-symbol" href="#api-score-value"><code>Score.value</code> · <code>set_value(value)</code> · <code>add(value)</code> · <code>reset()</code></a></td><td><code>int</code> · <code>None</code></td><td data-i18n="scoreboard.valueOps">Operate on the exact native identity captured by a Score snapshot.</td></tr>
-          </tbody></table></div>
-          <div data-api-language="python"><pre><code>board = self.server.scoreboard
-objective = board.get_objective("kills")
-if objective is None:
-    board.add_objective("kills", display_name="Kills")
-else:
-    objective.add_score(player, 1)
-    objective.set_display(ScoreboardDisplaySlot.SIDEBAR)</code></pre></div>
-          <div data-api-language="cpp"><pre><code>auto board = server().scoreboard();
-if (const auto* objective = board.find_objective("kills")) {
-    static_cast&lt;void&gt;(server().add_score("kills", player, 1));
-    static_cast&lt;void&gt;(server().set_display(
-        "kills", ScoreboardDisplaySlot::sidebar));
-}</code></pre></div>
-        </article>
-      </section>
-
-      <section id="event-subscriptions" data-title="Subscribe to events" data-group="API reference">
-        <h2 data-i18n="eventsGuide.title">How to subscribe to an event</h2>
-        <p data-i18n="eventsGuide.intro">A subscription connects one exact event name to one callback method. Register it in on_server_ready, keep the numeric subscription ID, and unsubscribe during on_server_stopping.</p>
-        <div class="member-table table-wrap"><table><thead><tr><th data-i18n="eventsGuide.part">Part</th><th data-i18n="eventsGuide.meaning">What you provide</th></tr></thead><tbody>
-          <tr><td><code>"player.join"</code></td><td data-i18n="eventsGuide.name">The exact canonical event name from the live-events table.</td></tr>
-          <tr><td><code>self.on_player_join</code></td><td data-i18n="eventsGuide.callback">A function reference, without parentheses. BedrockPlus calls it later and supplies the typed event object.</td></tr>
-          <tr><td><code>EventPriority.NORMAL</code></td><td data-i18n="eventsGuide.priority">Optional listener order. NORMAL is appropriate unless the plugin specifically needs earlier or monitor behavior.</td></tr>
-          <tr><td><code>subscription_id</code></td><td data-i18n="eventsGuide.id">The integer returned by subscribe_event. Store it so the exact listener can be removed.</td></tr>
-          <tr><td><code>event.player</code></td><td data-i18n="eventsGuide.eventObject">The typed Player associated with PlayerJoinEvent; read its documented properties directly.</td></tr>
-        </tbody></table></div>
-        <div data-api-language="python"><pre><code>from bedrockplus import EventPriority, PlayerJoinEvent
-
-# In on_server_ready: save the returned ID.
-self.join_subscription = self.host.subscribe_event(
-    "player.join",          # exact event name
-    self.on_player_join,     # function reference; do not add ()
-    EventPriority.NORMAL,
-)
-
-# BedrockPlus calls this method and supplies the event.
-def on_player_join(self, event: PlayerJoinEvent) -&gt; None:
-    player = event.player
-    self.host.log(
-        f"{player.display_name} joined; XUID={player.xuid or 'unavailable'}"
-    )
-
-# In on_server_stopping: remove the exact subscription.
-self.host.unsubscribe_event(self.join_subscription)</code></pre></div>
-        <div data-api-language="cpp"><pre><code>// In on_server_ready: save the returned ID.
-join_subscription_ = events().subscribe&lt;PlayerJoinEvent&gt;(
-    [this](const PlayerJoinEvent&amp; event) {
-        const auto player = event.player();
-        logger().log(
-            BP_LOG_INFO, player.name + " joined", "PLAYER_INFO.JOIN",
-            {{"session", player.session_id}, {"xuid", player.xuid}});
-    },
-    EventPriority::normal);
-
-// In on_server_stopping:
-events().unsubscribe(join_subscription_);</code></pre></div>
-        <div class="callout info"><strong data-i18n="eventsGuide.lifecycleTitle">Correct lifecycle location</strong><p data-i18n="eventsGuide.lifecycle">on_load only stores PluginHost. Runtime services become usable in on_server_ready. Remove listeners in on_server_stopping before plugin code is disabled and unloaded.</p></div>
-        <div class="callout warning"><strong data-i18n="eventsGuide.joinTitle">player.join is observational</strong><p data-i18n="eventsGuide.join">It cannot be cancelled. Reading identity and connection snapshots is immediate; defer messages, boss bars, or other client-facing actions to the next tick.</p></div>
-      </section>
-
-      <section id="commands" data-title="Commands" data-group="API reference">
-        <h2 data-i18n="commands.title">Typed slash commands and vanilla control</h2>
-        <p data-i18n="commands.intro">Registered commands join the native BDS command registry, including chat autocomplete. Overloads support integer, real, string, remaining text, and enum arguments. Enum choices provide literal suggestions.</p>
-        <div data-api-language="python"><pre><code>from bedrockplus import CommandArgument
-
-host.register_command(
-    "weatherplus", callback,
-    description="Weather controls",
-    aliases=["wp"],
-    overloads=[[
-        CommandArgument("action", "enum",
-                        choices=("start", "stop", "status")),
-        CommandArgument("seconds", "int", optional=True),
-    ]],
-)</code></pre></div>
-        <div data-api-language="cpp"><pre><code>CommandDefinition command{
-    "weatherplus", "Weather controls", "any", {"wp"},
-    {CommandOverload{{
-        {"action", CommandArgumentType::enumeration, false,
-         {"start", "stop", "status"}},
-        {"seconds", CommandArgumentType::integer, true, {}}
-    }}}
+private:
+    std::uint64_t join_listener_{};
 };
-commands().register_command(command, callback);</code></pre></div>
-        <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.command.type">Type</th><th data-i18n="api.command.members">Important members</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-          <tr id="api-command-argument"><td><a class="api-symbol" href="#api-command-argument"><code>CommandArgument</code></a></td><td><a class="api-symbol" href="#api-command-argument"><code>name</code>, <code>type</code>, <code>optional</code>, <code>choices</code></a></td><td data-i18n="api.command.argument">Defines one typed autocomplete argument. Choices are used by enum arguments.</td></tr>
-          <tr id="api-command-invocation"><td><a class="api-symbol" href="#api-command-invocation"><code>CommandInvocation</code></a></td><td><a class="api-symbol" href="#api-command-invocation"><code>source_kind</code>, <code>source_name</code>, <code>source_identity</code>, <code>command</code>, <code>arguments</code>, <code>args</code>/<code>values</code></a></td><td data-i18n="api.command.invocation">Describes who ran the command and contains parsed values in overload order.</td></tr>
-          <tr id="api-command-result"><td><a class="api-symbol" href="#api-command-result"><code>CommandResult</code>/<code>CommandResponse</code></a></td><td><a class="api-symbol" href="#api-command-result"><code>succeeded</code>, <code>message</code>, <code>error_code</code></a></td><td data-i18n="api.command.result">Returns success state and optional user-facing output. Python callbacks may also return None, bool, or str.</td></tr>
-          <tr><td><code>CommandSourceKind</code></td><td><code>CONSOLE</code> · <code>PLAYER</code></td><td data-i18n="api.command.source">Lets the handler apply different behavior based on the command source.</td></tr>
-        </tbody></table></div>
-        <div data-api-language="python"><pre><code>def callback(invocation: CommandInvocation) -&gt; CommandResult:
-    action = str(invocation.args[0])
-    return CommandResult.success(f"Selected: {action}")</code></pre></div>
-        <div data-api-language="cpp"><pre><code>CommandResponse callback(const CommandInvocation&amp; input) {
-    const auto&amp; action = std::get&lt;std::string&gt;(input.values.at(0));
-    return {true, "Selected: " + action, {}};
-}</code></pre></div>
-        <p data-i18n="commands.policy">Player and server command events run before BDS executes vanilla or BedrockPlus commands. A listener may cancel execution or replace the command string. Hidden vanilla commands disappear from player suggestions and are rejected when typed, while the server console remains unaffected.</p>
-      </section>
 
-      <section id="events" data-title="Events" data-group="API reference">
-        <h2 data-i18n="events.title">Events, priority, cancellation, and mutation</h2>
-        <p data-i18n="events.intro">Subscribe after server ready and keep the returned ID for cleanup. Priorities run from earliest to monitor. Monitor listeners should observe rather than modify.</p>
-        <div data-api-language="python"><pre><code>subscription = host.subscribe_event(
-    "player.command", on_command, priority=-100
-)
+BEDROCKPLUS_PLUGIN(
+    JoinReporter,
+    "example.join-reporter",
+    "Join Reporter",
+    "1.0.0")</code></pre></div></div><div class="callout info"><strong data-i18n="tutorial.logTitle">Plugin-owned messages</strong><p data-i18n="tutorial.logText">BedrockPlus does not print automatic successful load/enable notices. Log only the lifecycle information that is useful for your plugin.</p></div></section>
+        <section id="package"><h2 data-i18n="tutorial.package">Validate and package</h2><div data-runtime-content="python"><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>cd plugins\JoinReporter
+bedrockplus plugin pack</code></pre></div></div><div data-runtime-content="cpp" hidden><div class="callout info"><strong data-i18n="tutorial.cppToolsTitle">One-time C++ toolchain</strong><p data-i18n="tutorial.cppToolsText">Install Visual Studio 2022 Build Tools with Desktop development with C++. Select MSVC x64/x86 build tools, a Windows SDK and CMake tools for Windows. The Visual Studio graphical IDE is optional.</p></div><ol class="build-steps"><li><strong>CMake</strong><span data-i18n="tutorial.cppCmakeRole">checks the project and generates Visual Studio/MSBuild files.</span></li><li><strong>MSVC</strong><span data-i18n="tutorial.cppMsvcRole">compiles the C++ source into the DLL named by manifest.json.</span></li><li><strong>bedrockplus plugin pack</strong><span data-i18n="tutorial.cppPackRole">validates manifest.json plus the compiled DLL and creates the .bppack archive.</span></li></ol><div class="callout warning"><strong data-i18n="tutorial.cppSdkTitle">Current SDK requirement</strong><p data-i18n="tutorial.cppSdkText">BEDROCKPLUS_ROOT must be a directory containing include/bedrockplus/sdk/plugin.hpp. BedrockPlus 1.0.2 has not yet published a standalone C++ SDK archive, so rebuilding the source example currently requires the BedrockPlus developer checkout. The ready .bppack does not.</p></div><p data-i18n="tutorial.cppShellText">Run these commands in Developer PowerShell for VS 2022 after replacing the SDK path:</p><div class="code-block"><button data-copy data-i18n="code.copy">Copy</button><pre><code>$env:BEDROCKPLUS_ROOT = "D:\Path\To\BedrockPlusSdk"
+Test-Path "$env:BEDROCKPLUS_ROOT\include\bedrockplus\sdk\plugin.hpp"
 
-def on_command(event: PlayerCommandEvent) -&gt; None:
-    if event.command == "blocked":
-        event.cancel()</code></pre></div>
-        <div data-api-language="cpp"><pre><code>auto subscription = events().subscribe(
-    "player.command", [](const Event&amp; event) {
-        if (event.field("command") == "blocked") {
-            static_cast&lt;void&gt;(event.cancel());
-        }
-    }, EventPriority::early);</code></pre></div>
-        <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.event.type">Class / field</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-          <tr id="api-event-base"><td><a class="api-symbol" href="#api-event-base"><code>Event.name</code> · <code>Event.sequence</code></a></td><td data-i18n="api.event.base">Event identity and monotonic sequence number. Concrete classes expose typed properties rather than a public dictionary.</td></tr>
-          <tr id="api-event-cancel"><td><a class="api-symbol" href="#api-event-cancel"><code>CancellableEvent</code> · <code>Event.is_cancellable</code> · <code>CancellableEvent.is_cancelled</code> · <code>CancellableEvent.cancel()</code></a></td><td data-i18n="api.event.cancel">Only cancellable typed events expose cancellation state and cancel(). Call it synchronously before BDS executes the action.</td></tr>
-          <tr><td><code>EventPriority</code></td><td data-i18n="api.event.priority">LOWEST/earliest runs first; MONITOR runs last and should only observe.</td></tr>
-          <tr id="api-event-player"><td><a class="api-symbol" href="#api-event-player"><code>PlayerJoinEvent</code> · <code>PlayerQuitEvent</code> · <code>event.player</code></a></td><td data-i18n="api.event.lifecycle">Expose event.player directly; Server.player_from_event(event) returns the same typed Player.</td></tr>
-          <tr id="api-event-attack"><td><a class="api-symbol" href="#api-event-attack"><code>PlayerAttackEvent</code> · <code>target_runtime_id</code> · <code>target</code> · <code>cps</code> · <code>interval_ms</code> · <code>average_interval_ms</code> · <code>is_saturated</code></a></td><td data-i18n="api.event.attack">An authenticated entity attack attempt before vanilla combat. Cancellation suppresses that attack transaction; CPS remains moderation evidence rather than proof by itself.</td></tr>
-          <tr><td><code>PlayerCommandEvent</code> · <code>ServerCommandEvent</code></td><td data-i18n="api.event.commands">Live cancellable command events. Assign event.command to rewrite the command.</td></tr>
-          <tr><td><code>ServerTickEvent</code></td><td data-i18n="api.event.tick">A lightweight live pulse with no cancellable action.</td></tr>
-        </tbody></table></div>
-        <div class="table-wrap"><table>
-          <thead><tr><th data-i18n="events.event">Event</th><th data-i18n="events.status">Status</th><th data-i18n="events.data">Data and control</th></tr></thead>
-          <tbody>
-            <tr><td>server.tick</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.tick">Sequence number; read-only.</td></tr>
-            <tr><td>player.join · player.quit</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.players">Stable name and session, plus authenticated connection snapshot when available.</td></tr>
-            <tr><td>player.command · server.command</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.command">Cancellable before execution; command is mutable.</td></tr>
-            <tr><td>player.login · player.respawn · player.death · player.interact · player.toggle_sneak · player.toggle_sprint</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.lifecycleExtended">Authenticated lifecycle and exact native input/state transitions.</td></tr>
-            <tr><td><a class="api-symbol" href="#api-event-attack"><code>player.attack</code></a></td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.attackData">Authenticated target runtime ID, typed target resolution, rolling one-second CPS and interval metrics; cancellable before vanilla combat.</td></tr>
-            <tr><td>player.chat · block.place · server.list_ping · player.jump · player.kick · player.move</td><td><span class="badge ready" data-i18n="events.live">Live</span></td><td data-i18n="events.gameplay">Typed properties, validated mutation, and cancellation where the BDS action is cancellable.</td></tr>
-          </tbody>
-        </table></div>
-        <h3 data-i18n="events.attackTitle">Moderate real entity attacks</h3>
-        <p data-i18n="events.attackIntro">Subscribe to player.attack for authenticated ItemUseOnActor attack attempts. Air swings and block actions are different signals. Count the event even when cancelled, and combine CPS with context before taking moderation action.</p>
-        <div data-api-language="python"><pre><code>from bedrockplus import PlayerAttackEvent
+cmake -S . -B build -G "Visual Studio 17 2022" -A x64 `
+  -DBEDROCKPLUS_ROOT="$env:BEDROCKPLUS_ROOT"
+cmake --build build --config Release
+bedrockplus plugin pack</code></pre></div></div></section>
+      </article>
 
-self.attack_subscription = self.host.subscribe_event(
-    "player.attack", self.on_player_attack
-)
+      <article class="page" data-page="reference">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.reference">API Reference</span></div>
+        <header class="page-header" id="api-overview"><span class="page-label">API 1.0</span><h1 data-i18n="reference.title">API Reference</h1><p data-i18n="reference.lead">A navigable overview of the stable public surface. Detailed symbol pages will be added here without changing the v1 website.</p></header>
+        <section id="server-api"><h2>Server</h2><div class="api-grid"><a href="#/reference/server-api"><code>online_players</code><span data-i18n="reference.players">Authenticated Player snapshots</span></a><a href="#/reference/server-api"><code>entities</code><span data-i18n="reference.entities">Verified native Entity snapshots</span></a><a href="#/reference/server-api"><code>scoreboard</code><span data-i18n="reference.scoreboard">Native objectives and scores</span></a><a href="#/reference/server-api"><code>create_boss_bar()</code><span data-i18n="reference.bossbars">Player-visible native boss bars</span></a></div></section>
+        <section id="player-api"><h2>Player</h2><div class="api-grid"><a href="#/reference/player-api"><code>name · xuid · session_id</code><span data-i18n="reference.identity">Stable copied identity</span></a><a href="#/reference/player-api"><code>connection · address · ping</code><span data-i18n="reference.connection">Available native connection data</span></a><a href="#/reference/player-api"><code>tags · add_tag() · remove_tag()</code><span data-i18n="reference.tags">Native Actor tags</span></a><a href="#/reference/player-api"><code>transfer()</code><span data-i18n="reference.transfer">Move a player to another server</span></a></div></section>
+        <section id="events-api"><h2 data-i18n="reference.eventsTitle">Events and commands</h2><p data-i18n="reference.eventsText">Typed lifecycle and gameplay events use class properties rather than dictionaries. Only events with a truthful pre-action native boundary expose cancellation.</p><div class="status-table"><div><strong>player.join</strong><span>PlayerJoinEvent</span><em data-i18n="reference.observe">Observe</em></div><div><strong>player.attack</strong><span>PlayerAttackEvent</span><em class="cancellable" data-i18n="reference.cancel">Cancellable</em></div><div><strong>player.command</strong><span>PlayerCommandEvent</span><em class="cancellable" data-i18n="reference.cancel">Cancellable</em></div><div><strong>server.tick</strong><span>ServerTickEvent</span><em data-i18n="reference.observe">Observe</em></div></div></section>
+        <section id="api-compatibility"><h2 data-i18n="reference.compatTitle">Compatibility contract</h2><p data-i18n="reference.compatText">A plugin declares the minimum API line it requires. New BedrockPlus releases retain supported older lines; an older runtime rejects plugins requiring a newer API before their code loads.</p></section>
+      </article>
 
-def on_player_attack(self, event: PlayerAttackEvent) -&gt; None:
-    self.host.log(
-        f"{event.player.name} attacked {event.target_runtime_id}; "
-        f"CPS={event.cps}"
-    )
-    if event.cps &gt; 18:
-        event.cancel()</code></pre></div>
-        <div data-api-language="cpp"><pre><code>attack_subscription_ = events().subscribe&lt;PlayerAttackEvent&gt;(
-    [this](const PlayerAttackEvent&amp; event) {
-        const auto cps = event.clicks_per_second().value_or(0);
-        logger().info("Attack CPS=" + std::to_string(cps));
-        if (cps &gt; 18) {
-            static_cast&lt;void&gt;(event.cancel());
-        }
-    });</code></pre></div>
-        <div class="callout warning"><strong data-i18n="events.attackMeaningTitle">Attempt, not confirmed damage</strong><p data-i18n="events.attackMeaning">The event proves that the authenticated client submitted a targeted attack which reached BDS validation. It does not claim that armor, invulnerability, reach, game rules, or later combat logic allowed damage.</p></div>
-      </section>
+      <article class="page" data-page="changelog">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.changelog">Changelog</span></div>
+        <header class="page-header" id="release-history"><span class="page-label" data-i18n="changelog.label">Releases</span><h1 data-i18n="changelog.title">Changelog</h1><p data-i18n="changelog.lead">Product changes, compatibility notes and—after the support repository opens—links to the reports resolved by each release.</p></header>
+        <section id="release-102" class="release-entry"><div class="release-meta"><span class="release-badge stable" data-i18n="changelog.stable">Stable</span><time datetime="2026-10-27">27 Oct 2026</time></div><h2>BedrockPlus 1.0.2</h2><ul><li data-i18n="changelog.actorRecovery">Transient native Actor snapshot conflicts no longer stop the Bedrock server.</li><li data-i18n="changelog.actorDiagnostics">Unsafe Actor handles are quarantined and rebuilt on the next tick with rate-limited diagnostics and a recovery notice.</li><li data-i18n="changelog.optionalFeatures">Plugins can check whether experimental Container UI is available, so disabling it does not affect unrelated plugin features.</li></ul><p class="issue-note" data-i18n="changelog.issuePending">Issue references will be attached here after the public support repository is configured.</p></section>
+        <section id="release-101" class="release-entry"><div class="release-meta"><span class="release-badge stable" data-i18n="changelog.stable">Stable</span><time datetime="2026-10-24">24 Oct 2026</time></div><h2>BedrockPlus 1.0.1</h2><ul><li data-i18n="changelog.scheduler">Reuses completed scheduler callback slots during long-running plugin sessions.</li><li data-i18n="changelog.compat">Defines API 1.0 as the current maximum and preserves the legacy numeric API declaration.</li><li data-i18n="changelog.quiet">Removes automatic successful plugin load and enable notices; plugin authors control their own lifecycle messages.</li><li data-i18n="changelog.updateNotice">Adds a non-blocking PyPI update notice that never prevents offline startup.</li></ul></section>
+        <section id="release-100" class="release-entry"><div class="release-meta"><span class="release-badge stable" data-i18n="changelog.stable">Stable</span><time datetime="2026-10-24">24 Oct 2026</time></div><h2>BedrockPlus 1.0.0</h2><ul><li data-i18n="changelog.firstStable">First stable Windows x64 release for BDS 1.26.52.3.</li><li data-i18n="changelog.nativeApis">Ships typed Python and C++ APIs with native players, entities, scoreboard, boss bars, tags and item registry foundations.</li><li data-i18n="changelog.releaseFlow">Introduces verified Wheel, runtime, examples, website and checksum publication gates.</li></ul></section>
+        <section id="issue-links"><h2 data-i18n="changelog.linkTitle">Linking reports to releases</h2><p data-i18n="changelog.linkText">When a real report is fixed, its GitHub issue number will appear beside the exact changelog item. No invented counters or placeholder issues are shown.</p></section>
+      </article>
 
-      <section id="scheduler" data-title="Scheduler" data-group="API reference">
-        <h2 data-i18n="scheduler.title">Server-thread scheduler</h2>
-        <p data-i18n="scheduler.intro">Schedule one-shot or finite repeating callbacks in milliseconds. Keep task IDs and cancel outstanding work during server stopping. A plugin instance accepts at most 1024 active callbacks in API 1.0.</p>
-        <div class="member-table table-wrap"><table><thead><tr><th data-i18n="api.member">Method</th><th data-i18n="api.returns">Returns</th><th data-i18n="api.meaning">Meaning</th></tr></thead><tbody>
-          <tr id="api-system-run"><td><a class="api-symbol" href="#api-system-run"><code>run(callback)</code> · <code>runTimeout(callback, delay_ticks)</code></a></td><td><code>int</code></td><td data-i18n="api.system.run">Schedule the next tick or one delayed callback and return its task ID.</td></tr>
-          <tr id="api-system-interval"><td><a class="api-symbol" href="#api-system-interval"><code>runInterval(callback, interval_ticks)</code> · <code>runJob(iterator)</code></a></td><td><code>int</code></td><td data-i18n="api.system.interval">Run repeated tick work or advance one iterator step per tick. Exceptions retire the task safely.</td></tr>
-          <tr id="api-system-clear"><td><a class="api-symbol" href="#api-system-clear"><code>clearRun(task_id)</code></a></td><td><code>bool</code></td><td data-i18n="api.system.clear">Cancel an owned pending task by the ID returned from a scheduling method.</td></tr>
-        </tbody></table></div>
-        <div data-api-language="python"><pre><code>system = System(host)
-once = system.runTimeout(callback, 20)       # 20 ticks = 1 second
-repeat = system.runInterval(callback, 100)  # every 5 seconds
-system.clearRun(repeat)</code></pre></div>
-        <div data-api-language="cpp"><pre><code>auto once = scheduler().schedule(callback, 1'000);
-auto repeat = scheduler().schedule(callback, 2'000, 2'000, 3);
-scheduler().cancel(repeat);</code></pre></div>
-      </section>
-
-      <section id="logging-data" data-title="Logging and data" data-group="API reference">
-        <h2 data-i18n="logging.title">Plugin output and private data</h2>
-        <p data-i18n="logging.intro">Use log, debug, warn, error, or critical like print: pass the values, and the method selects the timestamped level and console color. Plain print writes Minecraft-colored console text without a timestamp. Each plugin also receives a private persistent data directory.</p>
-        <div data-api-language="python"><pre><code>from pathlib import Path
-
-host.log("&amp;aReady")
-host.warn("Configuration is incomplete")
-host.error("Could not load file:", filename)
-print("&amp;bThis line has no timestamp")
-state_file = Path(host.data_directory()) / "state.json"</code></pre></div>
-        <div data-api-language="cpp"><pre><code>logger().log(BP_LOG_INFO, "Ready", "MY_PLUGIN.READY",
-             {{"mode", "safe"}});
-auto state_file = data_directory() / "state.json";</code></pre></div>
-        <p data-i18n="logging.color">Python print inside a plugin is plugin-local BedrockPlus output: it supports ampersand color codes such as &amp;a and bypasses the timestamp. Use host.log/warn/error when the line should also be retained in plugin log files.</p>
-      </section>
-
-      <section id="dependencies" data-title="Dependencies" data-group="Packages">
-        <h2 data-i18n="deps.title">Self-contained dependencies</h2>
-        <div data-api-language="python">
-          <p data-i18n="deps.python">Put direct, exact versions in requirements.txt, one package per line. An optional requirements.lock takes priority and should contain the complete tested set. bedrockplus plugin pack installs them into python/vendor inside a temporary staging copy; server startup never runs pip.</p>
-          <pre><code># requirements.txt
-TikTokLive==6.6.5</code></pre>
-        </div>
-        <div data-api-language="cpp"><p data-i18n="deps.cpp">Prefer static runtime and library linkage or ship explicitly licensed DLL dependencies inside native/windows-x64. The plugin must not rely on the developer machine's PATH or debug runtime.</p></div>
-        <div class="callout warning"><strong data-i18n="deps.securityTitle">Review what you ship</strong><p data-i18n="deps.security">Dependencies execute with the same operating-system access as the server. Pin versions, keep required notices, and rebuild after security updates.</p></div>
-      </section>
-
-      <section id="packaging" data-title="Build .bppack" data-group="Packages">
-        <h2 data-i18n="pack.title">Build, validate, and install</h2>
-        <p data-i18n="pack.intro">Run the command in the folder containing manifest.json. It validates paths, identity, runtime metadata, and generated hashes, then writes the finished archive beside the manifest unless an output path is supplied.</p>
-        <pre><code>bedrockplus plugin pack
-bedrockplus plugin pack . -Output my-plugin.bppack</code></pre>
-        <p data-i18n="pack.install">Copy the unchanged result into the server's plugins directory. Do not unzip it and do not rename internal files after building.</p>
-      </section>
-
-      <section id="folder-plugins" data-title="Folder plugins" data-group="Packages">
-        <h2 data-i18n="folder.title">Unpacked development plugins</h2>
-        <p data-i18n="folder.body">During development, a plugin may remain as a normal folder directly under plugins. Python vendor dependencies work in either form. Use .bppack for repeatable installation, transfer, and release.</p>
-      </section>
-
-      <section id="development-packs" data-title="Development packs" data-group="Server owners">
-        <h2 data-i18n="devPacks.title">Automatic development-pack activation</h2>
-        <p data-i18n="devPacks.intro">Before BDS starts, BedrockPlus reads valid folders, .zip files, and .mcpack files from development_behavior_packs and development_resource_packs, then updates the active world's registration JSON. The pack files themselves are not moved, extracted, or added to .bppack.</p>
-        <ul>
-          <li data-i18n="devPacks.update">Changing a pack manifest version updates the matching world registration on the next start.</li>
-          <li data-i18n="devPacks.disable">A folder, archive, or manifest header name ending in Disabled is excluded from BedrockPlus-managed registrations.</li>
-          <li data-i18n="devPacks.manual">Registrations not owned by BedrockPlus are preserved, so server owners remain free to manage normal world packs themselves.</li>
-        </ul>
-      </section>
-
-      <section id="diagnostics" data-title="Diagnostics" data-group="Operate">
-        <h2 data-i18n="diag.title">Validation and common failures</h2>
-        <div class="accordion">
-          <details><summary data-i18n="diag.noLoadTitle">Plugin does not load</summary><p data-i18n="diag.noLoad">Read the first validation error in console and logs. Check manifest paths, API version, runtime version, duplicate IDs, and package integrity.</p></details>
-          <details><summary data-i18n="diag.noEventTitle">Event callback never runs</summary><p data-i18n="diag.noEvent">Verify the exact event name in the live table and subscribe during server ready. A listener that raises an exception is logged and removed for safety.</p></details>
-          <details><summary data-i18n="diag.noImportTitle">Python import fails</summary><p data-i18n="diag.noImport">Declare the exact package in requirements.txt and rebuild. Do not install dependencies globally and do not run pip during server startup.</p></details>
-          <details><summary data-i18n="diag.noCommandTitle">Command lacks autocomplete</summary><p data-i18n="diag.noCommand">Register typed overloads after server ready. Use enum choices for fixed words such as connect, disconnect, and status.</p></details>
-        </div>
-      </section>
-
-      <section id="support" data-title="License and support" data-group="Operate">
-        <h2 data-i18n="support.title">License, security, and support</h2>
-        <p data-i18n="support.body">BedrockPlus is proprietary software created by Turkmen. Read the license before installation. Report reproducible bugs with the BedrockPlus version, BDS version, transport, first relevant error, and steps to reproduce; remove IP addresses, device IDs, XUIDs, and secrets before sharing logs.</p>
-        <div class="hero-actions"><a class="button secondary" href="LICENSE.txt" data-i18n="support.license">Read the BedrockPlus license</a><a class="button secondary" href="https://bedrockpvp.com/" data-i18n="support.contact">BedrockPVP contact</a></div>
-      </section>
-
-      <section id="limitations" data-title="Current boundaries" data-group="Operate">
-        <h2 data-i18n="limits.title">Current 1.0.1 boundaries</h2>
-        <ul class="boundary-list">
-          <li data-i18n="limits.windows">The runtime currently targets 64-bit Windows, BDS 1.26.52.3, Python 3.13, and C++ ABI v1.</li>
-          <li data-i18n="limits.interpreter">Python plugins share one embedded interpreter. Dependency folders are isolated, but this is not process-level security isolation.</li>
-          <li data-i18n="limits.events">The eighteen documented event types, read-only Entity fields, native item registry, and native scoreboard are live; native Entity mutation, Level/BlockSource, chunks, inventory, NBT, forms, and raw packets remain future milestones.</li>
-          <li data-i18n="limits.compat">Plugins must target the documented BedrockPlus API. Existing compiled plugins from another host are not binary-compatible.</li>
-          <li data-i18n="limits.snapshots">Player identity/connection and Entity data are pointer-free copied snapshots. Existing Player convenience actions are explicit command-backed operations and are not presented as completed native object methods.</li>
-        </ul>
-      </section>
-
-      <div id="search-empty" class="search-empty" hidden data-i18n="ui.noResults">No matching documentation sections.</div>
-      <footer><span>BedrockPlus API 1.0 · BedrockPlus 1.0.1</span><span data-i18n="ui.footer">Created by Turkmen · 1.0.1 documentation</span></footer>
+      <article class="page" data-page="report">
+        <div class="breadcrumb"><a href="#/home" data-i18n="nav.home">Home</a><span>/</span><span data-i18n="nav.report">Report a bug</span></div>
+        <header class="page-header" id="report-overview"><span class="page-label">SUPPORT</span><h1 data-i18n="report.title">Report a bug</h1><p data-i18n="report.lead">A dedicated public support repository will collect reproducible bug reports and feature requests without exposing the private BedrockPlus source repository.</p></header>
+        <section id="repository-status" class="repository-status"><div class="status-orb" aria-hidden="true"></div><div><h2 data-i18n="report.notConnected">Support repository is not connected yet</h2><p data-i18n="report.notConnectedText">The website is ready for its URL. Until then, no button will send users to a missing or unrelated repository.</p></div><a class="button primary is-unavailable" data-github="new-issue" href="#" aria-disabled="true" data-i18n="report.openIssue">Open a new issue</a></section>
+        <section id="report-checklist"><h2 data-i18n="report.includeTitle">What a useful report includes</h2><div class="report-grid"><article><strong>1</strong><h3 data-i18n="report.versionTitle">Exact versions</h3><p data-i18n="report.versionText">BedrockPlus, BDS, Python and the affected plugin version.</p></article><article><strong>2</strong><h3 data-i18n="report.stepsTitle">Reproduction steps</h3><p data-i18n="report.stepsText">What you ran, what happened and what you expected instead.</p></article><article><strong>3</strong><h3 data-i18n="report.logTitle">Relevant log</h3><p data-i18n="report.logText">The first related warning or error, not an unrelated full console dump.</p></article><article><strong>4</strong><h3 data-i18n="report.privacyTitle">Redacted identity data</h3><p data-i18n="report.privacyText">Remove tokens, IP addresses, XUID, device IDs and private server information.</p></article></div></section>
+        <section id="report-types"><h2 data-i18n="report.typesTitle">Repository structure</h2><div class="type-list"><div><span class="type-icon bug">!</span><div><h3 data-i18n="report.bug">Bug report</h3><p data-i18n="report.bugText">A reproducible problem in BedrockPlus or its documented API.</p></div></div><div><span class="type-icon request">+</span><div><h3 data-i18n="report.request">Feature request</h3><p data-i18n="report.requestText">A concrete capability with its server-owner or plugin-author use case.</p></div></div><div><span class="type-icon docs">?</span><div><h3 data-i18n="report.docs">Documentation problem</h3><p data-i18n="report.docsText">Missing, misleading or outdated public guidance.</p></div></div></div></section>
+      </article>
     </main>
   </div>
+
+  <footer class="site-footer"><div class="shell"><span>BedrockPlus · Turkmen</span><span><span data-i18n="footer.api">Documentation for API</span> <b data-api-version>1.0</b></span></div></footer>
+  <dialog class="search-dialog" data-search-dialog><form method="dialog" class="search-panel"><div class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z"/></svg><input type="search" data-search-input autocomplete="off" data-i18n-placeholder="search.placeholder" placeholder="Search documentation"><button value="cancel" aria-label="Close">×</button></div><div class="search-results" data-search-results><p data-i18n="search.hint">Type a class, command, event or guide name.</p></div></form></dialog>
 </body>
 </html>

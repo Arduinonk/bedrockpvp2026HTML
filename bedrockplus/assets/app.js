@@ -1,156 +1,262 @@
 (() => {
   "use strict";
-  const root = document.documentElement;
-  const sections = [...document.querySelectorAll("main section[data-title]")];
-  const navigation = document.querySelector("#doc-navigation");
-  const search = document.querySelector("#doc-search");
-  const searchEmpty = document.querySelector("#search-empty");
-  const sidebar = document.querySelector("#sidebar");
-  const menuButton = document.querySelector("#menu-button");
-  const themeButton = document.querySelector("#theme-button");
-  const languageSelect = document.querySelector("#language-select");
-  const apiLanguageButtons = [...document.querySelectorAll("[data-api-language-select]")];
-  const i18n = window.BedrockPlusI18n;
-  let links = [];
 
-  function slug(value) {
-    return value.toLocaleLowerCase().replace(/[^a-z0-9+]+/g, "-").replace(/^-|-$/g, "");
+  const config = window.BedrockPlusSiteConfig || {};
+  const locales = window.BedrockPlusLocales || {};
+  const supportedRoutes = new Set([
+    "home", "getting-started", "tutorials", "reference", "changelog", "report"
+  ]);
+  const supportedLanguages = new Set(["en", "ru", "tr", "tk"]);
+  const supportedRuntimes = new Set(["python", "cpp"]);
+
+  const pages = [...document.querySelectorAll("[data-page]")];
+  const topLinks = [...document.querySelectorAll("[data-top-nav] [data-route]")];
+  const sideNav = document.querySelector("[data-side-nav]");
+  const languageSelect = document.querySelector("[data-language]");
+  const runtimeButtons = [...document.querySelectorAll("[data-runtime-option]")];
+  const menu = document.querySelector("[data-top-nav]");
+  const menuToggle = document.querySelector("[data-menu-toggle]");
+  const searchDialog = document.querySelector("[data-search-dialog]");
+  const searchInput = document.querySelector("[data-search-input]");
+  const searchResults = document.querySelector("[data-search-results]");
+
+  let language = localStorage.getItem("bedrockplus-language") ||
+    navigator.language.slice(0, 2).toLowerCase();
+  if (!supportedLanguages.has(language)) language = "en";
+  let runtime = localStorage.getItem("bedrockplus-plugin-language") || "python";
+  if (!supportedRuntimes.has(runtime)) runtime = "python";
+
+  const text = (key) => locales[language]?.[key] ?? locales.en?.[key] ?? key;
+
+  function applyProductMetadata() {
+    document.querySelectorAll("[data-version]").forEach((node) => {
+      node.textContent = config.productVersion || "1.0.2";
+    });
+    document.querySelectorAll("[data-api-version]").forEach((node) => {
+      node.textContent = config.apiVersion || "1.0";
+    });
+    document.querySelectorAll("[data-bds-version]").forEach((node) => {
+      node.textContent = config.bdsVersion || "1.26.52.3";
+    });
   }
 
-  function buildNavigation() {
-    const groups = new Map();
-    navigation.replaceChildren();
-    for (const section of sections) {
-      if (section.dataset.apiLanguage && section.dataset.apiLanguage !== root.dataset.apiLanguage) continue;
-      const group = section.dataset.group || "Documentation";
-      if (!groups.has(group)) groups.set(group, []);
-      groups.get(group).push(section);
-    }
-    for (const [group, items] of groups) {
-      const block = document.createElement("div");
-      block.className = "nav-group";
-      const label = document.createElement("span");
-      label.className = "nav-group-label";
-      label.textContent = i18n?.t("group." + slug(group), group) || group;
-      block.append(label);
-      for (const section of items) {
-        const link = document.createElement("a");
-        link.className = "nav-link";
-        link.href = "#" + section.id;
-        const heading = section.querySelector("h1, h2");
-        link.textContent = heading?.textContent || section.dataset.title;
-        link.dataset.section = section.id;
-        link.addEventListener("click", () => {
-          sidebar.classList.remove("open");
-          menuButton.setAttribute("aria-expanded", "false");
-        });
-        block.append(link);
-      }
-      navigation.append(block);
-    }
-    links = [...document.querySelectorAll(".nav-link")];
+  function applyTranslations() {
+    document.documentElement.lang = language;
+    document.querySelectorAll("[data-i18n]").forEach((node) => {
+      node.textContent = text(node.dataset.i18n);
+    });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
+      node.placeholder = text(node.dataset.i18nPlaceholder);
+    });
+    languageSelect.value = language;
+    document.title = `BedrockPlus ${config.productVersion || "1.0.2"} · ${text("nav.reference")}`;
   }
 
-  i18n?.initialize(languageSelect);
-  buildNavigation();
-  document.addEventListener("bedrockplus:locale-changed", () => {
-    buildNavigation();
-    filterDocumentation();
-    for (const button of document.querySelectorAll(".copy-button")) {
-      button.textContent = i18n?.t("ui.copy", "Copy") || "Copy";
-    }
-  });
-  const observer = new IntersectionObserver((entries) => {
-    const visible = entries
-      .filter((entry) => entry.isIntersecting && !entry.target.classList.contains("search-hidden"))
-      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-    if (!visible.length) return;
-    const id = visible[0].target.id;
-    for (const link of links) link.classList.toggle("active", link.dataset.section === id);
-  }, { rootMargin: "-20% 0px -70% 0px" });
-  sections.forEach((section) => observer.observe(section));
-
-  function filterDocumentation() {
-    const term = search.value.trim().toLocaleLowerCase();
-    let visibleCount = 0;
-    for (const section of sections) {
-      const visible = !term || section.textContent.toLocaleLowerCase().includes(term);
-      section.classList.toggle("search-hidden", !visible);
-      const link = document.querySelector('[data-section="' + section.id + '"]');
-      if (link) link.hidden = !visible;
-      if (visible) visibleCount += 1;
-    }
-    for (const group of document.querySelectorAll(".nav-group")) {
-      group.hidden = ![...group.querySelectorAll(".nav-link")].some((link) => !link.hidden);
-    }
-    searchEmpty.hidden = visibleCount !== 0;
-  }
-  search.addEventListener("input", filterDocumentation);
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "/" && document.activeElement !== search) {
-      event.preventDefault();
-      search.focus();
-    }
-    if (event.key === "Escape") {
-      search.value = "";
-      filterDocumentation();
-      search.blur();
-      sidebar.classList.remove("open");
-      menuButton.setAttribute("aria-expanded", "false");
-    }
-  });
-  menuButton.addEventListener("click", () => {
-    const open = sidebar.classList.toggle("open");
-    menuButton.setAttribute("aria-expanded", String(open));
-  });
-  const storedTheme = localStorage.getItem("bedrockplus-doc-theme");
-  if (storedTheme === "light" || storedTheme === "dark") root.dataset.theme = storedTheme;
-  themeButton.addEventListener("click", () => {
-    root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
-    localStorage.setItem("bedrockplus-doc-theme", root.dataset.theme);
-  });
-  function setApiLanguage(language) {
-    const selected = language === "cpp" ? "cpp" : "python";
-    root.dataset.apiLanguage = selected;
-    localStorage.setItem("bedrockplus-doc-api-language", selected);
-    for (const button of apiLanguageButtons) {
-      const active = button.dataset.apiLanguageSelect === selected;
+  function applyRuntime() {
+    document.documentElement.dataset.runtime = runtime;
+    runtimeButtons.forEach((button) => {
+      const active = button.dataset.runtimeOption === runtime;
       button.classList.toggle("active", active);
       button.setAttribute("aria-pressed", String(active));
-    }
-    buildNavigation();
-    filterDocumentation();
-  }
-  for (const button of apiLanguageButtons) {
-    button.addEventListener("click", () => setApiLanguage(button.dataset.apiLanguageSelect));
-  }
-  setApiLanguage(localStorage.getItem("bedrockplus-doc-api-language") || "python");
-  for (const container of document.querySelectorAll("[data-tabs]")) {
-    const tabs = [...container.querySelectorAll("[data-tab-target]")];
-    const panels = [...container.querySelectorAll("[data-tab-panel]")];
-    for (const tab of tabs) {
-      tab.addEventListener("click", () => {
-        for (const item of tabs) item.classList.toggle("active", item === tab);
-        for (const panel of panels) panel.classList.toggle("active", panel.dataset.tabPanel === tab.dataset.tabTarget);
-      });
-    }
-  }
-  for (const pre of document.querySelectorAll("pre")) {
-    const code = pre.querySelector("code");
-    if (!code) continue;
-    const button = document.createElement("button");
-    button.className = "copy-button";
-    button.type = "button";
-    button.textContent = i18n?.t("ui.copy", "Copy") || "Copy";
-    button.addEventListener("click", async () => {
-      try {
-        await navigator.clipboard.writeText(code.textContent);
-        button.textContent = i18n?.t("ui.copied", "Copied") || "Copied";
-      } catch {
-        button.textContent = i18n?.t("ui.selectText", "Select text") || "Select text";
-      }
-      window.setTimeout(() => { button.textContent = i18n?.t("ui.copy", "Copy") || "Copy"; }, 1500);
     });
-    pre.append(button);
+    document.querySelectorAll("[data-runtime-content]").forEach((node) => {
+      node.hidden = node.dataset.runtimeContent !== runtime;
+    });
   }
+
+  function configureGithub() {
+    const repository = String(config.githubRepositoryUrl || "").trim();
+    const newIssue = String(config.githubNewIssueUrl || "").trim();
+    document.querySelectorAll("[data-github]").forEach((link) => {
+      const kind = link.dataset.github;
+      const target = kind === "new-issue"
+        ? newIssue
+        : kind === "issues" && repository
+          ? `${repository.replace(/\/$/, "")}/issues`
+          : repository;
+      if (/^https:\/\//i.test(target)) {
+        link.href = target;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.onclick = null;
+        link.classList.remove("is-unavailable");
+        link.removeAttribute("aria-disabled");
+        link.removeAttribute("title");
+      } else {
+        link.classList.add("is-unavailable");
+        link.setAttribute("aria-disabled", "true");
+        link.title = text("github.pending");
+        link.onclick = (event) => {
+          if (link.dataset.github === "repository") return;
+          event.preventDefault();
+        };
+      }
+    });
+    document.querySelectorAll("[data-issue]").forEach((link) => {
+      const issue = String(link.dataset.issue || "").trim();
+      if (repository && /^[1-9][0-9]*$/.test(issue)) {
+        link.href = `${repository.replace(/\/$/, "")}/issues/${issue}`;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.hidden = false;
+      } else {
+        link.hidden = true;
+      }
+    });
+  }
+
+  function currentLocation() {
+    const raw = location.hash.startsWith("#/") ? location.hash.slice(2) : "home";
+    const [candidate, section = ""] = raw.split("/");
+    return { route: supportedRoutes.has(candidate) ? candidate : "home", section };
+  }
+
+  function sectionTitle(section) {
+    return section.querySelector("h1, h2, h3")?.textContent?.trim() || section.id;
+  }
+
+  function buildSideNav(page, route) {
+    sideNav.replaceChildren();
+    sideNav.dataset.label = text("sidebar.onPage");
+    const targets = [...page.querySelectorAll("header[id], section[id]")];
+    targets.forEach((target) => {
+      const link = document.createElement("a");
+      link.href = `#/${route}/${target.id}`;
+      link.textContent = sectionTitle(target);
+      link.dataset.sectionLink = target.id;
+      sideNav.append(link);
+    });
+  }
+
+  function renderRoute({ focus = false } = {}) {
+    const { route, section } = currentLocation();
+    const page = pages.find((candidate) => candidate.dataset.page === route) || pages[0];
+    pages.forEach((candidate) => candidate.classList.toggle("active", candidate === page));
+    topLinks.forEach((link) => {
+      const active = link.dataset.route === route;
+      link.classList.toggle("active", active);
+      if (active) link.setAttribute("aria-current", "page");
+      else link.removeAttribute("aria-current");
+    });
+    buildSideNav(page, route);
+    menu.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+    requestAnimationFrame(() => {
+      const destination = section ? document.getElementById(section) : null;
+      if (destination) destination.scrollIntoView({ block: "start" });
+      else window.scrollTo({ top: 0, behavior: "instant" });
+      if (focus) document.getElementById("main").focus({ preventScroll: true });
+    });
+  }
+
+  function searchIndex() {
+    const index = [];
+    pages.forEach((page) => {
+      const route = page.dataset.page;
+      page.querySelectorAll("header[id], section[id]").forEach((section) => {
+        const title = sectionTitle(section);
+        const body = section.textContent.replace(/\s+/g, " ").trim();
+        index.push({ route, id: section.id, title, body });
+      });
+    });
+    return index;
+  }
+
+  function renderSearch(query) {
+    searchResults.replaceChildren();
+    const normalized = query.trim().toLocaleLowerCase(language);
+    if (!normalized) {
+      const hint = document.createElement("p");
+      hint.textContent = text("search.hint");
+      searchResults.append(hint);
+      return;
+    }
+    const matches = searchIndex().filter((item) =>
+      `${item.title} ${item.body}`.toLocaleLowerCase(language).includes(normalized)
+    ).slice(0, 12);
+    if (!matches.length) {
+      const empty = document.createElement("p");
+      empty.textContent = text("search.noResults");
+      searchResults.append(empty);
+      return;
+    }
+    matches.forEach((item) => {
+      const link = document.createElement("a");
+      link.className = "search-result";
+      link.href = `#/${item.route}/${item.id}`;
+      const routeName = document.querySelector(`[data-route="${item.route}"]`)?.textContent || item.route;
+      link.innerHTML = `<small></small><strong></strong><span></span>`;
+      link.querySelector("small").textContent = routeName;
+      link.querySelector("strong").textContent = item.title;
+      link.querySelector("span").textContent = item.body.slice(0, 145) + (item.body.length > 145 ? "…" : "");
+      link.addEventListener("click", () => searchDialog.close());
+      searchResults.append(link);
+    });
+  }
+
+  document.querySelectorAll("[data-copy]").forEach((button) => {
+    button.addEventListener("click", async () => {
+      const code = button.parentElement.querySelector("code")?.textContent || "";
+      try {
+        await navigator.clipboard.writeText(code);
+        const original = button.textContent;
+        button.textContent = text("code.copied");
+        setTimeout(() => { button.textContent = original; }, 1400);
+      } catch {
+        button.textContent = text("code.copyFailed");
+      }
+    });
+  });
+
+  document.querySelector("[data-theme-toggle]").addEventListener("click", () => {
+    const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem("bedrockplus-theme", next);
+  });
+  document.documentElement.dataset.theme = localStorage.getItem("bedrockplus-theme") || "dark";
+
+  languageSelect.addEventListener("change", () => {
+    language = languageSelect.value;
+    localStorage.setItem("bedrockplus-language", language);
+    applyTranslations();
+    configureGithub();
+    renderRoute();
+    renderSearch(searchInput.value);
+  });
+
+  runtimeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      runtime = button.dataset.runtimeOption;
+      localStorage.setItem("bedrockplus-plugin-language", runtime);
+      applyRuntime();
+      renderRoute();
+      renderSearch(searchInput.value);
+    });
+  });
+
+  menuToggle.addEventListener("click", () => {
+    const open = menu.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(open));
+  });
+
+  document.querySelector("[data-open-search]").addEventListener("click", () => {
+    searchDialog.showModal();
+    searchInput.focus();
+  });
+  searchInput.addEventListener("input", () => renderSearch(searchInput.value));
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "/" && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) {
+      event.preventDefault();
+      searchDialog.showModal();
+      searchInput.focus();
+    }
+    if (event.key === "Escape" && searchDialog.open) searchDialog.close();
+  });
+
+  window.addEventListener("hashchange", () => renderRoute({ focus: true }));
+  applyProductMetadata();
+  applyTranslations();
+  applyRuntime();
+  configureGithub();
+  renderRoute();
 })();
