@@ -30,7 +30,7 @@
 
   function applyProductMetadata() {
     document.querySelectorAll("[data-version]").forEach((node) => {
-      node.textContent = config.productVersion || "1.1.1";
+      node.textContent = config.productVersion || "1.1.2";
     });
     document.querySelectorAll("[data-api-version]").forEach((node) => {
       node.textContent = config.apiVersion || "1.1";
@@ -49,7 +49,7 @@
       node.placeholder = text(node.dataset.i18nPlaceholder);
     });
     languageSelect.value = language;
-    document.title = `BedrockPlus ${config.productVersion || "1.1.1"} · ${text("nav.reference")}`;
+    document.title = `BedrockPlus ${config.productVersion || "1.1.2"} · ${text("nav.reference")}`;
   }
 
   function applyRuntime() {

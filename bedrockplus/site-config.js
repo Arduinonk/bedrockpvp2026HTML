@@ -1,5 +1,5 @@
 window.BedrockPlusSiteConfig = Object.freeze({
-  productVersion: "1.1.1",
+  productVersion: "1.1.2",
   apiVersion: "1.1",
   bdsVersion: "1.26.61.1",
 

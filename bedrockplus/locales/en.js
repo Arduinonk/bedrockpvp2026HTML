@@ -71,7 +71,7 @@ window.BedrockPlusLocales.en = {
   "tutorial.cppMsvcRole": "compiles the C++ source into the DLL named by manifest.json.",
   "tutorial.cppPackRole": "validates manifest.json plus the compiled DLL and creates the .bppack archive.",
   "tutorial.cppSdkTitle": "Current SDK requirement",
-  "tutorial.cppSdkText": "BEDROCKPLUS_ROOT must be a directory containing include/bedrockplus/sdk/plugin.hpp. BedrockPlus 1.1.1 has not yet published a standalone C++ SDK archive, so rebuilding the source example currently requires the BedrockPlus developer checkout. The ready .bppack does not.",
+  "tutorial.cppSdkText": "BEDROCKPLUS_ROOT must be a directory containing include/bedrockplus/sdk/plugin.hpp. BedrockPlus 1.1.2 has not yet published a standalone C++ SDK archive, so rebuilding the source example currently requires the BedrockPlus developer checkout. The ready .bppack does not.",
   "tutorial.cppShellText": "Run these commands in Developer PowerShell for VS 2022 after replacing the SDK path:",
   "reference.title": "API Reference",
   "reference.lead": "A navigable overview of the stable public surface. Detailed symbol pages will be added here without changing the v1 website.",
