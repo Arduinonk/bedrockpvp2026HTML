@@ -59,7 +59,7 @@ window.BedrockPlusLocales.tk = {
   "tutorial.cppStartTitle": "Barlanan C++ mysalyndan başlaň",
   "tutorial.cppStartText": "Proýekt şablony hökmünde examples/plugins/cpp-hello bukjasyny göçüriň, soňra manifest identity-sini, klasy we eksport edilýän descriptor-y bilelikde üýtgediň.",
   "tutorial.folderText": "Dörediş wagtynda döredilen bukjany serweriň plugins bukjasynda saklaň.",
-  "tutorial.manifestText": "Manifest plugin kody işlemezden öň laýyklygy aýdýar. Häzirki iň ýokary dereje API 1.1; köne API 1.0 pluginleri goldanýar.",
+  "tutorial.manifestText": "Manifest plugin kody işlemezden öň laýyklygy aýdýar. Häzirki iň ýokary dereje API 1.2; köne API 1.0 we 1.1 pluginleri goldanýar.",
   "tutorial.subscribe": "player.join wakasyna ýazylyň",
   "tutorial.subscribeText": "Serwer taýýar bolanda ýazylyň, subscription ID-ni saklaň we stopping wagty aýryň. Waka tipli Player obýektini berýär.",
   "tutorial.logTitle": "Habarlar plagine degişli",

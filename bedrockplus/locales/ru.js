@@ -59,7 +59,7 @@ window.BedrockPlusLocales.ru = {
   "tutorial.cppStartTitle": "Начните с проверенного примера C++",
   "tutorial.cppStartText": "Скопируйте examples/plugins/cpp-hello как основу проекта, затем вместе измените identity в manifest, класс и экспортируемый descriptor.",
   "tutorial.folderText": "Во время разработки оставьте созданную папку внутри каталога plugins сервера.",
-  "tutorial.manifestText": "Manifest объявляет совместимость до выполнения кода плагина. Текущий максимум — API 1.1; плагины API 1.0 остаются совместимыми.",
+  "tutorial.manifestText": "Manifest объявляет совместимость до выполнения кода плагина. Текущий максимум — API 1.2; плагины API 1.0 и 1.1 остаются совместимыми.",
   "tutorial.subscribe": "Подписка на player.join",
   "tutorial.subscribeText": "Подпишитесь после готовности сервера, сохраните ID подписки и удалите её при остановке. Событие предоставляет типизированный объект Player.",
   "tutorial.logTitle": "Сообщения принадлежат плагину",

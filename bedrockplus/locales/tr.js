@@ -59,7 +59,7 @@ window.BedrockPlusLocales.tr = {
   "tutorial.cppStartTitle": "Doğrulanmış C++ örneğinden başlayın",
   "tutorial.cppStartText": "Proje iskeleti olarak examples/plugins/cpp-hello klasörünü kopyalayın; ardından manifest kimliğini, sınıfı ve dışa aktarılan tanımlayıcıyı birlikte değiştirin.",
   "tutorial.folderText": "Geliştirme sırasında oluşturulan klasörü sunucunun plugins dizininde tutun.",
-  "tutorial.manifestText": "Manifest, eklenti kodu çalışmadan önce uyumluluğu bildirir. Geçerli en yüksek sürüm API 1.1'dir; eski API 1.0 eklentileri desteklenir.",
+  "tutorial.manifestText": "Manifest, eklenti kodu çalışmadan önce uyumluluğu bildirir. Geçerli en yüksek sürüm API 1.2'dir; eski API 1.0 ve 1.1 eklentileri desteklenir.",
   "tutorial.subscribe": "player.join olayına abone olun",
   "tutorial.subscribeText": "Sunucu hazır olduğunda abone olun, abonelik kimliğini saklayın ve durdurma sırasında kaldırın. Olay türlendirilmiş Player nesnesi verir.",
   "tutorial.logTitle": "Mesajlar eklentiye aittir",
