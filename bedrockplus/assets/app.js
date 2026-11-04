@@ -28,6 +28,18 @@
 
   const text = (key) => locales[language]?.[key] ?? locales.en?.[key] ?? key;
 
+  function updateDocumentTitle(route = currentLocation().route) {
+    const routeKeys = {
+      home: "nav.home",
+      "getting-started": "nav.start",
+      tutorials: "nav.tutorials",
+      reference: "nav.reference",
+      changelog: "nav.changelog",
+      report: "nav.report"
+    };
+    document.title = `BedrockPlus ${config.productVersion || "1.2.0"} · ${text(routeKeys[route] || "nav.home")}`;
+  }
+
   function applyProductMetadata() {
     document.querySelectorAll("[data-version]").forEach((node) => {
       node.textContent = config.productVersion || "1.2.0";
@@ -48,8 +60,18 @@
     document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
       node.placeholder = text(node.dataset.i18nPlaceholder);
     });
+    document.querySelectorAll("[data-i18n-aria-label]").forEach((node) => {
+      node.setAttribute("aria-label", text(node.dataset.i18nAriaLabel));
+    });
+    document.querySelectorAll("time[data-local-date]").forEach((node) => {
+      const value = node.getAttribute("datetime");
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(value || "")) return;
+      node.textContent = new Intl.DateTimeFormat(language, {
+        day: "numeric", month: "short", year: "numeric"
+      }).format(new Date(`${value}T00:00:00`));
+    });
     languageSelect.value = language;
-    document.title = `BedrockPlus ${config.productVersion || "1.2.0"} · ${text("nav.reference")}`;
+    updateDocumentTitle();
   }
 
   function applyRuntime() {
@@ -139,6 +161,7 @@
       else link.removeAttribute("aria-current");
     });
     buildSideNav(page, route);
+    updateDocumentTitle(route);
     menu.classList.remove("open");
     menuToggle.setAttribute("aria-expanded", "false");
     requestAnimationFrame(() => {
